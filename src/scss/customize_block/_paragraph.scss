@@ -1,0 +1,75 @@
+/*----------------------------------------------------------------
+pタグなど文字関連
+---------------------------------------------------------------- */
+
+p:not(.noteditor) {
+	line-height: 1.8;
+	margin-bottom: 1em;
+}
+
+/*ドロップキャップ（段落の先頭1文字を大きく表示する機能） */
+.has-drop-cap:not(:focus)::first-letter {
+	color: config.$color-primary;
+	font-size: 3em;
+	font-weight: 800;
+	margin: 0.05em 0.1em 0 0;
+}
+
+
+em,
+q,
+dfn {
+	font-style: italic;
+}
+
+em em,
+em i,
+i em,
+i i,
+cite em,
+cite i {
+	font-weight: bolder;
+}
+
+big {
+	font-size: 1.2em;
+}
+
+small {
+	font-size: 0.75em;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+ins {
+	text-decoration: underline;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+abbr,
+acronym {
+	cursor: help;
+}
+
+address {
+	line-height: 1.5;
+	margin: 0 0 2rem 0;
+}

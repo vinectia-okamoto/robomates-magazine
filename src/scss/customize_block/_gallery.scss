@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* Block:ギャラリー ------------------------------ */
+.wp-block-gallery {
+
+
+	.wp-block-image {
+		figcaption {
+			line-height: 1.2;
+			padding: 1.2em .77em .7em;
+			transition: all 0.3s linear;
+			overflow: hidden;
+		}
+	}
+
+	&.is-style-touitsu-gallery {
+
+		.wp-block-image:not(#individual-image),
+		.blocks-gallery-item:not(#individual-image) {
+			flex-grow: inherit;
+		}
+
+	}
+
+
+	&.is-style-center-gallery {
+		justify-content: center;
+	}
+
+	&.is-style-spmax-gallery {
+
+		.wp-block-image:not(#individual-image),
+		.blocks-gallery-item:not(#individual-image) {
+			flex-grow: inherit;
+
+			@include config.mq-down(sm) {
+				width: 100%;
+				margin: 0 0 var(--gallery-block--gutter-size, 16px) 0;
+			}
+		}
+
+	}
+
+
+	/* Block:ギャラリーの黒いグラデなくすよ*/
+
+
+
+	&.has-nested-images:not(.is-cropped) figure.wp-block-image:not(#individual-image) {
+		margin-bottom: var(--gallery-block--gutter-size);
+	}
+
+
+
+	&.has-nested-images:not(.is-cropped) figure.wp-block-image:not(#individual-image) img {
+		margin-bottom: initial;
+	}
+
+	&.has-nested-images:not(.is-cropped) figure.wp-block-image:not(#individual-image) figcaption {
+		bottom: initial;
+	}
+
+	&.has-nested-images:not(.is-cropped) figure.wp-block-image figcaption {
+		position: relative;
+		background: none;
+		color: #000;
+		padding: 0;
+		margin-top: 0.5em;
+		margin-bottom: 0;
+		overflow: initial;
+		max-height: initial;
+		font-size: 1.2rem;
+		line-height: 1.2;
+	}
+
+	/* Block:ギャラリークロップの文字サイズ*/
+	.blocks-gallery-grid .blocks-gallery-item figcaption {
+
+		font-size: 1.2rem;
+		line-height: 1.2;
+	}
+
+}

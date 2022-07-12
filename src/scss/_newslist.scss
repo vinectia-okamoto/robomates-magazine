@@ -1,0 +1,287 @@
+@charset "UTF-8";
+@use "config";
+
+
+/*============================
+newsList
+============================*/
+
+.newsList {
+    padding-left: 0;
+    margin: 0 0;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+
+.newsList {
+
+    --news-head-width: 15em;
+
+
+    line-height: 1.8;
+
+
+
+    li {
+        padding-top: 0.7em;
+        padding-bottom: 0.7em;
+        display: flex;
+
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+
+    }
+
+    li+li {
+        border-top: 1px solid config.$color-mediumgray;
+    }
+
+    .news-head {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding-right: 1em;
+        width: 100%;
+        font-size: 1.4rem;
+    }
+
+    .news-date {
+        margin-right: 1em;
+        font-family: config.$english;
+    }
+
+    .news-cat {
+        display: block;
+        width: 7em;
+        overflow: hidden;
+
+        i {
+            margin-left: 2px;
+            margin-right: 2px;
+            color: config.$color-gray;
+        }
+
+        a {
+            display: block;
+            color: config.$color-gray;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .news-body {
+        width: 100%;
+
+
+        a {
+            color: config.$color-txt;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: config.$color-hover;
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 0 !important;
+        }
+    }
+
+
+
+}
+
+
+
+
+
+/***************************************
+
+newsListCard
+
+***************************************/
+.newsListCard {
+    li {
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid config.$color-gray;
+
+        @include config.mq-up(md) {
+            padding: 15px;
+        }
+    }
+
+    li+li {
+        margin-top: 10px;
+    }
+
+    .newsListCard-row {
+
+        margin-left: -5px;
+        margin-right: -5px;
+
+        display: flex;
+        flex-direction: column;
+
+        @include config.mq-up(sm) {
+            flex-direction: row;
+        }
+
+
+        @include config.mq-up(md) {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+    }
+
+    .news-imgArea,
+    .news-txtArea {
+        padding-left: 5px;
+        padding-right: 5px;
+
+        @include config.mq-up(md) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .news-imgArea {
+        width: 100%;
+        margin-bottom: 10px;
+
+        @include config.mq-up(sm) {
+            width: 150px;
+        }
+
+        @include config.mq-up(md) {
+            width: 200px;
+        }
+
+
+        a {
+            display: block;
+        }
+    }
+
+    .news-txtArea {
+        width: 100%;
+
+        @include config.mq-up(sm) {
+            width: calc(100% - 150px);
+        }
+
+        @include config.mq-up(md) {
+            width: calc(100% - 200px);
+        }
+
+
+    }
+
+    .news-head {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: flex-start;
+        margin-left: -4px;
+        margin-right: -4px;
+        margin-bottom: 5px;
+        line-height: 1.4;
+    }
+
+    .news-date,
+    .news-cat {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .news-date {}
+
+    .news-cat {
+        line-height: 1.4;
+        display: inline-block;
+
+        i {
+            margin-left: 2px;
+            margin-right: 2px;
+            color: config.$color-gray;
+        }
+
+        a {
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        span {
+            background-color: config.$color-black;
+            padding: 0.1em 0.5em;
+
+            color: #fff !important;
+            font-size: 1.1rem;
+
+            display: block;
+            text-align: center;
+        }
+
+
+        a:hover span {
+            opacity: 0.7;
+        }
+
+    }
+
+    .news-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 1.4 !important;
+        margin-bottom: 0;
+
+        @include config.mq-up(md) {
+            font-size: 1.6rem;
+            margin-bottom: 0.5em;
+        }
+
+        @include config.mq-up(lg) {
+            font-size: 1.8rem;
+        }
+    }
+
+    .news-txt {
+
+        margin-bottom: 1em;
+        line-height: 1.6;
+
+        @include config.mq-up(md) {
+            display: block;
+        }
+    }
+
+    .news-btn {
+        display: block;
+        text-align: right;
+
+
+        a {
+            transition: all 0.3s ease;
+            color: #fff;
+            line-height: 1;
+            font-size: 1.2rem;
+            padding: 0.5em;
+            background-color: config.$color-primary;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: config.$color-hover;
+            }
+        }
+    }
+}

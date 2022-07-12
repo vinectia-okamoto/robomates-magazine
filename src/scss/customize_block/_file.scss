@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+/* Block: File ------------------------------- */
+
+
+.wp-block-file {
+  background: none;
+  padding: 0;
+}
+
+.wp-block-file__content-wrapper {}
+
+.wp-block-file {
+  margin-bottom: 1em;
+  line-height: 1.6;
+
+  .wp-block-file__textlink,
+  a {
+    color: config.$color-primary;
+    font-weight: bold;
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      color: config.$color-hover;
+    }
+  }
+
+  .wp-block-file__button {
+    margin-left: .75em;
+    padding: 1em 1.25em;
+  }
+}

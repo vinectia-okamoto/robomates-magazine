@@ -1,0 +1,23 @@
+@charset "UTF-8";
+@use "../config";
+
+/* Block: シェアメディアスタイル ---------------- */
+
+.wp-block-media-text {
+	&__media {
+
+		@media (max-width:600px) {
+			margin-bottom: 10px;
+		}
+	}
+
+	&__content {
+		padding: 0 8%;
+
+		@media (max-width:600px) {
+			padding: 0 0;
+		}
+
+	}
+
+}

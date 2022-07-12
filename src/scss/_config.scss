@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+// =========================================================
+// media queries
+// =========================================================
+$mq-sm: 576px;
+$mq-md: 768px;
+$mq-lg: 992px;
+$mq-xl: 1200px;
+$mq-xxl: 1600px;
+
+
+
+// =========================================================
+// container-max-widths
+// =========================================================
+$container-max-width-sm:$mq-sm;
+$container-max-width-md: $mq-md;
+$container-max-width-lg:$mq-lg;
+$container-max-width-xl: $mq-xl;
+$container-max-width-xxl:$mq-xxl;
+// =========================================================
+// container左右の空き
+// =========================================================
+$gutter-size:30px;
+
+
+
+// =========================================================
+// color
+// =========================================================
+$color-primary: #00a2b7;
+$color-primary-notsharp-mojiretsu: #{$color-primary};
+$color-primary-notsharp: str-slice($color-primary-notsharp-mojiretsu, 2);
+$color-secondary: #32a939;
+$color-accent: #FDDC00;
+$color-subtle: #eff3f9;
+$color-background: #FFF;
+
+$color-hover:#007EFF;
+$color-link: darken($color-hover, 15%);
+$color-txt: #3B4043;
+
+
+
+$color-red:rgb(255, 75, 0);
+$color-yellow:rgb(255, 241, 0);
+$color-green:rgb(3, 175, 122);
+$color-blue:rgb(0, 90, 255);
+$color-skyblue:rgb(77, 196, 255);
+$color-pink:rgb(255, 128, 130);
+$color-orange:rgb(246, 170, 0);
+$color-purple:rgb(153, 0, 153);
+$color-brown:rgb(128, 64, 0);
+
+
+$color-white: #ffffff;
+$color-gray: #84919e;
+$color-mediumgray:#dbdbdb;
+$color-lightgray:#f7f7f7;
+$color-black: #000;
+
+// =========================================================
+// gudenbergのカラー用（editor-styleに）
+// =========================================================
+$hascolors: ( //背景とテキストは絶対先に
+	"background": $color-background,
+	"text": $color-txt,
+
+	"primary": $color-primary,
+	"secondary": $color-secondary,
+	"accent": $color-accent,
+	"subtle": $color-subtle,
+
+	"hover": $color-hover,
+
+	"white": $color-white,
+	"lightgray": $color-lightgray,
+	"mediumgray": $color-mediumgray,
+	"gray": $color-gray,
+	"black": $color-black,
+
+	"red": $color-red,
+	"yellow": $color-yellow,
+	"green": $color-green,
+	"blur": $color-blue,
+	"skyblue": $color-skyblue,
+	"pink": $color-pink,
+	"orange": $color-orange,
+	"purple": $color-purple,
+	"brown": $color-brown);
+// =========================================================
+// font-family
+// =========================================================
+
+$gothic: "YakuHanJP",
+"Noto Sans JP",
+"Hiragino Sans",
+"Hiragino Kaku Gothic ProN",
+"Arial",
+"Yu Gothic",
+"Meiryo",
+sans-serif;
+
+$english: 'Roboto',
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+sans-serif;
+
+
+// =========================================================
+// font-size
+// =========================================================
+$fontsize-small: clamp(1.2rem, 1.3vw, 1.3rem);
+$fontsize-nomal: clamp(1.4rem, 1.6vw, 1.6rem);
+$fontsize-medium: clamp(1.6rem, 2vw, 2rem);
+$fontsize-large: clamp(2rem, 2.4vw, 2.4rem);
+$fontsize-x-large: clamp(2.4rem, 3.6vw, 3.6rem);
+$fontsize-larger: clamp(2.4rem, 3.6vw, 3.6rem);
+
+// =========================================================
+// mixin
+// =========================================================
+// 変数の定義
+// min-width
+$breakpoint-up: ("sm": "screen and (min-width: "$mq-sm ")",
+	"md": "screen and (min-width: "$mq-md ")",
+	"lg": "screen and (min-width: "$mq-lg ")",
+	"xl": "screen and (min-width: "$mq-xl ")",
+) !default;
+
+// max-width
+$breakpoint-down: ("sm": "screen and (max-width: "$mq-sm - 1 ")",
+	"md": "screen and (max-width: "$mq-md - 1 ")",
+	"lg": "screen and (max-width: "$mq-lg - 1 ")",
+	"xl": "screen and (max-width: "$mq-xl - 1 ")",
+) !default;
+
+// @mixinの定義  @include config.mq-up(lg){}
+@mixin mq-up($breakpoint: sm) {
+	@media #{map-get($breakpoint-up, $breakpoint)} {
+		@content;
+	}
+}
+
+// @mixinの定義  @include config.mq-down(lg){}
+@mixin mq-down($breakpoint: sm) {
+	@media #{map-get($breakpoint-down, $breakpoint)} {
+		@content;
+	}
+}

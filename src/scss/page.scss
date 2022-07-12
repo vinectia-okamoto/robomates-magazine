@@ -1,0 +1,376 @@
+@charset "UTF-8";
+@use "config";
+
+
+/* =========================================================
+wordpressのエディターのclass用に読み込み
+========================================================= */
+.editor-styles-wrapper {
+	@import "editor-style";
+}
+
+/* =========================================================
+#contents
+========================================================= */
+
+/*----------------------------------------------------------------
+wordpressの構造のもの
+---------------------------------------------------------------- */
+.editor-styles-wrapper {
+	>.alignwide {
+		max-width: #{config.$container-max-width-xl};
+		width: calc(100% - var(--wp--custom--spacing--outer));
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+
+	>.alignfull {
+		width: 100vw;
+
+	}
+
+	>:not(.alignwide):not(.alignfull) {
+		max-width: #{config.$container-max-width-lg};
+		width: calc(100% - var(--wp--custom--spacing--outer));
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* =========================================================
+.contentWrap
+========================================================= */
+
+.contentWrap {
+	position: relative;
+	z-index: 0;
+
+}
+
+.contentMain {
+	padding: 50px 0 50px;
+	margin: 0 auto;
+
+	@include config.mq-up(md) {
+		padding: 50px 0 50px;
+	}
+}
+
+.contentRow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: config.$container-max-width-xxl;
+}
+
+.contentRow .contentMain {
+	width: 100%;
+	padding: 50px 0 50px;
+	margin: 0;
+
+	@include config.mq-up(xl) {
+		width: calc(100% - 270px);
+	}
+}
+
+.contentRow .contentSide {
+	width: 100%;
+	margin: 0 0 0px;
+	padding: 30px 0 30px;
+
+	@include config.mq-up(xl) {
+		width: 240px;
+		padding: 50px 0 50px;
+	}
+}
+
+/************************************
+** サイドエリア
+************************************/
+.contentSide>.side-area:first-child>*:first-child {
+	margin-top: 0 !important;
+}
+
+.side-area {
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 1.5em 0 0.4em;
+		padding: 0.3em 0.5em;
+		font-weight: bold;
+		line-height: 1.4;
+		font-size: 1.6rem;
+		margin-bottom: 0.4em;
+		border-left: 3px solid config.$color-primary;
+		padding-left: 0.3em;
+		background-color: config.$color-lightgray;
+
+
+		@include config.mq-up(md) {
+			font-size: 1.6rem;
+		}
+	}
+
+	ul li {
+		display: block;
+		line-height: 1.4;
+		padding: 0.3em 0 0.3em 1.1em;
+
+		.post-date {
+			display: block;
+			font-size: 1.2rem;
+			color: config.$color-primary;
+		}
+
+		a {
+			position: relative;
+			color: config.$color-black;
+		}
+
+		a:hover {
+			color: config.$color-hover;
+		}
+	}
+
+	ul li+li {
+		border-top: 1px dotted config.$color-primary;
+	}
+}
+
+/*アイコン*/
+.side-area {
+
+
+	ul li a::before {
+		content: "\f138";
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		font-size: inherit;
+		text-rendering: auto;
+
+		margin-right: 0.2em;
+
+		position: absolute;
+		left: -1.1em;
+
+	}
+}
+
+.sideMenuBox {
+	margin-bottom: 30px;
+
+	h3 {
+		font-weight: bold;
+		border-top: 2px solid config.$color-gray;
+		border-bottom: 1px solid config.$color-gray;
+		padding: 0.7em 0 0.7em 5px;
+		line-height: 1.2;
+		margin-bottom: 10px;
+		font-size: 1.8rem;
+		position: relative;
+
+
+	}
+}
+
+.sideChildPageList {
+	display: block;
+
+	@include config.mq-up(sm) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	@include config.mq-up(md) {
+		display: block;
+	}
+
+	li {
+
+		line-height: 1.2;
+		padding: .3em 1em .3em 1.5em;
+	}
+
+	li a {
+		position: relative;
+		color: config.$color-txt;
+	}
+
+	li a:hover {
+		text-decoration: underline;
+		color: config.$color-hover;
+	}
+
+	li a::before {
+		content: "\f138";
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		font-size: inherit;
+		text-rendering: auto;
+		color: config.$color-primary;
+		margin-right: 0.2em;
+
+		position: absolute;
+		left: -1.1em;
+		top: 0.2em;
+	}
+}
+
+.sideMenuBox .newsList {
+	li:first-child {
+		padding-top: 0;
+	}
+
+	li {
+
+		@include config.mq-up(md) {
+			flex-direction: column;
+			line-height: 1.2;
+		}
+	}
+
+	.news-date {
+
+		@include config.mq-up(md) {
+			font-size: 1.4rem;
+			color: config.$color-gray;
+		}
+	}
+}
+
+/* =========================================================
+#pageHero
+========================================================= */
+#pageHero {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	width: 100%;
+
+	padding: 5rem 0 3rem;
+
+	@include config.mq-up(md) {
+		padding: 10rem 0 7rem;
+	}
+
+
+	.pageHero-titleWrap {
+		position: relative;
+	}
+
+	.pageHero-parenttitle {
+		position: relative;
+
+		color: #fff;
+		font-weight: bold;
+		display: block;
+		line-height: 1;
+		font-size: clamp(1.4rem, 2.6vw, 2rem);
+		z-index: 2;
+
+
+
+		span {
+			padding: 0.1em 0.2em;
+			line-height: 1.2;
+			background-color: config.$color-primary;
+			display: inline-block;
+		}
+	}
+
+	.pageHero-title {
+		color: config.$color-primary;
+		position: relative;
+		line-height: 1.2;
+		font-size: clamp(2.2rem, 3vw, 4rem);
+		font-weight: bold;
+		z-index: 2;
+		display: block;
+
+
+		span {
+			padding: 0.1em 0;
+			line-height: 1.2;
+
+			display: inline-block;
+		}
+	}
+}
+
+/* =========================================================
+*.breadcrumb
+========================================================= */
+.breadcrumbs {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	max-width: 100%;
+	min-width: 100%;
+
+	overflow-x: auto;
+	font-size: 1.2rem;
+	white-space: nowrap;
+	border-top: 1px solid rgba(config.$color-gray, 0.2);
+	border-bottom: 1px solid rgba(config.$color-gray, 0.2);
+
+	a {
+		color: black;
+
+		&:hover {
+			color: config.$color-hover;
+			text-decoration: underline;
+		}
+	}
+
+	.current-item {
+		font-weight: bold;
+	}
+}
+
+// ---------------------------
+// .entry-header
+// ---------------------------
+
+.entry-header {
+	margin-bottom: 30px;
+}
+
+.entry-header-inner {
+	position: relative;
+}
+
+.entry-title {
+	padding: 0.6em 0;
+	color: config.$color-primary;
+	font-weight: bold;
+	font-size: 2.4rem;
+	line-height: 1.4;
+	display: block;
+
+	@include config.mq-up(md) {
+		font-size: 3rem;
+	}
+}
+
+.entry-meta {
+	font-size: 1.4rem;
+	line-height: 1.4;
+
+	.posted-on {
+		margin-right: 1em;
+	}
+
+	.entry-author {
+		margin-right: 1em;
+	}
+
+	.entry-category {
+		margin-right: 1em;
+	}
+}

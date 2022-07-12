@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+
+/* Block:コード、詩、フォーマット済み( Code, Verse and Preformatted) ------- */
+
+.wp-block-code {
+  color: inherit;
+  border: 1px solid config.$color-lightgray;
+  border-radius: 0;
+  padding: 30px;
+}
+
+.wp-block-preformatted,
+.wp-block-verse {
+  border: 1px solid config.$color-lightgray;
+  border-radius: 0;
+  padding: 30px;
+}
+
+.wp-block-freeform.block-library-rich-text__tinymce,
+.wp-block-preformatted,
+.wp-block-code .block-editor-plain-text,
+.wp-block-verse {
+  background: transparent;
+  color: inherit;
+  font-family: monospace;
+  font-size: 14px;
+
+  @include config.mq-up(md) {
+    font-size: 16px;
+  }
+}
+
+
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace;
+  font-size: 0.9em;
+  padding: 0.4rem 0.6rem;
+}
+
+code,
+kbd,
+samp {
+  background: rgba(0, 0, 0, 0.075);
+  border-radius: 0.2rem;
+}
+
+pre {
+  border: 0.1rem solid config.$color-lightgray;
+  line-height: 1.5;
+  margin: 4rem 0;
+  overflow: auto;
+  padding: 3rem 2rem;
+  text-align: left;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}

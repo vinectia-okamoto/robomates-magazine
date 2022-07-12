@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+/* BLOCK: COLUMNS */
+.wp-block-columns {
+    margin-bottom: 1em;
+}
+
+
+/* BLOCK: COLUMNS */
+.wp-block-column {
+    &.wp-block-column-sp-reverse {
+        @include config.mq-down(md) {
+            flex-direction: row-reverse;
+        }
+    }
+}

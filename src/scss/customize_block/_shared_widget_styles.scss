@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+
+
+/* Block: 共有ウィジェットスタイル-------------- */
+
+ul {
+
+	&.wp-block-archives,
+	&.wp-block-categories,
+	&.wp-block-latest-posts {
+		font-family: inherit;
+		list-style: none;
+		margin: 40px 0;
+		padding-left: 0;
+	}
+
+	&.wp-block-categories__list {
+		font-family: inherit;
+		list-style: none;
+		margin: 40px 0;
+		padding-left: 0;
+
+		ul {
+			margin: 0;
+		}
+	}
+
+	&.wp-block-archives li,
+	&.wp-block-categories li,
+	&.wp-block-latest-posts li,
+	&.wp-block-categories__list li {
+		color: config.$color-secondary;
+		line-height: 1.476;
+		margin: 5px 0 0 0;
+	}
+
+	&.wp-block-archives li li,
+	&.wp-block-categories li li,
+	&.wp-block-categories__list li li,
+	&.wp-block-latest-posts li li {
+		margin-left: 20px;
+	}
+}
+
+.wp-block-archives li>a,
+.wp-block-categories li>a,
+.wp-block-latest-posts li>a {
+	font-weight: 700;
+	text-decoration: none;
+	color: config.$color-txt;
+}
+
+.wp-block-archives li>a {
+
+	&:focus,
+	&:hover {
+		font-weight: 700;
+		text-decoration: none;
+	}
+}
+
+.wp-block-categories li>a {
+
+	&:focus,
+	&:hover {
+		font-weight: 700;
+		text-decoration: none;
+	}
+}
+
+.wp-block-latest-posts li>a {
+
+	&:focus,
+	&:hover {
+		font-weight: 700;
+		text-decoration: none;
+	}
+}
+
+.wp-block-archives.aligncenter,
+.wp-block-categories.aligncenter {
+	text-align: center;
+}
+
+.wp-block-latest-comments time,
+.wp-block-latest-posts time {
+	color: config.$color-secondary;
+	font-size: 0.7em;
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 1.476;
+	margin-top: 0.15em;
+}

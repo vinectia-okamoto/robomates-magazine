@@ -1,0 +1,14 @@
+@charset "UTF-8"; 
+
+
+
+/* Block: シェアメディアスタイル ---------------- */
+
+.wp-block[data-type*="core-embed"][data-align="full"] figcaption,
+.wp-block[data-type="core/image"][data-align="full"] figcaption,
+.wp-block[data-type="core/gallery"][data-align="full"] .blocks-gallery-caption {
+	padding: 0 14px;
+ @include config.mq-up(md){padding: 0 45px;}
+}
+
+

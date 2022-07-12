@@ -1,0 +1,220 @@
+{
+	"version": 2,
+	"$comment-customTemplates": "templates フォルダに配置したカスタムテンプレートにメタデータを追加します",
+	"customTemplates": [{
+			"name": "blank",
+			"title": "Blank",
+			"postTypes": [
+				"page",
+				"post"
+			]
+		},
+		{
+			"name": "page-large-header",
+			"title": "Page (Large Header)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "single-no-separators",
+			"title": "Single Post (No Separators)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "page-no-separators",
+			"title": "Page (No Separators)",
+			"postTypes": [
+				"page"
+			]
+		}
+	],
+	"$comment-setting": "ブロックエディター全体・ブロック個別の機能の有効化・無効化、および機能の設定を行う",
+	"settings": {
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"color": {
+			"link": false,
+			"$comment-dp": "▼▼デフォルトカラーパレットの表示設定▼▼",
+			"defaultPalette": true,
+			"$comment-pl": "▼▼テーマ独自パレット --wp--preset--color--xxx ▼▼",
+			"palette": [{
+					"slug": "primary",
+					"color": "#00a2b7",
+					"name": "メインカラー"
+				},
+
+
+				{
+					"slug": "secondary",
+					"color": "#4ECB56",
+					"name": "セカンドカラー"
+				},
+				{
+					"slug": "accent",
+					"color": "#FDDC00",
+					"name": "アクセントカラー"
+				},
+				{
+					"slug": "subtle",
+					"color": "#eff3f9",
+					"name": "淡い色"
+				},
+				{
+					"slug": "background",
+					"color": "#fff",
+					"name": "背景色"
+				},
+				{
+					"slug": "gray",
+					"color": "rgb(171, 184, 195)",
+					"name": "グレー"
+				},
+				{
+					"slug": "blacks",
+					"color": "rgb(0, 0, 0)",
+					"name": "ブラック"
+				},
+				{
+					"slug": "white",
+					"color": "rgb(255, 255, 255)",
+					"name": "ホワイト"
+				}
+			]
+
+		},
+
+		"custom": {
+			"spacing": {
+				"small": "max(10px, 5vw)",
+				"medium": "clamp(10px, 20vw, var(--wp--style--block-gap))",
+				"large": "clamp(4rem, 10vw, 8rem)",
+				"outer": "var(--wp--custom--spacing--small, 1.25rem)"
+			},
+			"typography": {
+				"font-size": {
+					"huge": "clamp(1.75rem, 2vw, 2rem)",
+					"gigantic": "clamp(2rem, 2.1vw, 2.25rem)",
+					"colossal": "clamp(2.25rem, 2.2vw,2.5rem)"
+				},
+				"line-height": {
+					"tiny": 1.15,
+					"small": 1.2,
+					"medium": 1.4,
+					"normal": 2
+				}
+			}
+		},
+
+		"spacing": {
+
+			"blockGap": false,
+
+			"margin": true,
+			"padding": true,
+
+			"units": [
+				"%",
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
+		},
+		"$comment-blocks": "▼▼見出しのfonntサイズ設定非表示▼▼",
+		"blocks": {
+			"core/heading": {
+				"typography": {
+					"fontSizes": []
+				}
+			}
+		},
+
+
+		"$comment-typography": "▼▼タイポグラフィ(文字)に関する設定です。▼▼",
+		"typography": {
+			"lineHeight": true,
+
+			"$comment-fw": "▼▼タイポグラフィ設定のフォントウェイト非表示▼▼",
+			"fontWeight": false,
+			"$comment-dc": "▼▼タイポグラフィ設定の先頭の文字を大きくを非表示▼▼",
+			"dropCap": false,
+			"$comment-ff": "▼▼タイポグラフィ設定のフォント選択を表示▼▼",
+			"fontFamilies": [{
+					"fontFamily": "YakuHanJP,\"Noto Sans JP\",\"Hiragino Sans\",\"Hiragino Kaku Gothic ProN\",Arial,\"Yu Gothic\",Meiryo,sans-serif",
+					"name": "ゴシック（システムフォント）",
+					"slug": "gothic-font"
+				},
+				{
+					"fontFamily": "YakuHanMP,\"Times New Roman\",\"Noto Serif JP\",YuMincho,\"Hiragino Mincho ProN\",\"Yu Mincho\",\"MS PMincho\",serif",
+					"name": "明朝体",
+					"slug": "mincho-font"
+				}
+			],
+			"$comment-fs": "▼▼タイポグラフィ設定のフォントサイズ▼▼",
+			"fontSizes": [{
+					"name": "小",
+					"size": "1.2rem",
+					"slug": "small"
+				},
+				{
+					"name": "中・デフォルト",
+					"size": "intial",
+					"slug": "medium"
+				},
+				{
+					"name": "中大",
+					"size": "clamp(1.8rem, 1.9vw, 2rem)",
+					"slug": "medium-large"
+				},
+				{
+					"name": "大",
+					"size": "clamp(2.2rem, 2.4vw, 2.6rem)",
+					"slug": "large"
+				},
+				{
+					"name": "特大",
+					"size": "clamp(2.8rem,3vw, 3.4rem)",
+					"slug": "x-large"
+				}
+			]
+
+		},
+		"$comment-layout": "▼▼コンテンツ幅を設定します。▼▼",
+		"layout": {
+			"contentSize": "992px",
+			"wideSize": "1400px"
+		}
+	},
+	"$comment-styles": "サイト、要素、ブロックにスタイルを適用",
+	"styles": {
+
+
+		"spacing": {
+			"blockGap": "clamp(0.938rem, 0.597rem + 1.7vw, 1.875rem)"
+		}
+	},
+	"$comment-templateParts": "parts フォルダに配置したテンプレートパーツにメタデータを追加します。",
+	"templateParts": [{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		}, {
+			"name": "header-php",
+			"title": "Header",
+			"area": "header-php"
+		}
+	]
+}

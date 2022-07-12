@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/* ボタンカスタマイズ ------------------------------ */
+
+.wp-block-buttons {
+	margin-bottom: 1em;
+}
+
+.wp-block-button {}
+
+.wp-block-button__link {
+	position: relative;
+	padding: 1.1em 1.5em;
+
+
+	&:before {
+		color: inherit;
+		margin-right: 3px;
+		//  right:10px;
+		//position: absolute;
+		content: "\f0a9";
+		font-family: "Font Awesome 6 Free";
+		-moz-osx-font-smoothing: grayscale;
+		//top: 50%;
+		font-weight: 900; //solidは900、regularは400
+		//  -webkit-transform: translate(0, -50%);
+		//transform: translate(0, -50%);
+	}
+
+	&:hover {
+		background-color: config.$color-hover !important;
+		color: #fff;
+	}
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	border-color: config.$color-primary;
+	color: config.$color-primary;
+
+	&:hover {
+		background-color: config.$color-hover;
+		color: #fff;
+		border-color: config.$color-hover;
+	}
+}

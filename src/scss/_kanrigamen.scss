@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@use "config";
+
+
+
+/*---ツールバーのH1ボタンを非表示にします--- */
+.components-dropdown-menu__menu .components-dropdown-menu__menu-item[aria-label="見出し1"],
+.components-dropdown-menu__menu .components-menu-item[aria-label="見出し1"] {
+	display: none;
+}
+
+
+
+
+/*---編集画面サイドバーに関するもの--- */
+.interface-interface-skeleton__sidebar {
+	line-height: 1.4;
+	font-size: 1.3rem;
+
+
+	.edit-post-meta-boxes-area {
+		input[type="radio"]:checked::before {
+
+			width: 0.6em;
+			height: 0.6em;
+			margin: 0.1em;
+
+		}
+
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			height: 1em;
+			width: 1em;
+			min-width: 1em;
+		}
+
+	}
+
+	/*---カスタム文字サイズの項目すこし大きく--- */
+	.components-input-control__container {
+		width: 80px;
+	}
+
+}

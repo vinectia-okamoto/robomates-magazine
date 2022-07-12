@@ -1,0 +1,1002 @@
+@charset "UTF-8";
+@use "config";
+
+
+
+
+
+/*============================
+.sectionTitle（共通）
+============================*/
+.sectionTitle {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1em;
+
+
+	.en {
+		font-size: clamp(2em, 3.4vw, 5rem);
+		font-weight: bold;
+		line-height: 1.2;
+		font-family: config.$english;
+		color: config.$color-primary;
+	}
+
+
+	.ja {
+		font-size: clamp(1.6rem, 2vw, 2.2rem);
+		font-weight: bold;
+		line-height: 1.2;
+		display: block;
+		position: relative;
+		margin-bottom: 0.2em;
+	}
+
+}
+
+
+/*============================
+topHero
+============================*/
+.topHero {
+	background: url(../images/top/topHero-back.png) no-repeat center top / cover;
+	position: relative;
+	height: 46vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+
+	&-inner {
+		position: relative;
+		z-index: 1;
+	}
+
+	&-title {
+		width: 60vw;
+		text-align: center;
+
+		@include config.mq-up(xl) {
+			width: 100%;
+		}
+	}
+
+	&-chara-men {
+		position: absolute;
+		left: 0;
+		bottom: -30px;
+		width: clamp(20vw, 23vw, 500px);
+		transform-origin: center bottom;
+		animation: yurayura 5s linear infinite;
+	}
+
+	&-chara-women {
+		position: absolute;
+		right: 0;
+		bottom: -30px;
+		width: clamp(20vw, 23vw, 500px);
+		transform-origin: center bottom;
+		animation: poyooon 5s linear infinite;
+	}
+
+
+	@keyframes yurayura {
+
+		0%,
+		100% {
+			transform: rotate(3deg);
+		}
+
+		50% {
+			transform: rotate(-3deg);
+		}
+	}
+
+	@keyframes poyooon {
+		0% {
+			transform: translate(0%, 30px);
+		}
+
+		10% {
+			transform: translate(0%, -30px);
+		}
+
+		15% {
+			transform: translate(0%, -10px);
+		}
+
+		20% {
+			transform: translate(0%, -30px);
+		}
+
+		50% {
+			transform: translate(0%, -30px);
+		}
+
+		70% {
+			transform: translate(0%, -30px);
+		}
+
+		100% {
+			transform: translate(0%, 30px);
+		}
+
+	}
+
+}
+
+/* =========================================================
+.topAbout
+========================================================= */
+.topAbout {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	overflow: hidden;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+
+
+	&-inner-inner {
+		position: relative;
+		padding: 30px 0;
+
+
+		@include config.mq-up(md) {
+			padding: 40px;
+		}
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			right: -20px;
+			top: 0;
+			height: 100%;
+			border-radius: 0 30px 30px 0;
+			width: calc(#{config.$container-max-width-xxl} + (100vw - #{config.$container-max-width-xxl}) / 2);
+			background: linear-gradient(90deg, #4ecb56, #1fcb71, #00cb8a, #00ca9f, #00c8b2, #00c5c1, #00c1cb, #00bdd2);
+
+			@include config.mq-up(md) {
+				right: 12vw;
+				top: 0;
+			}
+		}
+	}
+
+	&-row {
+		position: relative;
+		display: grid;
+		align-items: center;
+		gap: 30px;
+		flex-wrap: wrap;
+		grid-template-columns: 1fr;
+
+		@include config.mq-up(md) {
+			grid-template-columns: 1fr 1.2fr;
+
+		}
+	}
+
+
+	&-title {
+
+		@include config.mq-up(md) {
+			align-items: flex-start;
+
+		}
+
+		.en,
+		.ja {
+			color: white;
+		}
+	}
+
+	&-txt {
+		color: white;
+		margin-bottom: 1em;
+	}
+
+	&-btnArea {
+		display: block;
+	}
+
+
+
+	&-chara {
+		display: block;
+	}
+}
+
+/* =========================================================
+.topCompanies
+========================================================= */
+.topCompanies {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	overflow: hidden;
+	position: relative;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+
+
+	&-title {
+
+		.en,
+		.ja {
+			color: config.$color-txt;
+		}
+	}
+
+	&-inner {}
+
+	&-txtArea {
+		display: grid;
+		gap: 15px;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+
+		@include config.mq-up(md) {
+			grid-template-columns: minmax(20%, 20%) 1fr minmax(20%, 20%);
+		}
+	}
+
+	&-chara-men,
+	&-chara-women {
+		text-align: center;
+
+		img {
+			max-width: 160px;
+
+			@include config.mq-up(md) {
+				max-width: 100%
+			}
+		}
+	}
+
+	&-txt {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row: 1;
+
+		@include config.mq-up(md) {
+			grid-column-start: initial;
+			grid-column-end: initial;
+			grid-row: initial;
+		}
+	}
+
+	&-searchArea {
+		border: 3px solid #000;
+		padding: 20px;
+		margin-bottom: 30px;
+	}
+
+	.companiesList {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 15px;
+		margin-bottom: 30px;
+
+		@include config.mq-up(md) {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 30px;
+		}
+
+	}
+
+
+
+	.companiesCard {
+		background-color: config.$color-subtle;
+		display: block;
+
+		.imgArea {
+			overflow: hidden;
+
+			a {
+				padding-top: 66%;
+				position: relative;
+				display: block;
+				background-color: config.$color-primary;
+
+				img {
+					position: absolute;
+					left: 0;
+					top: 0;
+					object-fit: cover;
+					width: 100%;
+					height: 100%;
+					transition: all 0.2s ease;
+				}
+
+				&:hover img {
+					transform: scale(1.1);
+					opacity: 0.8;
+				}
+			}
+
+		}
+
+		.txtArea {
+			padding: 10px;
+			transition: all 0.3s ease;
+
+			@include config.mq-up(md) {
+				padding: 20px;
+			}
+		}
+
+		.title {
+			line-height: 1.4;
+			font-weight: bold;
+			margin-bottom: 0.3em;
+
+			a {
+				transition: all 0.3s ease;
+				color: config.$color-txt;
+
+				&:hover {
+					color: config.$color-hover;
+				}
+			}
+		}
+
+		.cat {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+			margin-bottom: 0.3em;
+
+			span,
+			a {
+				display: inline-block;
+				color: #fff;
+				background-color: config.$color-txt;
+				line-height: 1;
+				padding: 0.2em 1em;
+				border-radius: 2em;
+				font-size: 1.2rem;
+				transition: all 0.3s ease;
+
+				&:hover {
+					background-color: config.$color-hover;
+
+				}
+			}
+		}
+
+		.companyName {
+			font-size: 1.4rem;
+			font-weight: bold;
+			line-height: 1.2;
+			color: config.$color-txt;
+		}
+
+		.address {
+			font-size: 1.2rem;
+			line-height: 1.4;
+			color: config.$color-txt;
+		}
+	}
+
+	canvas {
+		position: absolute;
+
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+}
+
+/* =========================================================
+.topStrength
+========================================================= */
+.topEXL {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: config.$color-subtle;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	&-inner {}
+
+	&-titleArea {
+		display: grid;
+		grid-template-columns: minmax(200px, 70%) 1fr;
+
+		&-txtWrap {}
+
+		&-chara {
+			margin-top: -100px;
+		}
+	}
+
+	&-title {
+		align-items: flex-start;
+	}
+
+
+
+	.exlList {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 15px;
+		margin-bottom: 30px;
+
+		@include config.mq-up(md) {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 30px;
+		}
+
+	}
+
+	.exlCard {
+		display: block;
+
+
+		.imgArea {
+			border-radius: 20px;
+			overflow: hidden;
+			margin-bottom: 5px;
+
+			a {
+				position: relative;
+				display: block;
+				padding-top: 66%;
+				background-color: config.$color-primary;
+
+				img {
+					position: absolute;
+					left: 0;
+					top: 0;
+					object-fit: cover;
+					width: 100%;
+					height: 100%;
+					transition: all 0.2s ease;
+				}
+
+				&:hover img {
+					transform: scale(1.1);
+					opacity: 0.8;
+				}
+			}
+		}
+
+		.txtArea {
+			display: block;
+
+
+			.date {
+				line-height: 1.2;
+				font-size: 1.2rem;
+				display: block;
+				margin-bottom: 0.3em;
+			}
+
+			.title {
+				line-height: 1.2;
+				font-size: 1.4rem;
+				font-weight: bold;
+
+				a {
+					color: config.$color-txt;
+
+					&:hover {
+						color: config.$color-hover;
+					}
+				}
+			}
+		}
+	}
+
+	&-btnArea {
+		text-align: center;
+	}
+}
+
+
+/* =========================================================
+.topUkeire
+========================================================= */
+.topUkeire {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background: url(../images/top/topUkeire-back.png);
+	position: relative;
+
+	&::before {
+		position: absolute;
+		content: "";
+		display: block;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(#000, 0.7);
+	}
+
+	@include config.mq-up(md) {
+		padding-top: clamp(60px, 80vw, 100px);
+		padding-bottom: clamp(60px, 80vw, 100px);
+
+	}
+
+	&-inner {
+		position: relative;
+	}
+
+	&-title {
+		font-size: clamp(2.4rem, 3vw, 4rem);
+		line-height: 1.2;
+		font-weight: bold;
+		margin-bottom: 0.5em;
+		text-align: center;
+		color: #fff;
+	}
+
+	&-txt {
+		text-align: center;
+		font-weight: bold;
+		margin-bottom: 30px;
+		color: #fff;
+	}
+
+	&-btnArea {
+		text-align: center;
+	}
+}
+
+
+/* =========================================================
+.topLean
+========================================================= */
+.topLean {
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	&-inner {}
+
+	&-title {}
+
+	&-linkList {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 15px;
+
+		@include config.mq-up(md) {
+			gap: 30px;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		a {
+			display: block;
+			transition: all 0.3s ease;
+
+			.imgArea {
+				overflow: hidden;
+				margin-bottom: 5px;
+				display: block;
+
+				img {
+					transition: all 0.3s ease;
+				}
+			}
+
+			.txtArea {
+				color: config.$color-txt;
+
+				p {
+					transition: all 0.3s ease;
+					line-height: 1.6;
+					font-size: 1.4rem;
+				}
+			}
+
+			&:hover {
+				.imgArea img {
+					opacity: 0.7;
+				}
+
+				.txtArea p {
+					color: config.$color-hover;
+				}
+			}
+		}
+
+
+	}
+
+}
+
+/* =========================================================
+.topSCMT
+========================================================= */
+.topSCMT {
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	.scmtList {
+		margin-bottom: 30px;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 15px;
+
+
+		@include config.mq-up(md) {
+			grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+		}
+
+		li {
+			align-self: stretch;
+		}
+	}
+
+	.scmtCard {
+		border: 4px solid config.$color-primary;
+		background-color: #fff;
+		display: flex;
+		height: 100%;
+		min-height: 100px;
+		align-items: stretch;
+
+		@include config.mq-up(md) {
+			flex-direction: column;
+			min-height: 100px;
+		}
+
+		.imgArea {
+			display: block;
+			position: relative;
+			width: 100px;
+
+			@include config.mq-up(md) {
+				padding-top: 60%;
+				width: 100%;
+			}
+
+			img {
+				position: absolute;
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+
+			}
+		}
+
+		.txtArea {
+			padding: 10px 15px;
+			width: calc(100% - 100px);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			@include config.mq-up(md) {
+				width: 100%;
+
+			}
+		}
+
+		.description {
+			font-size: 1.2rem;
+			line-height: 1.2;
+			color: config.$color-txt;
+			text-align: center;
+			margin-bottom: 2px;
+
+			span {
+				display: inline-block;
+			}
+		}
+
+		.title {
+			text-align: center;
+			font-weight: bold;
+			font-size: clamp(2.4rem, 3vw, 3.2rem);
+			line-height: 1.2;
+			color: config.$color-txt;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			.logoimg {
+				position: relative;
+				height: 40px;
+				width: 100%;
+
+
+
+				@include config.mq-up(md) {
+					height: 40px;
+
+				}
+			}
+
+			img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+
+	}
+
+	&-btnArea {
+		text-align: center;
+	}
+
+}
+
+
+/* =========================================================
+.topNews
+========================================================= */
+.topNews {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: config.$color-subtle;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+
+	}
+
+	&-inner {}
+
+	&-titleArea {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	&-title {
+		align-items: flex-start;
+	}
+
+	&-row {
+		display: grid;
+		gap: 30px;
+		grid-template-columns: 1fr;
+		margin-bottom: 30px;
+
+		@include config.mq-up(md) {
+			grid-template-columns: 50% 1fr;
+		}
+	}
+
+	&-pickupArea {
+		width: 100%;
+
+
+		.news-img {
+			margin-bottom: 10px;
+
+			a {
+				display: block;
+			}
+		}
+
+
+		.news-head {
+			font-size: 1.4rem;
+			line-height: 1.4;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1em;
+			margin-bottom: 0.5em;
+
+			.news-date {
+				color: config.$color-gray;
+			}
+
+			.news-cat {
+				border-left: 1px solid config.$color-gray;
+				padding-left: 1em;
+
+				a,
+				span {
+					color: config.$color-txt;
+
+				}
+			}
+		}
+
+		.news-body {
+			line-height: 1.6;
+
+			a {
+				color: config.$color-txt;
+			}
+		}
+
+
+
+	}
+
+
+
+	&-listArea {}
+
+	&-btnArea-pc {
+		display: none;
+
+		@include config.mq-up(md) {
+			display: block;
+		}
+	}
+
+	&-btnArea-sp {
+		display: block;
+
+		@include config.mq-up(md) {
+			display: none;
+		}
+	}
+}
+
+/* =========================================================
+.topPART
+========================================================= */
+.topPART {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background: url(../images/top/topPART-back.png) no-repeat center center / cover;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	&-inner {}
+
+	&-title {
+		text-align: center;
+		font-weight: bold;
+		font-size: clamp(2.2rem, 3vw, 4rem);
+		line-height: 1.4;
+		margin-bottom: 1em;
+		color: #fff;
+	}
+
+	.partList {
+		display: grid;
+		gap: 15px;
+		grid-template-columns: 1fr;
+		margin-bottom: 30px;
+
+		@include config.mq-up(md) {
+			gap: 30px;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.partCard {
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+
+
+		.imgArea {
+			position: relative;
+			padding-top: 60%;
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transition: all 0.2s ease;
+			}
+		}
+
+		&:hover .imgArea img {
+			transform: scale(1.1);
+			opacity: 0.8;
+		}
+
+		.txtArea {
+			padding: 15px;
+			transition: all 0.2s ease;
+
+			@include config.mq-up(md) {
+				padding: 15px 30px;
+			}
+		}
+
+		&:hover .txtArea {
+			background-color: config.$color-secondary;
+		}
+
+		.title {
+			transition: all 0.2s ease;
+			line-height: 1.4;
+			font-size: clamp(1.8rem, 2vw, 2rem);
+			color: config.$color-primary;
+			margin-bottom: 0.5em;
+			font-weight: bold;
+		}
+
+
+
+		.txt {
+			transition: all 0.2s ease;
+			line-height: 1.6;
+			font-size: 1.4rem;
+			color: config.$color-txt;
+		}
+
+		&:hover .title,
+		&:hover .txt {
+			color: #fff;
+		}
+	}
+}
+
+/* =========================================================
+.topBnr
+========================================================= */
+.topBnr {
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	.bnrList {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+
+		@include config.mq-up(md) {
+			gap: 15px;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+
+
+		a {
+			display: block;
+		}
+	}
+}

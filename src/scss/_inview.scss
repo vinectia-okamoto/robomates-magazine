@@ -1,0 +1,285 @@
+@charset "UTF-8";
+@use "config";
+
+/* =========================================================
+.inview & animation
+========================================================= */
+
+.inviewMask {
+  overflow: hidden;
+}
+
+body.inview--use [class*="inview_"] {
+  opacity: 0;
+}
+
+.invew_title span,
+.animate__animated {
+
+  animation-duration: 0.5s;
+
+  animation-fill-mode: both;
+
+}
+
+@media print,
+(prefers-reduced-motion: reduce) {
+
+  .invew_title span,
+  .animate__animated {
+
+    animation-duration: 1ms !important;
+
+    transition-duration: 1ms !important;
+
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* =========================================================
+.inview
+========================================================= */
+@-webkit-keyframes clip {
+  0% {
+
+    transform: scaleX(0);
+
+    transform-origin: 0 0
+  }
+
+  45% {
+
+    transform: scaleX(1);
+
+    transform-origin: 0 0
+  }
+
+  50% {
+
+    transform: scaleX(1);
+
+    transform-origin: 100% 0
+  }
+
+  100% {
+
+    transform: scaleX(0);
+
+    transform-origin: 100% 0
+  }
+}
+
+@keyframes clip {
+  0% {
+
+    transform: scaleX(0);
+
+    transform-origin: 0 0
+  }
+
+  45% {
+
+    transform: scaleX(1);
+
+    transform-origin: 0 0
+  }
+
+  50% {
+
+    transform: scaleX(1);
+
+    transform-origin: 100% 0;
+
+  }
+
+  100% {
+
+    transform: scaleX(0);
+
+    transform-origin: 100% 0
+  }
+}
+
+
+.inview_curtain {
+  position: relative;
+  opacity: 1 !important;
+
+
+
+  &>* {
+    visibility: hidden;
+
+    transition: visibility 0s linear .45s;
+  }
+
+  &.curtain-start>* {
+    visibility: visible;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+
+    transform: scaleX(0);
+
+    transform-origin: 0 0;
+  }
+
+  &.curtain-start::after {
+
+    animation: clip .9s cubic-bezier(.86, 0, .07, 1) 0s;
+  }
+}
+
+/*============================
+textileflip
+============================*/
+.inview_textyle {
+  opacity: 0;
+}
+
+.inview_textyle span {
+  position: relative;
+  top: 0px; //topとleft同時指定で斜めの動き
+  left: 10px;
+  opacity: 0;
+}
+
+/*============================
+animate.css
+============================*/
+
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.4);
+    transition: opacity 1.2s cubic-bezier(.215, .61, .355, 1), transform 1.2s cubic-bezier(.215, .61, .355, 1);
+    width: 100%;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: .6s;
+  }
+}
+
+.animate__fadeInZoom {
+  animation-name: fadeInZoom
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateZ(0)
+  }
+}
+
+.animate__fadeInUp {
+  animation-name: fadeInUp
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.animate__fadeIn {
+  animation-name: fadeIn
+}
+
+/* Zooming entrances */
+
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate__zoomIn {
+
+  animation-name: zoomIn;
+}
+
+.anime_delay-05s {
+  animation-delay: 0.5s;
+}
+
+.anime_delay-1s {
+  animation-delay: 1s;
+}
+
+.anime_delay-2s {
+  animation-delay: calc(1s * 2);
+}
+
+.anime_delay-3s {
+  animation-delay: calc(1s * 3);
+}
+
+.anime_delay-4s {
+  animation-delay: calc(1s * 4);
+}
+
+.anime_delay-5s {
+  animation-delay: calc(1s * 5);
+}
+
+.anime_faster {
+  animation-duration: calc(1s / 2);
+}
+
+.anime_fast {
+  animation-duration: calc(1s * 0.8);
+}
+
+.anime_slow {
+  animation-duration: calc(1s * 2);
+}
+
+.anime_slower {
+  animation-duration: calc(1s * 3);
+}
+
+/*============================
+全体のアニメ完了フラグ
+============================*/
+.animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both
+}
+
+
+@media (prefers-reduced-motion) {
+  .animated {
+    animation: unset !important;
+    transition: none !important
+  }
+}

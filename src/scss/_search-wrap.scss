@@ -1,0 +1,143 @@
+@charset "UTF-8";
+@use "config";
+/*========= 検索窓の設定 ===============*/
+
+/*==検索窓背景のエリア*/
+.searchWrap {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: -1;
+	opacity: 0;
+	transition: all 0.4s;
+	width: 0;
+	height: 0;
+	z-index: 3;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+
+	/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+	&.panelactive {
+		top: 0%;
+		left: 0%;
+		opacity: 1;
+		width: 100%;
+		height: 100vh;
+		z-index: 1200;
+		background: #fff;
+
+	}
+
+	/*==検索窓のエリア*/
+	.searchWrap-area {
+		display: none;
+	}
+
+	&.panelactive .searchWrap-area {
+		display: block;
+		/*検索窓エリアを表示*/
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+		position: relative;
+	}
+
+	.search {
+		position: relative;
+		height: 60px;
+		box-shadow: 0 0 0 3px #000;
+		border-radius: 30px;
+		overflow: hidden;
+		display: flex;
+
+		/*==テキスト入力とボタンinput共通設定*/
+		input {
+			-webkit-appearance: none;
+			/*SafariやChromeのデフォルトの設定を無効*/
+			outline: none;
+			cursor: pointer;
+			/*カーソルを指マークに*/
+			color: #333;
+
+		}
+
+		/*テキスト入力input設定*/
+		&-text {
+			width: 100%;
+			padding-left: 1.5em;
+			line-height: 60px;
+			border: none;
+			transition: all 0.5s;
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		&-text:focus {
+			background: config.$color-subtle;
+		}
+
+		/*ボタンinput設定*/
+		&-submit {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 60px;
+			background-image: url('data:image/svg+xml;charset=utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20version%3D%221.1%22%20id%3D%22_x32_%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22enable-background%3Anew%200%200%20512%20512%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%238A8A99%3B%7D%3C%2Fstyle%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M0%2C212.3c0%2C54.2%2C20.8%2C108.8%2C62.2%2C150.2c41.4%2C41.4%2C96%2C62.2%2C150.2%2C62.2c37.8%2C0%2C75.8-10.3%2C109.3-30.5L424.5%2C497%20c20%2C20%2C52.5%2C20%2C72.5%2C0c20-20%2C20-52.5%2C0-72.5L394.1%2C321.7c20.2-33.6%2C30.6-71.5%2C30.5-109.4c0.1-54.2-20.8-108.8-62.2-150.1%20C321.1%2C20.8%2C266.6%2C0%2C212.4%2C0C158.1%2C0%2C103.6%2C20.8%2C62.2%2C62.2C20.8%2C103.6-0.1%2C158.1%2C0%2C212.3z%20M82%2C212.3c0.1-33.5%2C12.7-66.6%2C38.2-92.2%20C145.7%2C94.6%2C178.9%2C82%2C212.4%2C82c33.5%2C0.1%2C66.6%2C12.7%2C92.2%2C38.2c25.5%2C25.6%2C38.1%2C58.7%2C38.2%2C92.2c-0.1%2C33.5-12.7%2C66.6-38.2%2C92.2%20c-25.6%2C25.5-58.7%2C38.1-92.2%2C38.2c-33.5-0.1-66.6-12.7-92.2-38.2C94.6%2C279%2C82%2C245.9%2C82%2C212.3z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+			background-repeat: no-repeat;
+			background-size: 25px 25px;
+			background-color: initial;
+			background-position: center center;
+			border: none;
+			width: 60px;
+			height: 60px;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+	/*=======　閉じるための×ボタン　========*/
+	&-closeBtn {
+		position: absolute;
+		top: clamp(15px, 2vw, 20px);
+		right: clamp(15px, 2vw, 20px);
+		z-index: 2;
+		cursor: pointer;
+		width: 60px;
+		height: 60px;
+
+		span {
+			display: inline-block;
+			position: absolute;
+			left: 14px;
+			height: 3px;
+			border-radius: 2px;
+			background-color: #000;
+
+			/*×マーク*/
+			&:nth-of-type(1) {
+				top: 22px;
+				left: 15px;
+				transform: translateY(6px) rotate(-135deg);
+				width: 50%;
+			}
+
+			&:nth-of-type(2) {
+				top: 34px;
+				left: 15px;
+				transform: translateY(-6px) rotate(135deg);
+				width: 50%;
+			}
+
+		}
+	}
+}

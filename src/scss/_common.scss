@@ -1,0 +1,610 @@
+@charset "UTF-8";
+@use "config";
+
+/* =========================================================
+font-style
+========================================================= */
+
+
+.gothic {
+  font-family: config.$gothic;
+}
+
+/* =========================================================
+img
+========================================================= */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-rounded {
+  border-radius: 6px;
+}
+
+.img-thumbnail {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+/** 透過ロールオーバー **/
+a:hover img.hover {
+  filter: alpha(opacity=70);
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+}
+
+/* =========================================================
+txt
+========================================================= */
+.text-hide {
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0
+}
+
+.text-left {
+  text-align: left
+}
+
+.text-right {
+  text-align: right
+}
+
+.text-center {
+  text-align: center
+}
+
+.text-justify {
+  text-align: justify
+}
+
+.text-nowrap {
+  white-space: nowrap
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.text-xs-left {
+  text-align: left
+}
+
+.text-xs-right {
+  text-align: right
+}
+
+.text-xs-center {
+  text-align: center
+}
+
+@media (min-width: 34em) {
+  .text-sm-left {
+    text-align: left
+  }
+
+  .text-sm-right {
+    text-align: right
+  }
+
+  .text-sm-center {
+    text-align: center
+  }
+}
+
+@media (min-width: 48em) {
+  .text-md-left {
+    text-align: left
+  }
+
+  .text-md-right {
+    text-align: right
+  }
+
+  .text-md-center {
+    text-align: center
+  }
+}
+
+@media (min-width: 62em) {
+  .text-lg-left {
+    text-align: left
+  }
+
+  .text-lg-right {
+    text-align: right
+  }
+
+  .text-lg-center {
+    text-align: center
+  }
+}
+
+@media (min-width: 75em) {
+  .text-xl-left {
+    text-align: left
+  }
+
+  .text-xl-right {
+    text-align: right
+  }
+
+  .text-xl-center {
+    text-align: center
+  }
+}
+
+/* =========================================================
+margin padding
+========================================================= */
+$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p#{str-slice($side, 0, 1)}#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+/* =========================================================
+size
+========================================================= */
+/* % size */
+@for $i from 1 through 100 {
+  .w#{$i} {
+    width:#{$i}#{'%'};
+  }
+}
+
+
+
+
+@function str-replace($substr, $newsubstr, $str, $all:false) {
+  $pos: str-index($str, $substr);
+
+  @while $pos !=null {
+    $strlen: str-length($substr);
+    $start: str-slice($str, 0, $pos - 1);
+    $end: str-slice($str, $pos + $strlen);
+    $str: $start + $newsubstr + $end;
+
+    @if $all==true {
+      $pos: str-index($str, $substr);
+    }
+
+    @else {
+      $pos: null;
+    }
+  }
+
+  @return $str;
+}
+
+/* max% size */
+$spaceamounts: ('2-5', '5', '7-5', '10', '12-5', '15', '17-5', '20', '22-5', '25', '27-5', '30', '32-5', '35', '37-5', '40', '42-5', '45', '47-5', '50', '52-5', '55', '57-5', '60', '62-5', '65', '67-5', '70', '72-5', '75', '80', '82-5', '85', '87-5', '90', '92-5', '95', '97-5', '100');
+
+@each $space in $spaceamounts {
+  $msg: str-replace("-", ".", $space);
+
+  .maxw#{$space} {
+    max-width:#{$msg}#{'%'};
+  }
+}
+
+
+/* EM size */
+
+@for $i from 1 through 20 {
+  .w#{$i}#{'em'} {
+    width:#{$i}#{'em'};
+  }
+}
+
+
+/* minEM size */
+@for $i from 1 through 20 {
+  .minw#{$i}#{'em'} {
+    min-width:#{$i}#{'em'};
+  }
+}
+
+
+
+/* maxEM size */
+@for $i from 1 through 20 {
+  .maxw#{$i}#{'em'} {
+    max-width:#{$i}#{'em'};
+  }
+}
+
+/* =========================================================
+ClearFIX
+========================================================= */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+  content: "";
+  display: block;
+}
+
+.cf:after {
+  clear: both;
+}
+
+
+/* =========================================================
+shadow
+========================================================= */
+.shadow {
+  -moz-box-shadow: 5px 5px 15px #000;
+  /* Firefox */
+  -webkit-box-shadow: 5px 5px 15px #000;
+  /* Safari and Chrome */
+  box-shadow: 5px 5px 15px #000;
+  /* Opera 10.5+, IE */
+}
+
+
+
+/************************** オンリー**************************/
+.sp-only-ib {
+  display: none;
+}
+
+.sp-only-b {
+  display: none;
+}
+
+.pc-only-ib {
+  display: inline-block;
+}
+
+.pc-only-b {
+  display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+  .sp-only-ib {
+    display: inline-block;
+  }
+
+  .sp-only-b {
+    display: inline-block;
+  }
+
+  .pc-only-ib {
+    display: none;
+  }
+
+  .pc-only-b {
+    display: none;
+  }
+}
+
+/************************** 文字寄せ **************************/
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+/* レスポンシブ用 */
+.r-tac {
+  text-align: left;
+}
+
+.r-tal {
+  text-align: left;
+}
+
+.r-tar {
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .r-tac {
+    text-align: center;
+  }
+
+  .r-tal {
+    text-align: left;
+  }
+
+  .r-tar {
+    text-align: right;
+  }
+}
+
+/************************** 中心揃え **************************/
+.vam {
+  vertical-align: middle;
+}
+
+
+.vat {
+  vertical-align: top;
+}
+
+.vab {
+  vertical-align: bottom;
+}
+
+.dis-ib {
+  display: inline-block
+}
+
+.dis-b {
+  display: block
+}
+
+.dis-i {
+  display: inline
+}
+
+/**************************文字サイズ設定**************************/
+.txtsmall {
+  font-size: 80% !important;
+  line-height: 1.2em;
+}
+
+.txtbig {
+  font-size: 114.3% !important;
+  line-height: 1.6em;
+}
+
+.txtbigger {
+  font-size: 142.9% !important;
+  line-height: 1.6em;
+}
+
+.txtbiggest {
+  font-size: 171.4% !important;
+  line-height: 1.6em;
+}
+
+.txtbold {
+  font-weight: bold;
+}
+
+.txtbold.mincho {
+  font-weight: 600;
+}
+
+.caption {
+  font-size: 90% !important;
+  line-height: 1.4em;
+  font-weight: 400;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.tategaki {
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+
+
+
+/********************************************************************************************************
+アイコン設定
+CLASS名「.iconuse」をつけた下層のafter要素にfontawesomeのアイコンでファイルのアイコンをつける
+********************************************************************************************************/
+.iconuse a[href^="http"]:after,
+.iconuse a[target="_blank"]:after,
+.iconuse a[href$=".pdf"]:after,
+.iconuse a[href$=".doc"]:after,
+.iconuse a[href$=".docx"]:after,
+.iconuse a[href$=".xls"]:after,
+.iconuse a[href$=".xlsx"]:after,
+.iconuse a[href$=".zip"]:after,
+.iconuse a[href ^="mailto:"]:after,
+
+.iconuse-white a[href^="http"]:after,
+.iconuse-white a[target="_blank"]:after,
+.iconuse-white a[href$=".pdf"]:after,
+.iconuse-white a[href$=".doc"]:after,
+.iconuse-white a[href$=".docx"]:after,
+.iconuse-white a[href$=".xls"]:after,
+.iconuse-white a[href$=".xlsx"]:after,
+.iconuse-white a[href$=".zip"]:after,
+.iconuse-white a[href ^="mailto:"]:after {
+  font-family: "Font Awesome 6 Free";
+  display: inline-block;
+  color: inherit;
+  font-weight: 900 !important;
+  margin-left: 0.2em;
+  /*text-rendering: auto;*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none !important;
+
+}
+
+.iconuse-white a[target="_blank"]:after,
+.iconuse-white a[href$=".pdf"]:after,
+.iconuse-white a[href$=".doc"]:after,
+.iconuse-white a[href$=".docx"]:after,
+.iconuse-white a[href$=".xls"]:after,
+.iconuse-white a[href$=".xlsx"]:after,
+.iconuse-white a[href$=".zip"]:after,
+.iconuse-white a[href ^="mailto:"]:after {
+  color: #fff;
+}
+
+
+/* 外部リンク要素 --- */
+.iconuse a[target="_blank"]:after,
+.iconuse-white a[target="_blank"]:after {
+  content: "\f35d";
+}
+
+/* pdf要素--- */
+.iconuse a[href$=".pdf"]:after,
+.iconuse-white a[href$=".pdf"]:after {
+  content: "\f1c1";
+}
+
+/* Word要素--- */
+.iconuse a[href$=".doc"]:after,
+.iconuse a[href$=".docx"]:after,
+.iconuse-white a[href$=".doc"]:after,
+.iconuse-white a[href$=".docx"]:after {
+  content: "\f1c2";
+}
+
+/* Excel要素--- */
+.iconuse a[href$=".xls"]:after,
+.iconuse a[href$=".xlsx"]:after,
+.iconuse-white a[href$=".xls"]:after,
+.iconuse-white a[href$=".xlsx"]:after {
+  content: "\f1c3";
+}
+
+/* zip要素--- */
+.iconuse a[href$=".zip"]:after,
+.iconuse-white a[href$=".zip"]:after {
+  content: "\f1c6";
+}
+
+/* mailto要素--- */
+.iconuse a[href ^="mailto:"]:after,
+.iconuse-white a[href ^="mailto:"]:after {
+  content: "\f003";
+}
+
+.iconuse a.noicon:after {
+  display: none;
+}
+
+.iconuse {
+
+  a[target="_blank"]:after,
+  a[href$=".pdf"]:after,
+  a[href$=".doc"]:after,
+  a[href$=".docx"]:after,
+  a[href$=".xls"]:after,
+  a[href$=".xlsx"]:after,
+  a[href$=".zip"]:after,
+  a[href ^="mailto:"]:after {
+    color: inherit;
+  }
+
+}
+
+/********************************************************************************************************
+アイコン設定（下層ではないthisバージョン）
+CLASS名「.iconuse-this」をつけたそのもののafter要素にfontawesomeのアイコンでファイルのアイコンをつける
+********************************************************************************************************/
+a[target="_blank"] .iconuse-this:after,
+a[href$=".pdf"] .iconuse-this:after,
+a[href$=".doc"] .iconuse-this:after,
+a[href$=".docx"] .iconuse-this:after,
+a[href$=".xls"] .iconuse-this:after,
+a[href$=".xlsx"] .iconuse-this:after,
+a[href$=".zip"] .iconuse-this:after,
+a[href ^="mailto:"] .iconuse-this:after,
+a[href^="http"] .iconuse-this:after,
+a[target="_blank"] .iconuse-white-this:after,
+a[href$=".pdf"] .iconuse-white-this:after,
+a[href$=".doc"] .iconuse-white-this:after,
+a[href$=".docx"] .iconuse-white-this:after,
+a[href$=".xls"] .iconuse-white-this:after,
+a[href$=".xlsx"] .iconuse-white-this:after,
+a[href$=".zip"] .iconuse-white-this:after,
+a[href ^="mailto:"] .iconuse-white-this:after,
+a[href^="http"] .iconuse-white-this:after {
+  font-family: "Font Awesome 6 Free";
+  display: inline-block;
+  color: inherit;
+  font-weight: 900 !important;
+  margin-left: 0.2em;
+  /*text-rendering: auto;*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none !important;
+}
+
+a[target="_blank"] .iconuse-white-this:after,
+a[href$=".pdf"] .iconuse-white-this:after,
+a[href$=".doc"] .iconuse-white-this:after,
+a[href$=".docx"] .iconuse-white-this:after,
+a[href$=".xls"] .iconuse-white-this:after,
+a[href$=".xlsx"] .iconuse-white-this:after,
+a[href$=".zip"] .iconuse-white-this:after,
+a[href ^="mailto:"] .iconuse-white-this:after,
+a[href^="http"] .iconuse-white-this:after {
+  color: #fff;
+}
+
+
+/* 外部リンク要素 --- */
+a[target="_blank"] .iconuse-this:after,
+a[target="_blank"] .iconuse-white-this:after {
+  content: "\f35d";
+}
+
+/* pdf要素--- */
+a[href$=".pdf"] .iconuse-this:after,
+a[href$=".pdf"] .iconuse-white-this:after {
+  content: "\f1c1";
+}
+
+/* Word要素--- */
+a[href$=".doc"] .iconuse-this:after,
+a[href$=".docx"] .iconuse-this:after,
+a[href$=".doc"] .iconuse-white-this:after,
+a[href$=".docx"] .iconuse-white-this:after {
+  content: "\f1c2";
+}
+
+/* Excel要素--- */
+a[href$=".xls"] .iconuse-this:after,
+a[href$=".xlsx"] .iconuse-this:after,
+a[href$=".xls"] .iconuse-white-this:after,
+a[href$=".xlsx"] .iconuse-white-this:after {
+  content: "\f1c3";
+}
+
+/* zip要素--- */
+a[href$=".zip"] .iconuse-this:after,
+a[href$=".zip"] .iconuse-white-this:after {
+  content: "\f1c6";
+}
+
+/* mailto要素--- */
+a[href ^="mailto:"] .iconuse-this:after,
+a[href ^="mailto:"] .iconuse-white-this:after {
+  content: "\f003";
+}

@@ -1,0 +1,25 @@
+if ( ! defined( 'ABSPATH' ) ) {
+exit; // Exit if accessed directly.
+}
+get_header();
+
+
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main"} -->
+<main class="wp-block-group">
+	<!-- wp:group {"layout":{"inherit":true}} -->
+	<div class="wp-block-group">
+		<!-- wp:pattern {"slug":"vinectia_theme/hidden-404"} /-->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+
+<!-- wp:acf/companyhero {"name":"acf/companyhero","align":"","mode":"auto"} -->
+<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"roboCom-hero-img"} -->
+<figure class="wp-block-image size-large roboCom-hero-img"><img src="http://localhost:10074/wp-content/themes/robomates-magazine/assets/images/common/noimage.png" alt="テスト企業"/></figure>
+<!-- /wp:image -->
+<!-- /wp:acf/companyhero -->

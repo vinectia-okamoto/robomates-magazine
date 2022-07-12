@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+
+/********************************************************
+*
+* Block: テーブルカスタマイズ
+*
+********************************************************/
+.wp-block-table {
+	overflow: inherit;
+}
+
+table {
+	border: 1px solid config.$color-gray;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	background-color: #fff;
+	margin: 1rem 0;
+	width: 100%;
+	max-width: 100%;
+	font-size: 1.4rem;
+
+
+	* {
+		border-color: config.$color-subtle;
+	}
+
+	tr {
+		border: none;
+	}
+
+	caption {
+		background: config.$color-subtle;
+		text-align: center;
+	}
+
+	th,
+	td {
+		border: 1px solid config.$color-gray;
+		line-height: 1.4;
+		margin: 0;
+		overflow: visible;
+		padding: 0.5em;
+		vertical-align: top;
+	}
+
+	thead th,
+	thead td {
+		text-align: center !important;
+	}
+
+	.wp-block-table__cell-content {
+		padding: 1em;
+	}
+
+	thead {
+		border-bottom: none;
+		vertical-align: bottom;
+		white-space: nowrap;
+		text-align: inherit;
+
+		th,
+		td {
+			background-color: rgba(config.$color-primary, 0.8);
+			color: #fff;
+
+		}
+	}
+
+	tbody {
+		th {
+			background-color: config.$color-lightgray;
+		}
+	}
+
+	tfoot {
+		border-top: 1px solid;
+
+		th,
+		td {
+			background-color: config.$color-subtle;
+		}
+	}
+
+
+}
+
+
+/********************************************************
+*
+* 追加ブロックスタイル
+*
+********************************************************/
+
+/* STYLE: テーブルストライプ */
+.is-style-stripes {
+	border-bottom: none !important;
+}
+
+.is-style-stripes table {
+	border: 1px solid config.$color-gray;
+
+	tbody tr:nth-child(odd) {
+		background: config.$color-subtle;
+	}
+
+	th,
+	td {
+
+		border-color: config.$color-gray;
+
+	}
+
+}
+
+/* 一番左側色付きヘッダー */
+.is-style-tbody-firstCellHead table tr td:first-child {
+	background-color: config.$color-lightgray;
+
+}
+
+/* 一番左側色付きヘッダーで改行しない */
+.is-style-tbody-firstCellHead-nowrap table tr td:first-child {
+	white-space: nowrap !important;
+	background-color: config.$color-lightgray;
+
+	.wp-block-table__cell-content {
+		white-space: nowrap !important;
+	}
+
+}

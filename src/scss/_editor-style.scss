@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@use "config";
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------
+/* 投稿タイトルの見た目
+---------------------------------------------------------------- */
+
+.wp-block.editor-post-title__block {
+	max-width: config.$container-max-width-xl;
+}
+
+.editor-post-title__block .editor-post-title__input {
+	font-family: config.$gothic;
+	text-align: left;
+	font-weight: bold;
+	font-size: 2rem;
+	line-height: 1.4;
+	display: block;
+
+	@include config.mq-up(md) {
+		font-size: 3rem;
+	}
+}
+
+
+
+
+
+/*----------------------------------------------------------------
+aタグ
+---------------------------------------------------------------- */
+
+a {
+	color: config.$color-primary;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+	color: config.$color-hover;
+}
+
+
+/*----------------------------------------------------------------
+wordpressのブロックエディターのロードスタイルが実行されています。上書きしたいスタイルを各所変更してください。
+---------------------------------------------------------------- */
+@import "customize_block/heading.scss";
+@import "customize_block/paragraph.scss";
+@import "customize_block/list.scss";
+@import "customize_block/dl.scss";
+@import "customize_block/separator.scss";
+@import "customize_block/quote.scss";
+@import "customize_block/code-verse-preformatted.scss";
+@import "customize_block/button.scss";
+@import "customize_block/input.scss";
+@import "customize_block/table.scss";
+@import "customize_block/shared_widget_styles.scss";
+@import "customize_block/shared_media_styles.scss";
+@import "customize_block/shortcode.scss";
+@import "customize_block/embed.scss";
+@import "customize_block/file.scss";
+@import "customize_block/image.scss";
+@import "customize_block/gallery.scss";
+@import "customize_block/group.scss";
+@import "customize_block/columns.scss";
+@import "customize_block/mediaText.scss";
