@@ -75,7 +75,7 @@ h2:not(.noteditor) {
   line-height: 1.4;
   position: relative;
   display: block;
-  background: linear-gradient(135deg, #32a939 0%, #00a2b7 100%);
+  background: linear-gradient(135deg, #38D642 0%, #00a2b7 100%);
 }
 
 h2.is-style-kazarinashi {
@@ -946,7 +946,7 @@ ul.wp-block-categories__list ul {
   margin: 0;
 }
 ul.wp-block-archives li, ul.wp-block-categories li, ul.wp-block-latest-posts li, ul.wp-block-categories__list li {
-  color: #32a939;
+  color: #38D642;
   line-height: 1.476;
   margin: 5px 0 0 0;
 }
@@ -959,7 +959,7 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
 .wp-block-latest-posts li > a {
   font-weight: 700;
   text-decoration: none;
-  color: #3B4043;
+  color: #000;
 }
 
 .wp-block-archives li > a:focus, .wp-block-archives li > a:hover {
@@ -984,7 +984,7 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
 
 .wp-block-latest-comments time,
 .wp-block-latest-posts time {
-  color: #32a939;
+  color: #38D642;
   font-size: 0.7em;
   font-weight: 600;
   letter-spacing: normal;

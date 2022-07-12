@@ -32,14 +32,14 @@ $gutter-size:30px;
 $color-primary: #00a2b7;
 $color-primary-notsharp-mojiretsu: #{$color-primary};
 $color-primary-notsharp: str-slice($color-primary-notsharp-mojiretsu, 2);
-$color-secondary: #32a939;
+$color-secondary: #38D642;
 $color-accent: #FDDC00;
 $color-subtle: #eff3f9;
 $color-background: #FFF;
 
 $color-hover:#007EFF;
 $color-link: darken($color-hover, 15%);
-$color-txt: #3B4043;
+$color-txt: #000;
 
 
 

@@ -196,7 +196,7 @@ topHero
   height: 100%;
   border-radius: 0 30px 30px 0;
   width: calc(1600px + (100vw - 1600px) / 2);
-  background: linear-gradient(90deg, #4ecb56, #1fcb71, #00cb8a, #00ca9f, #00c8b2, #00c5c1, #00c1cb, #00bdd2);
+  background: linear-gradient(90deg, #38D642 0%, #00a2b7 100%);
 }
 @media screen and (min-width: 768px ) {
   .topAbout-inner-inner::before {
@@ -257,7 +257,7 @@ topHero
 }
 .topCompanies-title .en,
 .topCompanies-title .ja {
-  color: #3B4043;
+  color: #000;
 }
 .topCompanies-txtArea {
   display: grid;
@@ -355,7 +355,7 @@ topHero
 }
 .topCompanies .companiesCard .title a {
   transition: all 0.3s ease;
-  color: #3B4043;
+  color: #000;
 }
 .topCompanies .companiesCard .title a:hover {
   color: #007EFF;
@@ -372,7 +372,7 @@ topHero
 .topCompanies .companiesCard .cat a {
   display: inline-block;
   color: #fff;
-  background-color: #3B4043;
+  background-color: #000;
   line-height: 1;
   padding: 0.2em 1em;
   border-radius: 2em;
@@ -387,12 +387,12 @@ topHero
   font-size: 1.4rem;
   font-weight: bold;
   line-height: 1.2;
-  color: #3B4043;
+  color: #000;
 }
 .topCompanies .companiesCard .address {
   font-size: 1.2rem;
   line-height: 1.4;
-  color: #3B4043;
+  color: #000;
 }
 .topCompanies canvas {
   position: absolute;
@@ -484,7 +484,7 @@ topHero
   font-weight: bold;
 }
 .topEXL .exlCard .txtArea .title a {
-  color: #3B4043;
+  color: #000;
 }
 .topEXL .exlCard .txtArea .title a:hover {
   color: #007EFF;
@@ -576,7 +576,7 @@ topHero
   transition: all 0.3s ease;
 }
 .topLean-linkList a .txtArea {
-  color: #3B4043;
+  color: #000;
 }
 .topLean-linkList a .txtArea p {
   transition: all 0.3s ease;
@@ -673,7 +673,7 @@ topHero
 .topSCMT .scmtCard .description {
   font-size: 1.2rem;
   line-height: 1.2;
-  color: #3B4043;
+  color: #000;
   text-align: center;
   margin-bottom: 2px;
 }
@@ -685,7 +685,7 @@ topHero
   font-weight: bold;
   font-size: clamp(2.4rem, 3vw, 3.2rem);
   line-height: 1.2;
-  color: #3B4043;
+  color: #000;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -782,13 +782,13 @@ topHero
 }
 .topNews-pickupArea .news-head .news-cat a,
 .topNews-pickupArea .news-head .news-cat span {
-  color: #3B4043;
+  color: #000;
 }
 .topNews-pickupArea .news-body {
   line-height: 1.6;
 }
 .topNews-pickupArea .news-body a {
-  color: #3B4043;
+  color: #000;
 }
 .topNews-btnArea-pc {
   display: none;
@@ -876,7 +876,7 @@ topHero
   }
 }
 .topPART .partCard:hover .txtArea {
-  background-color: #32a939;
+  background-color: #38D642;
 }
 .topPART .partCard .title {
   transition: all 0.2s ease;
@@ -890,7 +890,7 @@ topHero
   transition: all 0.2s ease;
   line-height: 1.6;
   font-size: 1.4rem;
-  color: #3B4043;
+  color: #000;
 }
 .topPART .partCard:hover .title, .topPART .partCard:hover .txt {
   color: #fff;

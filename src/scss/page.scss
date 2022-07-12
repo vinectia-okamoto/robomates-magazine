@@ -374,3 +374,15 @@ wordpressの構造のもの
 		margin-right: 1em;
 	}
 }
+
+
+
+// ---------------------------
+// .entry-header
+// ---------------------------
+.roboCom-hero{
+	&-cat{}
+	&-title{}
+	&-read{}
+	&-intro{}
+}

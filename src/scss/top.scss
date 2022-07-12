@@ -162,7 +162,7 @@ topHero
 			height: 100%;
 			border-radius: 0 30px 30px 0;
 			width: calc(#{config.$container-max-width-xxl} + (100vw - #{config.$container-max-width-xxl}) / 2);
-			background: linear-gradient(90deg, #4ecb56, #1fcb71, #00cb8a, #00ca9f, #00c8b2, #00c5c1, #00c1cb, #00bdd2);
+			background: linear-gradient(90deg, config.$color-secondary 0%, config.$color-primary 100%);
 
 			@include config.mq-up(md) {
 				right: 12vw;
