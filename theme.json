@@ -92,7 +92,7 @@
 
 		"custom": {
 			"spacing": {
-				"small": "max(10px, 5vw)",
+				"small": "max(15px, 5vw)",
 				"medium": "clamp(10px, 20vw, var(--wp--style--block-gap))",
 				"large": "clamp(4rem, 10vw, 8rem)",
 				"outer": "var(--wp--custom--spacing--small, 1.25rem)"
@@ -130,11 +130,7 @@
 		},
 		"$comment-blocks": "▼▼見出しのfonntサイズ設定非表示▼▼",
 		"blocks": {
-			"core/heading": {
-				"typography": {
-					"fontSizes": []
-				}
-			}
+
 		},
 
 
@@ -190,7 +186,7 @@
 		"$comment-layout": "▼▼コンテンツ幅を設定します。▼▼",
 		"layout": {
 			"contentSize": "992px",
-			"wideSize": "1400px"
+			"wideSize": "1300px"
 		}
 	},
 	"$comment-styles": "サイト、要素、ブロックにスタイルを適用",

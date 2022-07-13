@@ -20,7 +20,7 @@
   margin-bottom: 1em;
 }
 .sectionTitle .en {
-  font-size: clamp(2em, 3.4vw, 5rem);
+  font-size: clamp(3rem, 3.4vw, 5rem);
   font-weight: bold;
   line-height: 1.2;
   font-family: "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
@@ -58,7 +58,7 @@ topHero
   width: 60vw;
   text-align: center;
 }
-@media screen and (min-width: 1200px ) {
+@media screen and (min-width: 1100px ) {
   .topHero-title {
     width: 100%;
   }
@@ -195,7 +195,7 @@ topHero
   top: 0;
   height: 100%;
   border-radius: 0 30px 30px 0;
-  width: calc(1600px + (100vw - 1600px) / 2);
+  width: calc(1300px + (100vw - 1300px) / 2);
   background: linear-gradient(90deg, #38D642 0%, #00a2b7 100%);
 }
 @media screen and (min-width: 768px ) {

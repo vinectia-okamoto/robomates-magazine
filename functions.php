@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Function 設定
  *
@@ -21,6 +22,8 @@ $vinectia_includes = array(
 	'/template-tags.php',  // テンプレートタグ設定.
 	'/postnavi-pagenation.php', // ポストナビゲーションとページネーション設定.
 	'/shortcode.php', // ショートコード.
+	'/block-patterns.php', // ブロックパターン
+
 	'/acf.php', // ACFプラグインの設定.
 	'/classes/class-wpwidget-recent-posts-override.php', // ウィジェットで記事タイトル→投稿日付となっているところを投稿日→記事タイトル.
 	/** '/ogp.php', // OGP設定. */
@@ -30,18 +33,13 @@ $vinectia_includes = array(
 	/** '/schimaorg-function.php', // 構造化マークアップ. */
 	/** '/search-function.php',  //検索カスタム（カスタム投稿ある場合）. */
 	/** '/pdf-manual.php',  //PDFマニュアル. */
+
 );
-foreach ( $vinectia_includes as $file ) {
-	$filepath = locate_template( 'inc' . $file );
-	if ( ! $filepath ) {
+foreach ($vinectia_includes as $file) {
+	$filepath = locate_template('inc' . $file);
+	if (!$filepath) {
 
-		trigger_error( sprintf( 'Error locating /inc%s for inclusion', esc_attr( $file ) ), E_USER_ERROR );
-
+		trigger_error(sprintf('Error locating /inc%s for inclusion', esc_attr($file)), E_USER_ERROR);
 	}
 	require_once $filepath;
 }
-
-
-
-// ブロックパターンを追加する（場所指定）.
-// require get_template_directory() . '/inc/patterns/block-patterns-function.php';.

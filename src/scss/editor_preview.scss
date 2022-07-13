@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
-@use "editor-style";
 
+
+@import "editor-style";
 
 
 
@@ -21,7 +22,7 @@
 }
 
 .block-editor-block-list__layout>*[class*="wp-block-"] {
-	margin-bottom: 0.5em;
+	//margin-bottom: 0.5em;
 }
 
 .edit-post-visual-editor__post-title-wrapper>*+*,

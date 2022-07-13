@@ -3,26 +3,8 @@
 
 /* Block: Image ------------------------------ */
 
-.wp-block-image {
-  margin-bottom: 1;
 
-  img {
-    // max-width: inherit;
-    //width: 100%;
-  }
-}
 
 .wp-block-image.is-style-imgShadow {
-  box-shadow: 10px 17.321px 40px 0px rgba(7, 15, 52, 0.2);
-}
-
-
-.wp-block-image figcaption {
-  text-align: center;
-  line-height: 1.2;
-  font-size: 1.2rem;
-}
-
-figure.wp-block-image:not(.wp-block) {
-  margin-bottom: 1em;
+	box-shadow: 10px 17.321px 40px 0px rgba(7, 15, 52, 0.2);
 }

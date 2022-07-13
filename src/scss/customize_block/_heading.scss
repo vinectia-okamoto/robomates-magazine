@@ -41,7 +41,7 @@ h2:not(.noteditor) {
 	line-height: 1.4;
 	position: relative;
 	display: block;
-	background:linear-gradient(135deg, #{config.$color-secondary} 0%, #{config.$color-primary} 100%);
+	background:linear-gradient(135deg, #{config.$color-secondary} 0%, #{config.$color-primary} 5%);
 
 }
 
@@ -181,11 +181,7 @@ h6.is-style-kazarinashi {
 
 }
 
-// 同一階層の上がいるなら
-*+h1[data-type="core/heading"],
-*+h1:not(.noteditor) {
-	margin-top: 3em;
-}
+
 
 *+h2[data-type="core/heading"],
 *+h2:not(.noteditor) {

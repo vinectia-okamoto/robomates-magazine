@@ -15,22 +15,22 @@ $args = array(
 ?>
 <!-- ******************** topCompanies ******************** -->
 <section id="topCompanies" class="topCompanies">
-<h2 class="topCompanies-title sectionTitle container"><span class="en">ROBOTICS COMPANIES</span><span class="ja">ロボット関連企業</span></h2>
-<div class="topCompanies-inner container-xl">
-<div class="topCompanies-txtArea">
-<div class="topCompanies-chara-men"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-men.png' ); ?>" alt="" /></div>
-<p class="topCompanies-txt">ロボットを導入して業務に活用している「ロボット導入企業」、 ロボットを使用した機械システムの導入提案や設計、組立などを行う「ロボットシステムインテグレータ」、ロボットの「開発企業」など、ロボットに関連した事業を行っている会社をご紹介します。</p>
-<div class="topCompanies-chara-women"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-women.png' ); ?>" alt="" /></div>
-</div>
-<div class="topCompanies-searchArea">
-検索作る
-</div>
-<?php
+	<h2 class="topCompanies-title sectionTitle container"><span class="en">ROBOTICS COMPANIES</span><span class="ja">ロボット関連企業</span></h2>
+	<div class="topCompanies-inner container-xl">
+		<div class="topCompanies-txtArea">
+			<div class="topCompanies-chara-men"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-men.png' ); ?>" alt="" /></div>
+			<p class="topCompanies-txt">ロボットを導入して業務に活用している「ロボット導入企業」、 ロボットを使用した機械システムの導入提案や設計、組立などを行う「ロボットシステムインテグレータ」、ロボットの「開発企業」など、ロボットに関連した事業を行っている会社をご紹介します。</p>
+			<div class="topCompanies-chara-women"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-women.png' ); ?>" alt="" /></div>
+		</div>
+		<div class="topCompanies-searchArea">
+			検索作る
+		</div>
+		<?php
 $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) :
 	?>
-<ul class="companiesList">
-	<?php
+		<ul class="companiesList">
+			<?php
 	while ( $the_query->have_posts() ) :
 		$the_query->the_post();
 		$company_address = get_acfblock_data( $post, $block_name = 'acf/companydata', $field_name = 'company-address' );
@@ -42,18 +42,18 @@ if ( $the_query->have_posts() ) :
 			$image_url = get_template_directory_uri() . '/assets/images/common/noimage.png';
 		}
 		?>
-<li class="companiesCard">
-<div class="imgArea">
-<a href="<?php the_permalink(); ?>">
-<img class="" src="<?php echo esc_url( $image_url ); ?>" alt="" />
-</a>
-</div>
-<div class="txtArea">
-		<?php $company_read = get_acfblock_data( $post, $block_name = 'acf/companyhero', $field_name = 'robocom-hero-read' ); ?>
-		<?php if ( $company_read ) : ?>
-<h5 class="title"><a href="<?php the_permalink(); ?>"><?php echo esc_html( $company_read ); ?></a></h5>
-<?php endif; ?>
-		<?php
+			<li class="companiesCard">
+				<div class="imgArea">
+					<a href="<?php the_permalink(); ?>">
+						<img class="" src="<?php echo esc_url( $image_url ); ?>" alt="" />
+					</a>
+				</div>
+				<div class="txtArea">
+					<?php $company_read = get_acfblock_data( $post, $block_name = 'acf/companyhero', $field_name = 'robocom-hero-read' ); ?>
+					<?php if ( $company_read ) : ?>
+					<h5 class="title"><a href="<?php the_permalink(); ?>"><?php echo esc_html( $company_read ); ?></a></h5>
+					<?php endif; ?>
+					<?php
 		$thiscats = get_the_terms( $post->ID, 'robo-companies-category' );
 		if ( $thiscats ) {
 			echo '<div class="cat">';
@@ -66,15 +66,15 @@ if ( $the_query->have_posts() ) :
 			echo '</div>';
 		}
 		?>
-<p class="companyName"><?php the_title(); ?></p>
-		<?php if ( $company_address ) : ?>
-<p class="address"><?php echo esc_html( $company_address ); ?></p>
-	<?php endif; ?>
-</div>
-</li>
-<?php endwhile; ?>
-</ul>
-<?php endif; ?>
-<?php wp_reset_postdata(); ?>
-</div>
+					<p class="companyName"><?php the_title(); ?></p>
+					<?php if ( $company_address ) : ?>
+					<p class="address"><?php echo esc_html( $company_address ); ?></p>
+					<?php endif; ?>
+				</div>
+			</li>
+			<?php endwhile; ?>
+		</ul>
+		<?php endif; ?>
+		<?php wp_reset_postdata(); ?>
+	</div>
 </section>
