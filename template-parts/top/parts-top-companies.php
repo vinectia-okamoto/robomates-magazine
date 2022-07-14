@@ -9,7 +9,7 @@
 <?php
 $args = array(
 	'posts_per_page' => 6,
-	'post_type'      => 'robo-companies',
+	'post_type'      => 'companies',
 	'order'          => 'DESC',
 );
 ?>
@@ -26,22 +26,22 @@ $args = array(
 			検索作る
 		</div>
 		<?php
-$the_query = new WP_Query( $args );
-if ( $the_query->have_posts() ) :
-	?>
+		$the_query = new WP_Query( $args );
+		if ( $the_query->have_posts() ) :
+			?>
 		<ul class="companiesList">
 			<?php
-	while ( $the_query->have_posts() ) :
-		$the_query->the_post();
-		$company_address = get_acfblock_data( $post, $block_name = 'acf/companydata', $field_name = 'company-address' );
-		if ( has_post_thumbnail() ) {
-			$image_id   = get_post_thumbnail_id();
-			$image_data = wp_get_attachment_image_src( $image_id, 'medium' );
-			$image_url  = $image_data[0];
-		} else {
-			$image_url = get_template_directory_uri() . '/assets/images/common/noimage.png';
-		}
-		?>
+			while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+				$company_address = get_acfblock_data( $post, $block_name = 'acf/companydata', $field_name = 'company-address' );
+				if ( has_post_thumbnail() ) {
+					$image_id   = get_post_thumbnail_id();
+					$image_data = wp_get_attachment_image_src( $image_id, 'medium' );
+					$image_url  = $image_data[0];
+				} else {
+					$image_url = get_template_directory_uri() . '/assets/images/common/noimage.png';
+				}
+				?>
 			<li class="companiesCard">
 				<div class="imgArea">
 					<a href="<?php the_permalink(); ?>">
@@ -54,18 +54,18 @@ if ( $the_query->have_posts() ) :
 					<h5 class="title"><a href="<?php the_permalink(); ?>"><?php echo esc_html( $company_read ); ?></a></h5>
 					<?php endif; ?>
 					<?php
-		$thiscats = get_the_terms( $post->ID, 'robo-companies-category' );
-		if ( $thiscats ) {
-			echo '<div class="cat">';
-			foreach ( $thiscats as $thiscat ) {
-				$thiscat_id   = $thiscat->term_id;
-				$thiscat_url  = get_term_link( $thiscat_id );
-				$thiscat_name = $thiscat->name;
-				echo '<a href="' . esc_url( $thiscat__url ) . '">' . esc_html( $thiscat_name ) . '</a>';
-			}
-			echo '</div>';
-		}
-		?>
+					$thiscats = get_the_terms( $post->ID, 'companies_category' );
+					if ( $thiscats ) {
+						echo '<div class="cat">';
+						foreach ( $thiscats as $thiscat ) {
+							$thiscat_id   = $thiscat->term_id;
+							$thiscat_url  = get_term_link( $thiscat_id );
+							$thiscat_name = $thiscat->name;
+							echo '<a href="' . esc_url( $thiscat__url ) . '">' . esc_html( $thiscat_name ) . '</a>';
+						}
+						echo '</div>';
+					}
+					?>
 					<p class="companyName"><?php the_title(); ?></p>
 					<?php if ( $company_address ) : ?>
 					<p class="address"><?php echo esc_html( $company_address ); ?></p>
@@ -74,6 +74,7 @@ if ( $the_query->have_posts() ) :
 			</li>
 			<?php endwhile; ?>
 		</ul>
+		<div class="topCompanies-btnArea"><a class="btn-primary" href="<?php echo esc_url( get_post_type_archive_link( 'companies' ) ); ?>">ロボット関連企業紹介へ</a></div>
 		<?php endif; ?>
 		<?php wp_reset_postdata(); ?>
 	</div>

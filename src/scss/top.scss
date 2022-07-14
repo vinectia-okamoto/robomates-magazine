@@ -23,11 +23,15 @@
 		font-weight: bold;
 		line-height: 1.2;
 		font-family: config.$english;
-		color: config.$color-primary;
+
+		color: config.$color-black;
+
+
 	}
 
 
 	.ja {
+		color: config.$color-black;
 		font-size: clamp(1.6rem, 2vw, 2.2rem);
 		font-weight: bold;
 		line-height: 1.2;
@@ -45,11 +49,24 @@ topHero
 .topHero {
 	background: url(../images/top/topHero-back.png) no-repeat center top / cover;
 	position: relative;
-	height: 46vw;
+	height: 60vw;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	max-height: 80vh;
+
+	margin: 0 auto;
+
+	@include config.mq-up(xl) {
+		height: 46vw;
+	}
+
+	@include config.mq-up(xxl) {
+		max-width: calc(100vw - 10vw);
+	}
+
 
 	&-inner {
 		position: relative;
@@ -216,6 +233,49 @@ topHero
 }
 
 /* =========================================================
+.topBeforeAfter
+========================================================= */
+.topBeforeAfter {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	overflow: hidden;
+	position: relative;
+
+	@include config.mq-up(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	&-inner {
+		display: grid;
+		gap: 10px;
+		grid-template-columns: 1fr;
+		align-items: center;
+
+		@include config.mq-up(md) {
+			grid-template-columns: 1fr 1fr;
+			gap: 30px;
+		}
+	}
+
+	&-txtArea {}
+
+	&-imgArea {}
+
+	&-title {
+
+
+		@include config.mq-up(md) {
+			align-items: flex-start;
+		}
+	}
+
+	&-read {
+		margin-bottom: 30px;
+	}
+}
+
+/* =========================================================
 .topCompanies
 ========================================================= */
 .topCompanies {
@@ -231,13 +291,7 @@ topHero
 
 
 
-	&-title {
 
-		.en,
-		.ja {
-			color: config.$color-txt;
-		}
-	}
 
 	&-inner {}
 
@@ -391,6 +445,10 @@ topHero
 		}
 	}
 
+	&-btnArea {
+		text-align: center;
+	}
+
 	canvas {
 		position: absolute;
 
@@ -400,6 +458,7 @@ topHero
 		height: 100%;
 		z-index: -1;
 	}
+
 }
 
 /* =========================================================

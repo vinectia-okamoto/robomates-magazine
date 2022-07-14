@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Function 設定
  *
@@ -22,7 +21,7 @@ $vinectia_includes = array(
 	'/template-tags.php',  // テンプレートタグ設定.
 	'/postnavi-pagenation.php', // ポストナビゲーションとページネーション設定.
 	'/shortcode.php', // ショートコード.
-	'/block-patterns.php', // ブロックパターン
+	'/block-patterns.php', // ブロックパターン.
 
 	'/acf.php', // ACFプラグインの設定.
 	'/classes/class-wpwidget-recent-posts-override.php', // ウィジェットで記事タイトル→投稿日付となっているところを投稿日→記事タイトル.
@@ -35,11 +34,12 @@ $vinectia_includes = array(
 	/** '/pdf-manual.php',  //PDFマニュアル. */
 
 );
-foreach ($vinectia_includes as $file) {
-	$filepath = locate_template('inc' . $file);
-	if (!$filepath) {
-
-		trigger_error(sprintf('Error locating /inc%s for inclusion', esc_attr($file)), E_USER_ERROR);
+foreach ( $vinectia_includes as $file ) {
+	$filepath = locate_template( 'inc' . $file );
+	if ( ! $filepath ) {
+		// @codingStandardsIgnoreStart
+		trigger_error( sprintf( 'Error locating /inc%s for inclusion', esc_attr( $file ) ), E_USER_ERROR );
+		// @codingStandardsIgnoreEnd
 	}
 	require_once $filepath;
 }

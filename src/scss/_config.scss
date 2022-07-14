@@ -128,6 +128,7 @@ $breakpoint-up: ("sm": "screen and (min-width: "$mq-sm ")",
 	"md": "screen and (min-width: "$mq-md ")",
 	"lg": "screen and (min-width: "$mq-lg ")",
 	"xl": "screen and (min-width: "$mq-xl ")",
+	"xxl": "screen and (min-width: "$mq-xxl ")",
 ) !default;
 
 // max-width
@@ -135,6 +136,7 @@ $breakpoint-down: ("sm": "screen and (max-width: "$mq-sm - 1 ")",
 	"md": "screen and (max-width: "$mq-md - 1 ")",
 	"lg": "screen and (max-width: "$mq-lg - 1 ")",
 	"xl": "screen and (max-width: "$mq-xl - 1 ")",
+	"xxl": "screen and (max-width: "$mq-xxl - 1 ")",
 ) !default;
 
 // @mixinの定義  @include config.mq-up(lg){}

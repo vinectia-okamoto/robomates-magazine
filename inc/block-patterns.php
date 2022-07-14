@@ -43,7 +43,7 @@ function vct_register_block_patterns()
 	}
 
 	$block_patterns = array(
-		'ptn-robo-companies',
+		'ptn-companies',
 	);
 
 	/**

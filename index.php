@@ -9,7 +9,10 @@
 <?php get_header(); ?>
 <?php get_template_part( 'template-parts/top/parts-top-hero' ); ?>
 
+
 <?php get_template_part( 'template-parts/top/parts-top-about' ); ?>
+
+<?php get_template_part( 'template-parts/top/parts-top-beforeafter' ); ?>
 
 <?php get_template_part( 'template-parts/top/parts-top-companies' ); ?>
 

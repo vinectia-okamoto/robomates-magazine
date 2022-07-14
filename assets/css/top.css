@@ -24,9 +24,10 @@
   font-weight: bold;
   line-height: 1.2;
   font-family: "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  color: #00a2b7;
+  color: #000;
 }
 .sectionTitle .ja {
+  color: #000;
   font-size: clamp(1.6rem, 2vw, 2.2rem);
   font-weight: bold;
   line-height: 1.2;
@@ -41,7 +42,8 @@ topHero
 .topHero {
   background: url(../images/top/topHero-back.png) no-repeat center top/cover;
   position: relative;
-  height: 46vw;
+  height: 60vw;
+  width: 100%;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;
@@ -49,6 +51,18 @@ topHero
   -webkit-align-items: center;
           align-items: center;
   overflow: hidden;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1100px ) {
+  .topHero {
+    height: 46vw;
+  }
+}
+@media screen and (min-width: 1300px ) {
+  .topHero {
+    max-width: 90vw;
+  }
 }
 .topHero-inner {
   position: relative;
@@ -241,6 +255,44 @@ topHero
 }
 
 /* =========================================================
+.topBeforeAfter
+========================================================= */
+.topBeforeAfter {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (min-width: 768px ) {
+  .topBeforeAfter {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+.topBeforeAfter-inner {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  -webkit-align-items: center;
+          align-items: center;
+}
+@media screen and (min-width: 768px ) {
+  .topBeforeAfter-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+@media screen and (min-width: 768px ) {
+  .topBeforeAfter-title {
+    -webkit-align-items: flex-start;
+            align-items: flex-start;
+  }
+}
+.topBeforeAfter-read {
+  margin-bottom: 30px;
+}
+
+/* =========================================================
 .topCompanies
 ========================================================= */
 .topCompanies {
@@ -254,10 +306,6 @@ topHero
     padding-top: 60px;
     padding-bottom: 60px;
   }
-}
-.topCompanies-title .en,
-.topCompanies-title .ja {
-  color: #000;
 }
 .topCompanies-txtArea {
   display: grid;
@@ -393,6 +441,9 @@ topHero
   font-size: 1.2rem;
   line-height: 1.4;
   color: #000;
+}
+.topCompanies-btnArea {
+  text-align: center;
 }
 .topCompanies canvas {
   position: absolute;

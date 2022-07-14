@@ -135,7 +135,7 @@ if (!function_exists('add_page_column_title') && !function_exists('add_page_colu
 
 if (!function_exists('add_custom_post_column_title') && !function_exists('add_custom_post_column')) {
 
-	$selectposttype = 'robo-companies';
+	$selectposttype = 'companies';
 	/**
 	 * カスタム投稿タイプ一覧にスラッグを追加
 	 * manage_●●●●●●●_posts_columnsの部分を投稿タイプにする

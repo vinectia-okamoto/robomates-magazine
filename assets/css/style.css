@@ -6340,6 +6340,7 @@ btn
   width: 100%;
   text-align: center;
   border-radius: 3em;
+  transition: all 0.5s 0s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 @media screen and (min-width: 768px ) {
   .btn-primary,
@@ -6354,6 +6355,10 @@ btn
   text-decoration: none;
   background-color: #007EFF;
   color: #fff;
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+  background-image: linear-gradient(90deg, #007EFF 0%, #38D642 100%);
+  box-shadow: 0 2rem 2rem -2rem hsla(200deg, 50%, 20%, 0.4);
 }
 .btn-primary::before,
 .btn-white::before {
@@ -6372,11 +6377,11 @@ btn
 }
 
 .btn-primary {
-  background: #00a2b7;
+  background-color: #00a2b7;
 }
 
 .btn-white {
-  background: #fff;
+  background-color: #fff;
   color: #333;
 }
 .btn-white::before {

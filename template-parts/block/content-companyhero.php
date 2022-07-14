@@ -48,7 +48,7 @@ if (!empty($block['style']['spacing']['margin']['bottom'])) {
 <header <?php echo esc_attr($anchor); ?> class="roboCom-hero <?php echo esc_attr($classes); ?>" style="<?php echo esc_attr($inlineStyles); ?>">
 	<div class="txtArea">
 		<?php
-		$thiscats = get_the_terms($post->ID, 'robo-companies-category');
+		$thiscats = get_the_terms($post->ID, 'companies_category');
 		if ($thiscats) {
 			echo '<div class="roboCom-hero-cat">';
 			foreach ($thiscats as $thiscat) {
@@ -85,7 +85,7 @@ if (!empty($block['style']['spacing']['margin']['bottom'])) {
 		?>
 
 		<?php else : ?>
-		<?php $image_url = get_template_directory_uri() . '/assets/images/common/noimage.png'; ?>
+			<?php $image_url = get_template_directory_uri() . '/assets/images/common/noimage.png'; ?>
 		<?php endif; ?>
 		<div class="imgBox">
 			<img class="" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" />

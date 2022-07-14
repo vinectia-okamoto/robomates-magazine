@@ -127,6 +127,8 @@ btn
 	text-align: center;
 	border-radius: 3em;
 
+	transition: all 0.5s 0s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 	@include config.mq-up(md) {
 		font-size: 1.8rem;
 		min-width: 260px;
@@ -137,6 +139,10 @@ btn
 		text-decoration: none;
 		background-color: config.$color-hover;
 		color: #fff;
+		transform: scale(1.1, 1.1);
+		background-image: linear-gradient(90deg, config.$color-hover 0%, config.$color-secondary 100%);
+
+		box-shadow: 0 2rem 2rem -2rem hsl(200 50% 20% / 40%);
 	}
 
 	&::before {
@@ -155,11 +161,12 @@ btn
 }
 
 .btn-primary {
-	background: config.$color-primary;
+	background-color: config.$color-primary;
+
 }
 
 .btn-white {
-	background: #fff;
+	background-color: #fff;
 	color: #333;
 
 	&::before {
