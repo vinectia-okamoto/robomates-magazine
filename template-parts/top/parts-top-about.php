@@ -8,8 +8,8 @@
 ?>
 <!-- ******************** topAbout ******************** -->
 <section class="topAbout">
-	<div class="topAbout-inner container-xxl">
-		<div class="topAbout-inner-inner">
+	<div class="topAbout-inner">
+		<div class="topAbout-inner-inner container-xxl">
 			<div class="topAbout-row">
 				<div class="topAbout-txtArea">
 					<h2 class="topAbout-title sectionTitle"><span class="en">ROBOMATES?</span><span class="ja">ロボメイツとは？</span></h2>

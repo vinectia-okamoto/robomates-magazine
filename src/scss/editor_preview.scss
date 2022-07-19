@@ -7,7 +7,7 @@
 
 
 --wp--custom--spacing--outer .wp-site-blocks,
->.is-root-container,
+>.is-root-container>.wp-block,
 .edit-post-visual-editor__post-title-wrapper {
 	padding-left: clamp(1.25rem, 5vw, 50px);
 	padding-right: clamp(1.25rem, 5vw, 50px);

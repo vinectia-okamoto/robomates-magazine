@@ -7,21 +7,21 @@
 
 ?>
 <?php if ( function_exists( 'get_field' ) ) : ?>
-	<?php if ( have_rows( 'repeat-bnr', 'option' ) ) : ?>
+	<?php if ( have_rows( 'repeat_bnr', 'option' ) ) : ?>
 <!-- ******************** topBnr ******************** -->
 <section id="topBnr" class="topBnr">
 <div class="topBnr-inner container-xl">
 <ul class="bnrList">
 		<?php
-		while ( have_rows( 'repeat-bnr', 'option' ) ) :
+		while ( have_rows( 'repeat_bnr', 'option' ) ) :
 			the_row();
 			?>
 			<?php
-			$bnrimg_id = get_sub_field( 'bnr-img' );
+			$bnrimg_id = get_sub_field( 'bnr_img' );
 
 			$bnrimg_data = wp_get_attachment_image_src( $bnrimg_id, 'medium' );
 			$bnrimg_url  = $bnrimg_data[0];
-			$bnrlink     = get_sub_field( 'bnr-link' );
+			$bnrlink     = get_sub_field( 'bnr_link' );
 			$link_url    = '';
 			$link_title  = '';
 			$link_target = '';

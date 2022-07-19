@@ -185,7 +185,7 @@
 		},
 		"$comment-layout": "▼▼コンテンツ幅を設定します。▼▼",
 		"layout": {
-			"contentSize": "992px",
+			"contentSize": "1100px",
 			"wideSize": "1300px"
 		}
 	},

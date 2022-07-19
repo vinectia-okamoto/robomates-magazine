@@ -140,7 +140,7 @@ wordpressのエディターのclass用に読み込み
   ============================*/
 }
 .editor-styles-wrapper .wp-block.editor-post-title__block {
-  max-width: 1100px;
+  max-width: 1300px;
 }
 .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
   font-family: "YakuHanJP", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
@@ -477,7 +477,7 @@ wordpressのエディターのclass用に読み込み
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .editor-styles-wrapper .flexList,
 .editor-styles-wrapper .is-style-flexList,
 .editor-styles-wrapper [class*=flexList-3col] {
@@ -504,7 +504,7 @@ wordpressのエディターのclass用に読み込み
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .editor-styles-wrapper [class*=flexList-4col] {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -1243,17 +1243,17 @@ wordpressのエディターのclass用に読み込み
 /*----------------------------------------------------------------
 wordpressの構造のもの
 ---------------------------------------------------------------- */
-.editor-styles-wrapper > .alignwide {
-  max-width: 1300px;
+.contentWrap > .contentMain .editor-styles-wrapper > .alignwide {
+  max-width: 1600px;
   width: calc(100% - var(--wp--custom--spacing--outer, 20px) * 2);
   margin-right: auto;
   margin-left: auto;
 }
-.editor-styles-wrapper > .alignfull {
+.contentWrap > .contentMain .editor-styles-wrapper > .alignfull {
   width: 100vw;
 }
-.editor-styles-wrapper > :not(.alignwide):not(.alignfull) {
-  max-width: 992px;
+.contentWrap > .contentMain .editor-styles-wrapper > :not(.alignwide):not(.alignfull) {
+  max-width: 1100px;
   width: calc(100% - var(--wp--custom--spacing--outer, 20px));
   margin-left: auto;
   margin-right: auto;
@@ -1284,7 +1284,6 @@ wordpressの構造のもの
           flex-wrap: wrap;
   -webkit-justify-content: space-between;
           justify-content: space-between;
-  max-width: 1300px;
 }
 
 .contentRow .contentMain {
@@ -1529,8 +1528,6 @@ wordpressの構造のもの
 
 .entry-header {
   margin-bottom: 30px;
-  max-width: 992px;
-  width: calc(100% - var(--wp--custom--spacing--outer, 20px));
   margin-left: auto;
   margin-right: auto;
 }

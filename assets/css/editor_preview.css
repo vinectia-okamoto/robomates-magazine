@@ -6,7 +6,7 @@
 /* 投稿タイトルの見た目
 ---------------------------------------------------------------- */
 .wp-block.editor-post-title__block {
-  max-width: 1100px;
+  max-width: 1300px;
 }
 
 .editor-post-title__block .editor-post-title__input {
@@ -406,7 +406,7 @@ ol:not(.noteditor):not([class*=acf-]):not([class*=blocks-]) li {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .flexList,
 .is-style-flexList,
 [class*=flexList-3col] {
@@ -435,7 +435,7 @@ ol:not(.noteditor):not([class*=acf-]):not([class*=blocks-]) li {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   [class*=flexList-4col] {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -1346,7 +1346,7 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
 }
 
 --wp--custom--spacing--outer .wp-site-blocks,
-> .is-root-container,
+> .is-root-container > .wp-block,
 .edit-post-visual-editor__post-title-wrapper {
   padding-left: clamp(1.25rem, 5vw, 50px);
   padding-right: clamp(1.25rem, 5vw, 50px);

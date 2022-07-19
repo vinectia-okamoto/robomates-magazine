@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<div class="entry-content">
-		<div class="editor-styles-wrapper">
+		<div class="editor-styles-wrapper">aaaa
 			<?php
 			the_content();
 			wp_link_pages(

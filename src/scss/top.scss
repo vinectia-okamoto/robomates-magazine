@@ -159,33 +159,32 @@ topHero
 		padding-bottom: 60px;
 	}
 
-
-
-	&-inner-inner {
+	&-inner {
 		position: relative;
-		padding: 30px 0;
-
-
-		@include config.mq-up(md) {
-			padding: 40px;
-		}
 
 		&::before {
 			content: "";
 			display: block;
 			position: absolute;
-			right: -20px;
+			left: 0px;
 			top: 0;
 			height: 100%;
 			border-radius: 0 30px 30px 0;
-			width: calc(#{config.$container-max-width-xxl} + (100vw - #{config.$container-max-width-xxl}) / 2);
+			width: calc(100% - 10px);
 			background: linear-gradient(90deg, config.$color-secondary 0%, config.$color-primary 100%);
 
 			@include config.mq-up(md) {
-				right: 12vw;
-				top: 0;
+				width: 80vw;
 			}
+
 		}
+	}
+
+
+
+	&-inner-inner {
+		padding-top: 30px;
+		padding-bottom: 30px;
 	}
 
 	&-row {
@@ -246,7 +245,37 @@ topHero
 		padding-bottom: 60px;
 	}
 
+
 	&-inner {
+		position: relative;
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			right: 0px;
+			top: 0;
+			height: 100%;
+			border-radius: 30px 0 0 30px;
+			width: calc(100% - 10px);
+			background: config.$color-subtle;
+
+			@include config.mq-up(md) {
+				width: 80vw;
+			}
+
+		}
+	}
+
+
+
+	&-inner-inner {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+
+	&-row {
+		position: relative;
 		display: grid;
 		gap: 10px;
 		grid-template-columns: 1fr;
@@ -256,6 +285,9 @@ topHero
 			grid-template-columns: 1fr 1fr;
 			gap: 30px;
 		}
+
+
+
 	}
 
 	&-txtArea {}
@@ -462,7 +494,7 @@ topHero
 }
 
 /* =========================================================
-.topStrength
+.topEXL
 ========================================================= */
 .topEXL {
 	padding-top: 30px;
@@ -478,12 +510,32 @@ topHero
 
 	&-titleArea {
 		display: grid;
-		grid-template-columns: minmax(200px, 70%) 1fr;
+		grid-template-columns: 1fr;
 
-		&-txtWrap {}
+		@include config.mq-up(md) {
+			grid-template-columns: minmax(200px, 70%) 1fr;
+			margin-bottom: 30px;
+		}
+
+		&-txtWrap {
+
+			@include config.mq-up(md) {
+				margin-bottom: 30px;
+			}
+		}
 
 		&-chara {
-			margin-top: -100px;
+			position: relative;
+			margin: 0 auto;
+
+			img {
+				max-width: clamp(60vw, 30vw, 400px);
+
+				@include config.mq-up(md) {
+					max-width: 100%;
+					margin-top: -80px;
+				}
+			}
 		}
 	}
 

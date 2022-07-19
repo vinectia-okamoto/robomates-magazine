@@ -1791,20 +1791,20 @@ a[href^="mailto:"] .iconuse-white-this:after {
     max-width: 768px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1100px) {
   .container-lg,
 .container {
-    max-width: 992px;
-  }
-}
-@media (min-width: 1100px) {
-  .container-xl {
     max-width: 1100px;
   }
 }
 @media (min-width: 1300px) {
-  .container-xxl {
+  .container-xl {
     max-width: 1300px;
+  }
+}
+@media (min-width: 1600px) {
+  .container-xxl {
+    max-width: 1600px;
   }
 }
 .row {
@@ -6248,7 +6248,7 @@ html {
 html.spmenu-open {
   overflow: hidden;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   html.spmenu-open {
     overflow: auto;
   }
@@ -6406,7 +6406,7 @@ btn
 :root {
   --header-height: 55px;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   :root {
     --header-height: 100px;
   }
@@ -6443,7 +6443,7 @@ wrapper
           align-items: center;
   margin: 0 auto;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .header-inner {
     padding-left: 3vw;
     padding-right: 3vw;
@@ -6453,7 +6453,7 @@ wrapper
   max-width: 200px;
   transition: all 0.3s ease;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .header-logoArea {
     max-width: 240px;
   }
@@ -6476,7 +6476,7 @@ wrapper
 .header-logoArea .header-logo .logo-copy {
   display: none;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .header-logoArea .header-logo .logo-copy {
     display: block;
   }
@@ -6492,7 +6492,7 @@ wrapper
 .header-rightArea-top {
   display: none;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .header-rightArea-top {
     display: -webkit-flex;
     display: flex;
@@ -6507,7 +6507,7 @@ wrapper
 .header-rightArea-bottom {
   display: none;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .header-rightArea-bottom {
     display: block;
   }
@@ -6603,7 +6603,7 @@ wrapper
   border-radius: 5px;
   height: 0;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .globalNavi-links .globalNavi-child {
     padding: 0 20px;
     width: 300px;
@@ -6689,7 +6689,7 @@ wrapper
   padding: 20px 20px;
   height: auto;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .globalNavi-links > li:hover .globalNavi-child {
     padding: 20px 20px;
   }
@@ -6733,7 +6733,7 @@ sp_btn
   font-family: inherit;
   cursor: pointer;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .sp_btn {
     display: none;
   }
@@ -6820,7 +6820,7 @@ sp_btn
             align-items: center;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .spNavi {
     opacity: 0;
     visibility: hidden;
@@ -6840,7 +6840,7 @@ sp_btn
   opacity: 1;
   visibility: visible;
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .spmenu-open .spNavi {
     opacity: 0;
     visibility: hidden;
@@ -18169,7 +18169,7 @@ newsListCard
     margin-bottom: 0.5em;
   }
 }
-@media screen and (min-width: 992px ) {
+@media screen and (min-width: 1100px ) {
   .newsListCard .news-title {
     font-size: 1.8rem;
   }

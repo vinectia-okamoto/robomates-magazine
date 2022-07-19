@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head(); ?>
 	<?php
-	if ( function_exists( 'get_field' ) && get_field( 'customHeadTag', 'option' ) ) {
+	if ( function_exists( 'get_field' ) && get_field( 'custom_head_tag', 'option' ) ) {
 		echo '<!-- CVTag Area -->';
-		the_field( 'customHeadTag', 'option' );
+		the_field( 'custom_head_tag', 'option' );
 	}
 	?>
 	<?php if ( is_user_logged_in() ) : ?>

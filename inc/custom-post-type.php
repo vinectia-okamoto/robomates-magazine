@@ -176,7 +176,30 @@ function create_custom_post_type() {
 			'hierarchical'      => true,
 
 		);
-		// register_taxonomy( 'exp-blog-category', 'exp-blog', $args );
+		// register_taxonomy( 'exp-blog_category', 'exp-blog', $args );
+
+		$args = array(
+			'label'             => 'ビフォーアフターカテゴリ',
+			'labels'            => array(
+				'name'          => 'ビフォーアフターカテゴリ',
+				'singular_name' => 'ビフォーアフターカテゴリ',
+				'search_items'  => 'ビフォーアフターカテゴリを検索',
+				'popular_items' => 'よく使われているビフォーアフターカテゴリ',
+				'all_items'     => 'すべてのビフォーアフターカテゴリ',
+				'parent_item'   => 'ビフォーアフターカテゴリ',
+				'edit_item'     => 'ビフォーアフターカテゴリの編集',
+				'update_item'   => '更新',
+				'add_new_item'  => '新規ビフォーアフターカテゴリを追加',
+				'new_item_name' => '新しいビフォーアフターカテゴリ',
+			),
+			'show_in_rest'      => true,
+			'show_admin_column' => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'hierarchical'      => true,
+
+		);
+		// register_taxonomy( 'beforeafter_category', 'exp-blog', $args );
 
 		/**
 		 * タクソノミ - メニュータグ
