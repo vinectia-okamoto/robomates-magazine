@@ -6547,6 +6547,7 @@ wrapper
   gap: 1.5vw;
   line-height: 1.2;
   position: relative;
+  font-size: clamp(1.2rem, 1.2vw, 1.6rem);
 }
 .globalNavi-links > li {
   display: block;
@@ -6660,7 +6661,6 @@ wrapper
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-  padding-top: 20px;
   font-size: 1.4rem;
 }
 .globalNavi-links .globalNavi-child ul li {
@@ -6893,10 +6893,6 @@ sp_btn
 }
 .spNavi-links .accordionBtn:hover {
   color: #007EFF;
-}
-.spNavi-links .open > ul {
-  display: none;
-  width: 100%;
 }
 .spNavi-links .open .accordionBtn i {
   -webkit-transform: rotate(45deg);
@@ -18326,6 +18322,11 @@ newsListCard
 .components-dropdown-menu__menu .components-dropdown-menu__menu-item[aria-label=見出し1],
 .components-dropdown-menu__menu .components-menu-item[aria-label=見出し1] {
   display: none;
+}
+
+/*---ブロックパネルのブロック名の行間を狭くする--- */
+.block-editor-block-types-list__item-title {
+  line-height: 1.4;
 }
 
 /*---編集画面サイドバーに関するもの--- */

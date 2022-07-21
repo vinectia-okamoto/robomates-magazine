@@ -45,7 +45,7 @@ $args = array(
 					$image_url = get_template_directory_uri() . '/assets/images/common/noimage.png';
 				}
 				?>
-			<li class="exlCard">
+			<li class="exlCard inview_fadeInUp">
 				<div class="imgArea"><a href="<?php the_permalink(); ?>"><img class="" src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" /></a></div>
 				<div class="txtArea">
 					<p class="date"><time itemprop="datePublished" datetime="<?php the_time( 'c' ); ?>"><?php the_time( 'Y/m/d' ); ?></time></p>

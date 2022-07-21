@@ -1,0 +1,219 @@
+@use "config";
+
+
+/************************************
+** レスポンシブページネーション
+************************************/
+.pagination {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 60px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    li a {
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-weight: 300;
+        padding-top: 1px;
+        text-decoration: none;
+        border: 1px solid config.$color-primary;
+        border-radius: 50%;
+        min-width: 36px;
+        min-height: 36px;
+        color: #333;
+        line-height: 1;
+    }
+
+    li:not([class*="current"]) a:hover {
+        background-color: #eee;
+    }
+
+    li a:hover {
+        text-decoration: none !important;
+    }
+
+    li.current a {
+        background-color: config.$color-primary;
+        cursor: default;
+        pointer-events: none;
+        color: #fff;
+    }
+
+    li.first a,
+    li.last a,
+    li.previous a,
+    li.next a {
+        color: config.$color-primary;
+    }
+
+
+    li.first span,
+    li.last span,
+    li.previous span,
+    li.next span {
+        /* screen readers only */
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    li.first a::before,
+    li.last a::after,
+    li.previous a::before,
+    li.next a::after {
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate(0, 0);
+    }
+
+    li.first a::before {
+        content: "\f100";
+    }
+
+    li.last a::after {
+        content: "\f101";
+    }
+
+    li.previous a::before {
+        content: "\f104";
+    }
+
+    li.next a::after {
+        content: "\f105";
+    }
+
+
+
+
+}
+
+@media only screen and (max-width: 680px) {
+    .pagination {
+
+        li.first,
+        li.last {
+            /* screen readers only */
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .pagination {
+        li {
+            /* screen readers only */
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        li.current,
+        li.first,
+        li.last,
+        li.previous,
+        li.next {
+            position: initial;
+            top: initial;
+            left: initial;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .pagination {
+
+        li.first,
+        li.last {
+            /* screen readers only */
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+    }
+}
+
+/************************************
+  **シングルページのナビゲーション
+  ************************************/
+.post-navigation {
+    margin-top: 60px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .nav-previous a,
+    .nav-next a {
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-weight: 300;
+        text-decoration: none;
+        border: 1px solid config.$color-primary;
+        border-radius: 18px;
+        padding-left: 2em;
+        padding-right: 2em;
+        min-height: 36px;
+        color: config.$color-primary;
+    }
+
+    .nav-previous a:hover,
+    .nav-next a:hover {
+        background-color: config.$color-primary;
+        color: #fff;
+        border: 1px solid config.$color-primary;
+        text-decoration: none !important;
+    }
+
+    .nav-previous a::before,
+    .nav-next a::after {
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate(0, 0);
+    }
+
+    .nav-previous a::before {
+        content: "\f104";
+        margin-right: 0.5em;
+    }
+
+    .nav-next a::after {
+        content: "\f105";
+        margin-left: 0.5em;
+    }
+
+}

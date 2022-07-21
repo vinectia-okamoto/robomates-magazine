@@ -114,7 +114,7 @@
 
 		"spacing": {
 
-			"blockGap": false,
+			"blockGap": null,
 
 			"margin": true,
 			"padding": true,
@@ -191,10 +191,8 @@
 	},
 	"$comment-styles": "サイト、要素、ブロックにスタイルを適用",
 	"styles": {
-
-
 		"spacing": {
-			"blockGap": "clamp(0.938rem, 0.597rem + 1.7vw, 1.875rem)"
+
 		}
 	},
 	"$comment-templateParts": "parts フォルダに配置したテンプレートパーツにメタデータを追加します。",

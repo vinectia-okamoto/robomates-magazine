@@ -7,7 +7,7 @@
 
 ?>
 <!-- ******************** topBeforeAfter ******************** -->
-<section id="topBeforeAfter" class="topBeforeAfter">
+<section id="topBeforeAfter" class="topBeforeAfter inview_event">
 	<div class="topBeforeAfter-inner">
 		<div class="topBeforeAfter-inner-inner  container-xxl">
 			<div class="topBeforeAfter-row">

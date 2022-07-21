@@ -37,7 +37,7 @@ h2:not(.noteditor) {
 
 	font-size: clamp(2rem, 2vw, 2.2rem);
 	color: #fff;
-	margin-bottom: 0.5em;
+
 	line-height: 1.4;
 	position: relative;
 	display: block;
@@ -66,7 +66,7 @@ h3:not(.noteditor) {
 
 	display: block;
 	position: relative;
-	margin-bottom: 0.5em;
+
 	border-left: 5px solid config.$color-primary;
 
 	@include config.mq-up(md) {
@@ -96,7 +96,7 @@ h4:not(.noteditor) {
 	font-weight: bold;
 	line-height: 1.4;
 	font-size: 1.6rem;
-	margin-bottom: 0.5em;
+
 	border-bottom: 2px solid config.$color-primary;
 	color: config.$color-primary;
 
@@ -125,7 +125,7 @@ h5:not(.noteditor) {
 	font-weight: bold;
 	font-size: 1.5rem;
 	line-height: 1.4;
-	margin-bottom: 0.5em;
+
 	padding-left: 1.2em;
 
 	@include config.mq-up(md) {
@@ -162,7 +162,7 @@ h6:not(.noteditor) {
 	font-size: 1.5rem;
 	font-weight: bold;
 	line-height: 1.4;
-	margin-bottom: 0.5em;
+
 
 	@include config.mq-up(md) {
 		font-size: 1.6rem;
@@ -183,27 +183,27 @@ h6.is-style-kazarinashi {
 
 
 
-*+h2[data-type="core/heading"],
+
 *+h2:not(.noteditor) {
 	margin-top: 2em;
 }
 
-*+h3[data-type="core/heading"],
+
 *+h3:not(.noteditor) {
 	margin-top: 1.5em;
 }
 
-*+h4[data-type="core/heading"],
+
 *+h4:not(.noteditor) {
 	margin-top: 1.5em;
 }
 
-*+h5[data-type="core/heading"],
+
 *+h5:not(.noteditor) {
 	margin-top: 1.5em;
 }
 
-*+h6[data-type="core/heading"],
+
 *+h6:not(.noteditor) {
 	margin-top: 1.5em;
 }

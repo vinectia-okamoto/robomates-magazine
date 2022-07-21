@@ -4,6 +4,18 @@
 
 
 
+.sectionTitle {
+
+	transition: clip-path 1s cubic-bezier(0.18, 0.06, 0.23, 1) .6s;
+	clip-path: inset(0 100% 0 0);
+
+	&.slid__open {
+		clip-path: inset(0);
+	}
+}
+
+
+
 
 /*============================
 .sectionTitle（共通）
@@ -88,7 +100,7 @@ topHero
 		bottom: -30px;
 		width: clamp(20vw, 23vw, 500px);
 		transform-origin: center bottom;
-		animation: yurayura 5s linear infinite;
+		animation: poyooon 3s linear infinite;
 	}
 
 	&-chara-women {
@@ -97,21 +109,11 @@ topHero
 		bottom: -30px;
 		width: clamp(20vw, 23vw, 500px);
 		transform-origin: center bottom;
-		animation: poyooon 5s linear infinite;
+		animation: poyooon 3s linear infinite;
 	}
 
 
-	@keyframes yurayura {
 
-		0%,
-		100% {
-			transform: rotate(3deg);
-		}
-
-		50% {
-			transform: rotate(-3deg);
-		}
-	}
 
 	@keyframes poyooon {
 		0% {
@@ -119,18 +121,23 @@ topHero
 		}
 
 		10% {
-			transform: translate(0%, -30px);
+			transform: translate(0%, -20px);
 		}
 
 		15% {
-			transform: translate(0%, -10px);
+			transform: translate(0%, 0px);
 		}
 
-		20% {
-			transform: translate(0%, -30px);
+		25% {
+			transform: translate(0%, -20px);
 		}
 
-		50% {
+		30% {
+			transform: translate(0%, 0px);
+		}
+
+
+		40% {
 			transform: translate(0%, -30px);
 		}
 
@@ -170,16 +177,20 @@ topHero
 			top: 0;
 			height: 100%;
 			border-radius: 0 30px 30px 0;
-			width: calc(100% - 10px);
+			width: 0;
 			background: linear-gradient(90deg, config.$color-secondary 0%, config.$color-primary 100%);
-
-			@include config.mq-up(md) {
-				width: 80vw;
-			}
+			transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
 
 		}
 	}
 
+	&.event-on &-inner::before {
+		width: calc(100% - 10px);
+
+		@include config.mq-up(md) {
+			width: 80vw;
+		}
+	}
 
 
 	&-inner-inner {
@@ -257,16 +268,20 @@ topHero
 			top: 0;
 			height: 100%;
 			border-radius: 30px 0 0 30px;
-			width: calc(100% - 10px);
+			width: 0;
 			background: config.$color-subtle;
-
-			@include config.mq-up(md) {
-				width: 80vw;
-			}
+			transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
 
 		}
 	}
 
+	&.event-on &-inner::before {
+		width: calc(100% - 10px);
+
+		@include config.mq-up(md) {
+			width: 80vw;
+		}
+	}
 
 
 	&-inner-inner {
@@ -369,114 +384,6 @@ topHero
 		margin-bottom: 30px;
 	}
 
-	.companiesList {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 15px;
-		margin-bottom: 30px;
-
-		@include config.mq-up(md) {
-			grid-template-columns: 1fr 1fr 1fr;
-			gap: 30px;
-		}
-
-	}
-
-
-
-	.companiesCard {
-		background-color: config.$color-subtle;
-		display: block;
-
-		.imgArea {
-			overflow: hidden;
-
-			a {
-				padding-top: 66%;
-				position: relative;
-				display: block;
-				background-color: config.$color-primary;
-
-				img {
-					position: absolute;
-					left: 0;
-					top: 0;
-					object-fit: cover;
-					width: 100%;
-					height: 100%;
-					transition: all 0.2s ease;
-				}
-
-				&:hover img {
-					transform: scale(1.1);
-					opacity: 0.8;
-				}
-			}
-
-		}
-
-		.txtArea {
-			padding: 10px;
-			transition: all 0.3s ease;
-
-			@include config.mq-up(md) {
-				padding: 20px;
-			}
-		}
-
-		.title {
-			line-height: 1.4;
-			font-weight: bold;
-			margin-bottom: 0.3em;
-
-			a {
-				transition: all 0.3s ease;
-				color: config.$color-txt;
-
-				&:hover {
-					color: config.$color-hover;
-				}
-			}
-		}
-
-		.cat {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 5px;
-			margin-bottom: 0.3em;
-
-			span,
-			a {
-				display: inline-block;
-				color: #fff;
-				background-color: config.$color-txt;
-				line-height: 1;
-				padding: 0.2em 1em;
-				border-radius: 2em;
-				font-size: 1.2rem;
-				transition: all 0.3s ease;
-
-				&:hover {
-					background-color: config.$color-hover;
-
-				}
-			}
-		}
-
-		.companyName {
-			font-size: 1.4rem;
-			font-weight: bold;
-			line-height: 1.2;
-			color: config.$color-txt;
-		}
-
-		.address {
-			font-size: 1.2rem;
-			line-height: 1.4;
-			color: config.$color-txt;
-		}
-	}
-
 	&-btnArea {
 		text-align: center;
 	}
@@ -491,6 +398,7 @@ topHero
 		z-index: -1;
 	}
 
+	@import "companies-card";
 }
 
 /* =========================================================
@@ -545,81 +453,13 @@ topHero
 
 
 
-	.exlList {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 15px;
-		margin-bottom: 30px;
 
-		@include config.mq-up(md) {
-			grid-template-columns: 1fr 1fr 1fr;
-			gap: 30px;
-		}
-
-	}
-
-	.exlCard {
-		display: block;
-
-
-		.imgArea {
-			border-radius: 20px;
-			overflow: hidden;
-			margin-bottom: 5px;
-
-			a {
-				position: relative;
-				display: block;
-				padding-top: 66%;
-				background-color: config.$color-primary;
-
-				img {
-					position: absolute;
-					left: 0;
-					top: 0;
-					object-fit: cover;
-					width: 100%;
-					height: 100%;
-					transition: all 0.2s ease;
-				}
-
-				&:hover img {
-					transform: scale(1.1);
-					opacity: 0.8;
-				}
-			}
-		}
-
-		.txtArea {
-			display: block;
-
-
-			.date {
-				line-height: 1.2;
-				font-size: 1.2rem;
-				display: block;
-				margin-bottom: 0.3em;
-			}
-
-			.title {
-				line-height: 1.2;
-				font-size: 1.4rem;
-				font-weight: bold;
-
-				a {
-					color: config.$color-txt;
-
-					&:hover {
-						color: config.$color-hover;
-					}
-				}
-			}
-		}
-	}
 
 	&-btnArea {
 		text-align: center;
 	}
+
+	@import "exl-card";
 }
 
 
@@ -773,6 +613,7 @@ topHero
 	}
 
 	.scmtCard {
+		transition: all 0.3s ease;
 		border: 4px solid config.$color-primary;
 		background-color: #fff;
 		display: flex;
@@ -783,6 +624,15 @@ topHero
 		@include config.mq-up(md) {
 			flex-direction: column;
 			min-height: 100px;
+		}
+
+		&:hover {
+			border: 4px solid config.$color-secondary;
+
+			.txtArea {
+				opacity: 0.7;
+			}
+
 		}
 
 		.imgArea {
@@ -807,6 +657,7 @@ topHero
 		}
 
 		.txtArea {
+			transition: all 0.3s ease;
 			padding: 10px 15px;
 			width: calc(100% - 100px);
 			display: flex;
@@ -1102,12 +953,17 @@ topHero
 
 		@include config.mq-up(md) {
 			gap: 15px;
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		}
 
 
 		a {
 			display: block;
+		}
+
+		a:hover {
+			opacity: 0.7;
+
 		}
 	}
 }

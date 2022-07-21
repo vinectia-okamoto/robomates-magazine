@@ -23,7 +23,22 @@ $args = array(
 			<div class="topCompanies-chara-women"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-women.png' ); ?>" alt="" /></div>
 		</div>
 		<div class="topCompanies-searchArea">
-			検索作る
+		<div class="search-form">
+
+<form method="get" action="<?php bloginfo( 'url' ); ?>">
+<div>カテゴリ</div>
+<?php
+$setterms = get_terms( 'companies_category' );
+foreach ( $setterms as $setterm ) :
+	?>
+<label><input type="checkbox" name="selectcats[]" value="<?php echo $setterm->term_id; ?>"><?php echo $setterm->name; ?></label><br>
+<?php endforeach; ?>
+
+		<input type="hidden" name="post_type" value="companies">
+		<input type="text" name="s" id="s" value="<?php echo get_search_query(); ?>" placeholder="キーワードを入力">
+		<input type="submit" value="検索">
+</form>
+
 		</div>
 		<?php
 		$the_query = new WP_Query( $args );
@@ -42,7 +57,7 @@ $args = array(
 					$image_url = get_template_directory_uri() . '/assets/images/common/noimage.png';
 				}
 				?>
-			<li class="companiesCard">
+			<li class="companiesCard inview_fadeInUp">
 				<div class="imgArea">
 					<a href="<?php the_permalink(); ?>">
 						<img class="" src="<?php echo esc_url( $image_url ); ?>" alt="" />
@@ -61,7 +76,7 @@ $args = array(
 							$thiscat_id   = $thiscat->term_id;
 							$thiscat_url  = get_term_link( $thiscat_id );
 							$thiscat_name = $thiscat->name;
-							echo '<a href="' . esc_url( $thiscat__url ) . '">' . esc_html( $thiscat_name ) . '</a>';
+							echo '<a href="' . esc_url( $thiscat_url ) . '">' . esc_html( $thiscat_name ) . '</a>';
 						}
 						echo '</div>';
 					}

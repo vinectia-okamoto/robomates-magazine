@@ -29,7 +29,7 @@ if ( is_front_page() && is_home() ) {
 					<div class="footer-rightArea">
 						<div class="footer-btnArea">
 							<p class="txt"><span>ロボメイツに関する</span><span>お問い合わせは、</span><span>メールフォームから</span><span>お願い致します。</span></p>
-							<p class="btn"><a href="<?php echo esc_url( get_page_link( 1 ) ); ?>"><i class="fa-solid fa-envelope"></i> お問い合わせフォームへ</a></p>
+							<p class="btn"><a href="<?php echo esc_url( get_page_link( 109 ) ); ?>"><i class="fa-solid fa-envelope"></i> お問い合わせフォームへ</a></p>
 						</div>
 						<?php if ( has_nav_menu( 'footerNavi' ) ) : ?>
 							<nav class="footerNavi">

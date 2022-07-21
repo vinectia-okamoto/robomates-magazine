@@ -23,7 +23,6 @@ module.exports = {
     entry: {
         'main': './src/js/main.js',
         'top': './src/js/top.js',
-        'function-adminonly': './src/js/function-adminonly.js',
         'function-form': './src/js/function-form.js',
         'editor-script-block': './src/js/editor-script-block.js',
 
@@ -162,14 +161,11 @@ module.exports = {
         ],
     },
   //wordpressのときはwpのjqueryを使うのでこれ消す
-    externals: {
-       jquery: 'jQuery'
-   },
+   // externals: {
+   //    jquery: 'jQuery'
+  // },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        }),
+
 
         // CSS別出力時の不要JSファイルを削除
         new RemoveEmptyScriptsPlugin(),

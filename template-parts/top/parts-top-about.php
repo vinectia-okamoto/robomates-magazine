@@ -7,7 +7,7 @@
 
 ?>
 <!-- ******************** topAbout ******************** -->
-<section class="topAbout">
+<section class="topAbout inview_event">
 	<div class="topAbout-inner">
 		<div class="topAbout-inner-inner container-xxl">
 			<div class="topAbout-row">

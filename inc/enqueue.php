@@ -79,19 +79,6 @@ endif;
 add_action( 'wp_enqueue_scripts', 'vinectia_register_scripts' );
 
 
-
-
-if ( ! function_exists( 'vinectia_admin_script' ) ) {
-	/**
-	 * Admin専用スクリプト.
-	 */
-	function vinectia_admin_script() {
-		wp_enqueue_script( 'function_adminonly-js', get_template_directory_uri() . '/assets/js/function-adminonly.js', array( 'jquery' ), $theme_version, true );
-	}
-}
-add_action( 'admin_enqueue_scripts', 'vinectia_admin_script' );
-
-
 if ( ! function_exists( 'wordpress_editor_style_setup' ) ) :
 		/**
 		 * ワードプレスの標準のブロックエディタをスタイルに反映
@@ -112,7 +99,7 @@ if ( ! function_exists( 'add_block_editor_script' ) ) {
 	function add_block_editor_script_and_style() {
 		// 編集画面CSS（gudenberg用）
 		wp_enqueue_style( 'gudenberg-style-css', get_stylesheet_directory_uri() . '/assets/css/style.css', array(), $theme_version );
-
+		// 各ブロックの独自のスタイル追加
 		wp_enqueue_script( 'vinectia-block-editor-script', get_theme_file_uri( '/assets/js/editor-script-block.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 		// @ブロックエディタ用CSSの読み込み
 		add_editor_style( array( get_stylesheet_directory_uri() . '/assets/css/editor_preview.css' ) );

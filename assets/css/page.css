@@ -7,9 +7,6 @@ wordpressのエディターのclass用に読み込み
 ========================================================= */
 .editor-styles-wrapper {
   /*----------------------------------------------------------------
-  /* 投稿タイトルの見た目
-  ---------------------------------------------------------------- */
-  /*----------------------------------------------------------------
   aタグ
   ---------------------------------------------------------------- */
   /*----------------------------------------------------------------
@@ -54,106 +51,15 @@ wordpressのエディターのclass用に読み込み
   /* 一番左側色付きヘッダーで改行しない */
   /* Block: 共有ウィジェットスタイル-------------- */ /* Block: シェアメディアスタイル ---------------- */ /* Block: Shortcodeカスタマイズ -------------------------- */
   /* Block: Embed ------------------------------ */ /* Block: File ------------------------------- */ /* Block: Image ------------------------------ */
-  /* Block:ギャラリー ------------------------------ */
-  /* Block: Group ------------------------------
-
-  .wp-block-group {
-      margin-bottom: 1em;
-  }
-
-  .wp-block-group.has-background {
-      padding: 15px;
-      margin-bottom: 28px;
-
-      @include config.mq-up(md) {
-          padding: 30px;
-      }
-  }
-
-  .wp-block-group.is-style-groupBorder {
-      border: 1px solid config.$color-gray;
-      padding: 20px 20px;
-
-      @include config.mq-down(md) {
-          padding: 15px 15px;
-      }
-  }
-
-
-
-  .wp-block-group__inner-container>*:first-child {
-      margin-top: 0 !important;
-  }
-
-  .wp-block-group__inner-container>*:last-child {
-      margin-bottom: 0 !important;
-  }
-
-  .wp-block-heading>.rich-text {
-      margin-top: 0 !important;
-  }
-
-
-  .wp-block-group [data-type="core/heading"]:first-child * {
-      margin-top: 0;
-  }
-
-  [data-type="core/group"]>.editor-block-list__block-edit>div>.wp-block-group.has-background>.wp-block-group__inner-container>.editor-inner-blocks>.editor-block-list__layout>.wp-block[data-align="full"],
-  [data-type="core/group"][data-align="full"]>.editor-block-list__block-edit>div>.wp-block-group.has-background>.wp-block-group__inner-container>.editor-inner-blocks>.editor-block-list__layout>.wp-block[data-align="full"] {
-      margin-left: 0;
-      width: 100%;
-  }
-
-
-
-
-  .wp-block {
-      &:not([data-align="wide"]):not([data-align="full"]) div:not([class*="__inner-container"]) .wp-block-group.has-background {
-          @include config.mq-up(md) {
-              padding: 30px;
-          }
-      }
-
-      div[class*="__inner-container"] .wp-block {
-
-          &[data-align="wide"] .wp-block-group.has-background,
-          &[data-align="full"] .wp-block-group.has-background {
-              @include config.mq-up(md) {
-                  padding: 30px;
-              }
-          }
-      }
-
-      &[data-align="wide"] .wp-block-group.has-background,
-      &[data-align="full"] .wp-block-group.has-background {
-          @include config.mq-up(md) {
-              padding: 30px;
-          }
-      }
-  }
-   */
-  /* BLOCK: COLUMNS */
+  /* Block:ギャラリー ------------------------------ */ /* BLOCK: COLUMNS */
   /* BLOCK: COLUMNS */
   /* Block: シェアメディアスタイル ---------------- */
   /*============================
+  .roboCom-hero
+  ============================*/
+  /*============================
   .sectionTitle
   ============================*/
-}
-.editor-styles-wrapper .wp-block.editor-post-title__block {
-  max-width: 1300px;
-}
-.editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
-  font-family: "YakuHanJP", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  text-align: left;
-  font-weight: bold;
-  font-size: 2rem;
-  line-height: 1.4;
-  display: block;
-}
-@media screen and (min-width: 768px ) {
-  .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
-    font-size: 3rem;
-  }
 }
 .editor-styles-wrapper a {
   color: #00a2b7;
@@ -190,7 +96,6 @@ wordpressのエディターのclass用に読み込み
   padding: 0.3em 0.8em;
   font-size: clamp(2rem, 2vw, 2.2rem);
   color: #fff;
-  margin-bottom: 0.5em;
   line-height: 1.4;
   position: relative;
   display: block;
@@ -212,7 +117,6 @@ wordpressのエディターのclass用に読み込み
   padding: 0.4em 0.5em;
   display: block;
   position: relative;
-  margin-bottom: 0.5em;
   border-left: 5px solid #00a2b7;
 }
 @media screen and (min-width: 768px ) {
@@ -239,7 +143,6 @@ wordpressのエディターのclass用に読み込み
   font-weight: bold;
   line-height: 1.4;
   font-size: 1.6rem;
-  margin-bottom: 0.5em;
   border-bottom: 2px solid #00a2b7;
   color: #00a2b7;
 }
@@ -264,7 +167,6 @@ wordpressのエディターのclass用に読み込み
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.4;
-  margin-bottom: 0.5em;
   padding-left: 1.2em;
 }
 @media screen and (min-width: 768px ) {
@@ -300,7 +202,6 @@ wordpressのエディターのclass用に読み込み
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.4;
-  margin-bottom: 0.5em;
 }
 @media screen and (min-width: 768px ) {
   .editor-styles-wrapper h6[data-type="core/heading"],
@@ -316,23 +217,18 @@ wordpressのエディターのclass用に読み込み
   border: none;
   color: inherit;
 }
-.editor-styles-wrapper * + h2[data-type="core/heading"],
 .editor-styles-wrapper * + h2:not(.noteditor) {
   margin-top: 2em;
 }
-.editor-styles-wrapper * + h3[data-type="core/heading"],
 .editor-styles-wrapper * + h3:not(.noteditor) {
   margin-top: 1.5em;
 }
-.editor-styles-wrapper * + h4[data-type="core/heading"],
 .editor-styles-wrapper * + h4:not(.noteditor) {
   margin-top: 1.5em;
 }
-.editor-styles-wrapper * + h5[data-type="core/heading"],
 .editor-styles-wrapper * + h5:not(.noteditor) {
   margin-top: 1.5em;
 }
-.editor-styles-wrapper * + h6[data-type="core/heading"],
 .editor-styles-wrapper * + h6:not(.noteditor) {
   margin-top: 1.5em;
 }
@@ -870,7 +766,7 @@ wordpressのエディターのclass用に読み込み
   line-height: 1.4;
   margin: 0;
   overflow: visible;
-  padding: 0.5em;
+  padding: clamp(0.5em, 1vw, 1em);
   vertical-align: top;
 }
 .editor-styles-wrapper table thead th,
@@ -1238,8 +1134,403 @@ wordpressのエディターのclass用に読み込み
 }
 
 /* =========================================================
-#contents
+ページネーション
 ========================================================= */
+/************************************
+** レスポンシブページネーション
+************************************/
+.pagination {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 60px 0 30px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.pagination li {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.pagination li a {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-weight: 300;
+  padding-top: 1px;
+  text-decoration: none;
+  border: 1px solid #00a2b7;
+  border-radius: 50%;
+  min-width: 36px;
+  min-height: 36px;
+  color: #333;
+  line-height: 1;
+}
+.pagination li:not([class*=current]) a:hover {
+  background-color: #eee;
+}
+.pagination li a:hover {
+  text-decoration: none !important;
+}
+.pagination li.current a {
+  background-color: #00a2b7;
+  cursor: default;
+  pointer-events: none;
+  color: #fff;
+}
+.pagination li.first a,
+.pagination li.last a,
+.pagination li.previous a,
+.pagination li.next a {
+  color: #00a2b7;
+}
+.pagination li.first span,
+.pagination li.last span,
+.pagination li.previous span,
+.pagination li.next span {
+  /* screen readers only */
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.pagination li.first a::before,
+.pagination li.last a::after,
+.pagination li.previous a::before,
+.pagination li.next a::after {
+  display: inline-block;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.pagination li.first a::before {
+  content: "\f100";
+}
+.pagination li.last a::after {
+  content: "\f101";
+}
+.pagination li.previous a::before {
+  content: "\f104";
+}
+.pagination li.next a::after {
+  content: "\f105";
+}
+
+@media only screen and (max-width: 680px) {
+  .pagination li.first,
+.pagination li.last {
+    /* screen readers only */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .pagination li {
+    /* screen readers only */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .pagination li.current,
+.pagination li.first,
+.pagination li.last,
+.pagination li.previous,
+.pagination li.next {
+    position: initial;
+    top: initial;
+    left: initial;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .pagination li.first,
+.pagination li.last {
+    /* screen readers only */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+/************************************
+  **シングルページのナビゲーション
+  ************************************/
+.post-navigation {
+  margin-top: 60px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.post-navigation li {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.post-navigation .nav-previous a,
+.post-navigation .nav-next a {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-weight: 300;
+  text-decoration: none;
+  border: 1px solid #00a2b7;
+  border-radius: 18px;
+  padding-left: 2em;
+  padding-right: 2em;
+  min-height: 36px;
+  color: #00a2b7;
+}
+.post-navigation .nav-previous a:hover,
+.post-navigation .nav-next a:hover {
+  background-color: #00a2b7;
+  color: #fff;
+  border: 1px solid #00a2b7;
+  text-decoration: none !important;
+}
+.post-navigation .nav-previous a::before,
+.post-navigation .nav-next a::after {
+  display: inline-block;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.post-navigation .nav-previous a::before {
+  content: "\f104";
+  margin-right: 0.5em;
+}
+.post-navigation .nav-next a::after {
+  content: "\f105";
+  margin-left: 0.5em;
+}
+
+/* =========================================================
+企業紹介カード
+========================================================= */
+/*!
+ * 企業紹介カード
+ */
+.companiesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 768px ) {
+  .companiesList {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 30px;
+  }
+}
+
+.companiesCard {
+  background-color: #eff3f9;
+  display: block;
+}
+.companiesCard .imgArea {
+  overflow: hidden;
+}
+.companiesCard .imgArea a {
+  padding-top: 66%;
+  position: relative;
+  display: block;
+  background-color: #00a2b7;
+}
+.companiesCard .imgArea a img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+.companiesCard .imgArea a:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 0.8;
+}
+.companiesCard .txtArea {
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+@media screen and (min-width: 768px ) {
+  .companiesCard .txtArea {
+    padding: 20px;
+  }
+}
+.companiesCard .title {
+  line-height: 1.4;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+  text-decoration: none;
+}
+.companiesCard .title a {
+  transition: all 0.3s ease;
+  color: #000;
+}
+.companiesCard .title a:hover {
+  color: #007EFF;
+}
+.companiesCard .cat {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 0.3em;
+}
+.companiesCard .cat span,
+.companiesCard .cat a {
+  display: inline-block;
+  color: #fff;
+  background-color: #000;
+  line-height: 1;
+  padding: 0.2em 1em;
+  border-radius: 2em;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+.companiesCard .cat span:hover,
+.companiesCard .cat a:hover {
+  background-color: #007EFF;
+}
+.companiesCard .companyName {
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #000;
+}
+.companiesCard .address {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* =========================================================
+企業紹介カード
+========================================================= */
+/*!
+ * 企業紹介カード
+ */
+.exlList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 768px ) {
+  .exlList {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+.exlCard {
+  display: block;
+}
+.exlCard .imgArea {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.exlCard .imgArea a {
+  position: relative;
+  display: block;
+  padding-top: 66%;
+  background-color: #00a2b7;
+}
+.exlCard .imgArea a img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+.exlCard .imgArea a:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 0.8;
+}
+.exlCard .txtArea {
+  display: block;
+}
+.exlCard .txtArea .date {
+  line-height: 1.2;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.3em;
+}
+.exlCard .txtArea .title {
+  line-height: 1.2;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.exlCard .txtArea .title a {
+  color: #000;
+}
+.exlCard .txtArea .title a:hover {
+  color: #007EFF;
+}
+
+/* =========================================================
+containerをwordpress用の幅設定に
+========================================================= */
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: calc(100% - var(--wp--custom--spacing--outer, 20px));
+  padding: initial;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*----------------------------------------------------------------
+/* 全体マージン
+---------------------------------------------------------------- */
+*[class*=wp-container-] > * + *,
+.editor-styles-wrapper > * + * {
+  -webkit-margin-before: 0.8em;
+          margin-block-start: 0.8em;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+}
+
 /*----------------------------------------------------------------
 wordpressの構造のもの
 ---------------------------------------------------------------- */
@@ -1343,7 +1634,7 @@ wordpressの構造のもの
 .side-area ul li {
   display: block;
   line-height: 1.4;
-  padding: 0.3em 0 0.3em 1.1em;
+  padding: 0.5em 0 0.5em 0;
 }
 .side-area ul li .post-date {
   display: block;
@@ -1351,8 +1642,11 @@ wordpressの構造のもの
   color: #00a2b7;
 }
 .side-area ul li a {
+  display: -webkit-flex;
+  display: flex;
   position: relative;
   color: #000;
+  gap: 2px;
 }
 .side-area ul li a:hover {
   color: #007EFF;
@@ -1368,9 +1662,6 @@ wordpressの構造のもの
   font-weight: 900;
   font-size: inherit;
   text-rendering: auto;
-  margin-right: 0.2em;
-  position: absolute;
-  left: -1.1em;
 }
 
 .sideMenuBox {

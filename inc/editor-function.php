@@ -24,7 +24,7 @@ if ( ! function_exists( 'tiny_mce_editor_midashi_settings' ) ) {
 		return $init_array;
 	}
 }
-/**@ add_filter('tiny_mce_before_init', 'tiny_mce_editor_midashi_settings'); */
+add_filter( 'tiny_mce_before_init', 'tiny_mce_editor_midashi_settings' );
 
 
 if ( ! function_exists( 'customize_tinymce_settings' ) ) {
@@ -39,7 +39,7 @@ if ( ! function_exists( 'customize_tinymce_settings' ) ) {
 		return $mce_init;
 	}
 }
-/**@ add_filter('tiny_mce_before_init', 'customize_tinymce_settings', 0);*/
+add_filter( 'tiny_mce_before_init', 'customize_tinymce_settings', 0 );
 
 
 
@@ -60,7 +60,7 @@ SCRIPT;
 		return $table_init;
 	}
 }
-/**@ add_filter('tiny_mce_before_init', 'my_tiny_mce_before_init');*/
+add_filter( 'tiny_mce_before_init', 'my_tiny_mce_before_init' );
 
 
 
@@ -81,7 +81,7 @@ if ( ! function_exists( 'tinymce_custom_table_width' ) ) {
 		return $settings;
 	}
 }
-/**@  add_filter('tiny_mce_before_init', 'tinymce_custom_table_width', 0);*/
+add_filter( 'tiny_mce_before_init', 'tinymce_custom_table_width', 0 );
 
 
 
@@ -97,7 +97,7 @@ if ( ! function_exists( 'tiny_mce_bodyclass_settings' ) ) {
 		return $init_array;
 	}
 }
-/**@ add_filter('tiny_mce_before_init', 'tiny_mce_bodyclass_settings');*/
+add_filter( 'tiny_mce_before_init', 'tiny_mce_bodyclass_settings' );
 
 
 
@@ -127,32 +127,9 @@ if ( ! function_exists( 'extend_tiny_mce_before_init' ) ) {
 		return $mce_init;
 	}
 }
-/**@ add_filter('tiny_mce_before_init', 'extend_tiny_mce_before_init');*/
+add_filter( 'tiny_mce_before_init', 'extend_tiny_mce_before_init' );
 
 
-
-
-
-
-if ( ! function_exists( 'remove_default_block_pattern_category' ) ) {
-	/**
-	 *  標準のブロックパターンカテゴリを削除する
-	 */
-	function remove_default_block_pattern_category() {
-		$categories = array(
-			'buttons', // ボタン.
-			'columns', // カラム.
-			'gallery', // ギャラリー.
-			'header',  // ヘッダー.
-			'text',    // テキスト.
-			'query',    // クエリー.
-		);
-		foreach ( $categories as $category ) {
-			unregister_block_pattern_category( $category );
-		}
-	}
-}
-/**@ add_action('init', 'remove_default_block_pattern_category');*/
 
 
 

@@ -41,21 +41,6 @@ if ( ! function_exists( 'vinectia_widgets_init' ) ) {
 			)
 		);
 
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				array(
-					'name'          => '固定ページサイドバーウィジェット',
-					'id'            => 'side-widgets-columnpage',
-					'description'   => '固定ページのウィジェットエリア',
-					'before_widget' => '<aside id="%1$s" class="side-area widget %2$s">',
-					'after_widget'  => '</aside>',
-					'before_title'  => '<h3 class="widget-title">',
-					'after_title'   => '</h3>',
-				)
-			)
-		);
-
 	}
 	add_action( 'widgets_init', 'vinectia_widgets_init' );
 }

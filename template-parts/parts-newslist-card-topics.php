@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php 
+<?php
 
 $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 $args = array(
@@ -32,7 +32,7 @@ if ( $the_query->have_posts() ) :?>
 			<?php $cardtitle = get_the_title();?>
 			<div class="news-imgArea">
 				<a href="<?php the_permalink(); ?>">
-					<?php 
+					<?php
 $firstimage_get = preg_match_all( '/<img.+class=[\'"].*wp-image-([0-9]+).*[\'"].*>/i', $post->post_content, $matches );
 $firstimage_url ="";
 if($firstimage_get){$image_id = $matches[1][0];} else{ $image_id = $matches[0];}
@@ -98,6 +98,7 @@ $image_url = $image_data[0];
 
 
 <?php if (function_exists('responsive_pagination')) {
+	echo '<div>'
   responsive_pagination($the_query->max_num_pages//上を見て$the_queryか$wp_queryどっちで書いているか確認
   );} ?>
 

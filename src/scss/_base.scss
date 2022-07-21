@@ -356,6 +356,7 @@ wrapper
 		gap: 1.5vw;
 		line-height: 1.2;
 		position: relative;
+		font-size: clamp(1.2rem, 1.2vw, 1.6rem);
 
 		>li {
 			display: block;
@@ -476,7 +477,7 @@ wrapper
 				display: grid;
 				grid-gap: 20px;
 				grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-				padding-top: 20px;
+
 
 				font-size: 1.4rem;
 
@@ -774,11 +775,7 @@ sp_btn
 		}
 
 		.open {
-			&>ul {
-				display: none;
 
-				width: 100%;
-			}
 
 			.accordionBtn {
 				i {

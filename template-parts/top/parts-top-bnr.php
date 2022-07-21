@@ -17,9 +17,10 @@
 			the_row();
 			?>
 			<?php
-			$bnrimg_id = get_sub_field( 'bnr_img' );
-
+			$bnrimg      = get_sub_field( 'bnr_img' );
+			$bnrimg_id   = $bnrimg['ID'];
 			$bnrimg_data = wp_get_attachment_image_src( $bnrimg_id, 'medium' );
+
 			$bnrimg_url  = $bnrimg_data[0];
 			$bnrlink     = get_sub_field( 'bnr_link' );
 			$link_url    = '';

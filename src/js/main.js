@@ -1,5 +1,123 @@
-import Common from "./module/common.js";
 import Ukiyo from "ukiyojs";
+
+import gsap from "gsap";
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+/**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+gsap
+イージングはhttps://greensock.com/docs/v3/Easing
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
+gsap.config({
+nullTargetWarn: false,
+});
+
+//インビューエフェクト
+gsap.set(".inview_fadeInUp", {
+y: 100,
+opacity: 0
+});
+gsap.set(".inview_fadeIn", {
+opacity: 0
+});
+
+
+ScrollTrigger.batch(".inview_fadeInUp", {
+onEnter: batch => gsap.to(batch, {
+ease: "back",
+opacity: 1,
+y: 0,
+stagger: 0.05,
+overwrite: true,
+
+}),
+onEnterBack: batch => gsap.to(batch, {
+ease: "back",
+opacity: 1,
+y: 0,
+stagger: 0.05,
+overwrite: true,
+
+}),
+once: true
+});
+ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".inview_fadeInUp", {
+y: 0
+}));
+
+ScrollTrigger.batch(".inview_fadeIn", {
+onEnter: batch => gsap.to(batch, {
+ease: "power1",
+opacity: 1,
+
+stagger: 0.05,
+overwrite: true,
+
+}),
+onEnterBack: batch => gsap.to(batch, {
+ease: "power1",
+opacity: 1,
+stagger: 0.05,
+overwrite: true,
+}),
+once: true
+});
+ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".inview_fadeIn", {
+opacity: 0
+}));
+
+
+const inview_events = document.querySelectorAll('.inview_event');
+inview_events.forEach((inview_event, i) => {
+
+	gsap.to(inview_event,{
+		scrollTrigger: {
+			trigger:inview_event,
+			start: 'center bottom',//要素の基準値とブラウザの画面値
+		end: 'bottom top',
+		}
+	}),
+	ScrollTrigger.create({
+
+		trigger: inview_event,
+		start: 'center bottom',//要素の基準値とブラウザの画面値
+		end: 'bottom top',
+		id: inview_event+1,
+		once: true,
+		toggleClass: {
+		  targets: inview_event,
+		  className: 'event-on',
+		}
+	  })
+});
+
+
+const ttl__clips = document.querySelectorAll('.sectionTitle');
+
+ttl__clips.forEach((ttl__clip, index) => {
+  gsap.to(ttl__clip, {
+    scrollTrigger: {
+      trigger: ttl__clip,
+      start: 'top-=100 center+=100',
+      end: 'top top-=100',
+    }
+  });
+
+  ScrollTrigger.create({
+    trigger:ttl__clip,
+    id: index+1,
+    start: 'top center+=300',
+    end: 'top top-=100',
+    once: true,
+    toggleClass: {
+      targets: ttl__clip,
+      className: 'slid__open',
+    },
+  });
+});
+
+
+
 
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -7,10 +125,10 @@ imageUkyo
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
 const imageUkyo = document.querySelector('.imgparallax');
 new Ukiyo(imageUkyo, {
-   scale: 1.2, //スケール
-   speed: 1.3, //スピード
-   // willChange: true, //will-change付ける
-   wrapperClass: "wrapper" //ラッパー要素のクラス名
+scale: 1.2, //スケール
+speed: 1.3, //スピード
+// willChange: true, //will-change付ける
+wrapperClass: "wrapper" //ラッパー要素のクラス名
 })
 
 
@@ -21,322 +139,262 @@ new Ukiyo(imageUkyo, {
 *スマホメニューボタン
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
 
-function spToggleBtn_func() {
-    //デバイス判定（タッチが有効か否か）
-    var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
-    //デバイス判定によるイベントの決定
-    var eventType = (isTouchDevice) ? 'touchend' : 'click';
-    $(".sp_btn").on("click", function () {
-        $("html").toggleClass("spmenu-open");
+document.addEventListener('DOMContentLoaded', function () {
 
-    });
+	document.querySelector('.sp_btn').addEventListener('click', function () {
+	document.documentElement.classList.toggle('spmenu-open');
+	});
+	//メニューの中クリックしたらとじる
+	document.querySelector('.spNavi .sp_btn').addEventListener('click', function () {
+	document.documentElement.classList.remove("spmenu-open")
+	});
 
-    var window_width = window.innerWidth;
-    var timer = false;
+	//メニューの中クリックしたらとじる
+	document.addEventListener("click", (event) => {
+		if (document.documentElement.classList.contains('spmenu-open') == true) {
+			if (!$(event.target).closest(".spNavi").length && !$(event.target).closest(".header").length) {
+			document.documentElement.classList.remove("spmenu-open");
+			}
+		}
+	})
+})
 
-    $(window).on('orientationchange', function () {
-        var resize_width = window.innerWidth;
-        if (window_width != resize_width) {
-            if (timer !== false) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(function () {
-                $("html").removeClass("spmenu-open");
 
-                window_width = resize_width;
-            }, 100);
-        }
-    });
-
-    //メニューの中クリックしたらとじる
-    $('.spNavi a').on('click', function () {
-
-        $("html").removeClass("spmenu-open");
-
-    });
-    // 表示したポップアップ以外の部分をクリックしたとき
-    $(document).on('click touchend', function (event) {
-        if ($("html").hasClass("spmenu-open")) {
-       if (!$(event.target).closest(".spNavi").length && !$(event.target).closest(".header").length) {
-
-         $("html").removeClass("spmenu-open");
-
-       }
-    }
-    });
-}
-
-/**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-*スマホアコーディオンメニュー
-ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-function spMenu_func() {
-    $(".spNavi-links li:has(ul)").addClass('menu-item-has-children');
-    $(".spNavi-links .menu-item-has-children > a").after('<span class="accordionBtn"><i class="fa-solid fa-plus"></i></span>');
-        $('.spNavi-links .accordionBtn').on('click', function () {
-      var parent = $(this).parent('li');
-      if (parent.hasClass('open')) {
-        parent.find(".open").removeClass("open");
-        parent.removeClass("open");
-        parent.find("ul").slideUp("fast");
-      } else {
-        parent.addClass("open");
-        parent.children("ul").slideDown("fast");
-        parent.siblings("li").removeClass("open").find("ul").slideUp("fast");
-      }
-    });
-  };
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 *グローバル子メニュー
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-function globalMenu_func() {
-$(".globalNavi-links li:has(ul)").each(function(i,e){
-    $(e).addClass('menu-item-has-children');
-	var windowWidth = window.innerWidth;
-	var thisOffsetL =  $(e).offset().left;
-	var nokoriWidth = windowWidth - thisOffsetL;
-	if(nokoriWidth < 300){
-		$(e).addClass('rightmode');
-	}
 
-    var linksurl = $(e).children("a").attr("href");
-    var linkstxt = $(e).children("a").text();
-    $(e).children("ul").addClass('globalNavi-child-links').wrap('<div class="globalNavi-child">');
-    if(linksurl){
-		$(e).find('.globalNavi-child').prepend('<p class="globalNavi-child-index"><a href="'+linksurl+'">'+linkstxt+'一覧</p>');
-    }
+const gnavilinks = document.querySelectorAll(".globalNavi-links");
+
+gnavilinks.forEach(function(element) {
+let ulElements = element.getElementsByTagName("ul");
+Array.prototype.forEach.call(ulElements, function (element) {
+let thisParent = element.parentNode;
+if(thisParent){
+element.parentNode.classList.add("menu-item-has-children");
+let　linksurl = thisParent.querySelector("a").href;
+let linkstxt = thisParent.querySelector("a").textContent;
+
+
+
+if (linksurl) {
+element.outerHTML = '<div class="globalNavi-child"><p class="globalNavi-child-index"><a href="' + linksurl + '">' + linkstxt + '一覧</p>' + element.outerHTML + '</div>';
+}else{
+element.outerHTML = '<div class="globalNavi-child">' + element.outerHTML + '</div>';
+}
+}
+
+});
 });
 
-};
+
+
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 * back_to_top
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-function backtotop_func() {
-    "use strict";
-    var win = $(window),
-        back_to_top = $('.backtotop'),
-        showClass = 'backtotop-visible',
-        scroll_top_duration = 700;
-    win.on('load scroll', function () {
-        var  thisScrollTop = $(this).scrollTop(),
-            scrollBottom = win.scrollTop() + win.height();
-        if (thisScrollTop > 500) {
-            back_to_top.addClass(showClass);
-        } else {
-            back_to_top.removeClass(showClass);
-        }
-    });
-    var clickEventType = ((window.ontouchstart !== null) ? 'click' : 'touchstart');
-    back_to_top.on(clickEventType, function () {
-        $('body,html').animate({
-            scrollTop: 0,
-        }, scroll_top_duration);
-    });
+const pagetop = document.querySelector('.backtotop');
+const yws_pagetop = function () {
+if (window.pageYOffset > 400) {
+pagetop.classList.add("backtotop-visible")
+} else {
+pagetop.classList.remove("backtotop-visible")
 }
+};
+window.addEventListener("load", yws_pagetop);
+window.addEventListener("scroll", yws_pagetop);
+pagetop.addEventListener('click', (e) => {
+e.preventDefault();
+window.scroll({
+top: 0,
+behavior: 'smooth'
+})
+});
+
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 * smooth scroll
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-function smooth_scroll_func() {
-    var headerHeight = 100;
-    var urlHash = location.hash;
-    if (urlHash) {
-        $("body,html").stop().scrollTop(0);
-        setTimeout(function () {
-            var target = $(urlHash);
-            var position = target.offset().top - headerHeight;
-            $("body,html").stop().animate({
-                scrollTop: position
-            }, 0);
-        }, 100);
-        return false;
-    }
-    $('a[href^="#"]').on("click", function () {
-        var href = $(this).attr("href");
-        var target = $(href == "#" || href == "" ? 'html' : href);
-        var position = target.offset().top - headerHeight;
-        $("body,html").stop().animate({
-            scrollTop: position
-        }, 500, "swing");
-        return false;
-    });
+const smoothScroll = document.querySelectorAll('a[href^="#"]');
+for (let i = 0; i < smoothScroll.length; i++) {
+smoothScroll[i].addEventListener('click', (e) => {
+e.preventDefault();
+let href = smoothScroll[i].getAttribute('href');
+let targetElement = document.getElementById(href.replace('#', ''));
+const rect = targetElement.getBoundingClientRect().top;
+const offset = window.pageYOffset;
+const gap = 60;
+const target = rect + offset - gap;
+window.scrollTo({
+top: target,
+behavior: 'smooth',
+});
+});
 }
 
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 スマホのみTEL有効
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-function telLink_func() {
-    var agent = navigator.userAgent;
-    if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
 
-    $('.tel').each(function() {
-    var str = $(this).html();
-    if ($(this).children().is('img')) {
-    $(this).html($('<a>').attr('href', 'tel:' + $(this).children().attr('alt').replace(/-/g, '')).append(str + '</a>'));
-    } else {
-    $(this).html($('<a>').attr('href', 'tel:' + $(this).text().replace(/-/g, '')).append(str + '</a>'));
-    }
-    });
-
-    }
-    };
-
-
-
+var agent = navigator.userAgent;
+if (agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1) {
+window.addEventListener('DOMContentLoaded', function(){
+if (!isPhone())
+return;
+const actionTarget = document.querySelectorAll('span[data-action=call]');
+for (let i = 0; i < actionTarget .length; i++){
+actionTarget [i].outerHTML = '<a href="tel:' + actionTarget [i].dataset.tel + '">' + actionTarget [i].outerHTML + '</a>';
+}
+});
+function isPhone() {
+return (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('Android') > 0);
+}
+}
 
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
- * inview
-ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
-function inview_func() {
-    var inviewDeferred = $.Deferred();
-
-            if ($('body').hasClass('inview--use')) {
-                inviewDeferred.resolve();
-            }
-
-        inviewDeferred.done(function () {
-            inview_curtain(); //隠したいアイテムをspanやdivでくくりそこにclass名（inview_curtain）
-            inview_fadeInZoom(); //フェードインclass名（inview_fadeIn）
-            inview_fadeIn(); //フェードインclass名（inview_fadeIn）
-            inview_fadeInUp(); //フェードインclass名（inview_fadeInUp）
-            inview_zoomIn();
-            inview_textyle(); //テキストエフェクトclass名（inview_textyle）
-            effectFlug(); //inviewでフラグ立てたいとき用class名（effectFlug）をつけたものに（effect_start）クラスがつく
-        });
-
-
-    function effectFlug() {
-        $('.effectFlug').one('inview', function (event, isInView) {
-
-            $(this).addClass('effectFlug--now');
-            if (isInView) {
-                $('.effectFlug--now').each(function (i) {
-                    $(this).delay(i * 200).queue(function () {
-                        $(this).addClass('animated animate__effectFlug').removeClass('effectFlug--now effectFlug').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_fadeInZoom() {
-        $('.inview_fadeInZoom').one('inview', function (event, isInView) {
-            $(this).addClass('inview_fadeInZoom--now');
-            if (isInView) {
-                $('.inview_fadeInZoom--now').each(function (i) {
-                    $(this).delay(i * 100).queue(function () {
-                        $(this).addClass('animated animate__fadeInZoom').removeClass('inview_fadeInZoom--now inview_fadeInZoom').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_fadeIn() {
-        $('.inview_fadeIn').one('inview', function (event, isInView) {
-            $(this).addClass('inview_fadeIn--now');
-            if (isInView) {
-                $('.inview_fadeIn--now').each(function (i) {
-                    $(this).delay(i * 100).queue(function () {
-                        $(this).addClass('animated animate__fadeIn').removeClass('inview_fadeIn--now inview_fadeIn').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_fadeInUp() {
-        $('.inview_fadeInUp').one('inview', function (event, isInView) {
-            $(this).addClass('inview_fadeInUp--now');
-            if (isInView) {
-                $('.inview_fadeInUp--now').each(function (i) {
-                    $(this).delay(i * 100).queue(function () {
-                        $(this).addClass('animated animate__fadeInUp').removeClass('inview_fadeInUp--now inview_fadeInUp').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_zoomIn() {
-        $('.inview_zoomIn').one('inview', function (event, isInView) {
-            $(this).addClass('inview_zoomIn--now');
-            if (isInView) {
-                $('.inview_zoomIn--now').each(function (i) {
-                    $(this).delay(i * 100).queue(function () {
-                        $(this).addClass('animated animate__zoomIn').removeClass('inview_zoomIn--now inview_zoomIn').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_curtain() {
-        $('.inview_curtain').one('inview', function (event, isInView) {
-            $(this).addClass('inview_curtain--now');
-            if (isInView) {
-                $('.inview_curtain--now').each(function (i) {
-                    $(this).delay(i * 200).queue(function () {
-                        $(this).addClass('curtain-start').removeClass('inview_curtain--now').dequeue();
-                    });
-                });
-            }
-        });
-    }
-
-    function inview_textyle() {
-        $('.inview_textyle').one('inview', function (event, isInView) {
-            $(this).addClass('inview_textyle--now');
-            if (isInView) {
-                $('.inview_textyle--now').each(function (i) {
-                    $(this).delay(i * 150).queue(function () {
-                        $(this).textyle({
-                            // duration : 400, //エフェクト時間(ミリ秒)
-                            delay: 50, //文字間のエフェクト間隔(ミリ秒)
-                            easing: 'swing', //エフェクトのイージングパターン
-                        });
-                        $(this).addClass('textyle').removeClass('inview_textyle--now').dequeue();
-
-                    });
-                });
-            }
-        });
-    }
-
-
-}
-
-window.addEventListener('load', function() {
+ヘッダーのサーチ
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
+window.addEventListener('load', function () {
 //開くボタンを押した時には
 const search_wrap = document.querySelector("#searchWrap");
 const search_text = document.querySelector(".search-text");
 const search_openbtn = document.querySelector(".header-search");
-search_openbtn.addEventListener('click', function(){
-	search_wrap.classList.add('panelactive');
-	search_text.focus();
+search_openbtn.addEventListener('click', function () {
+search_wrap.classList.add('panelactive');
+search_text.focus();
 })
 
 //閉じるボタンを押した時には
 const search_closebtn = document.querySelector(".searchWrap-closeBtn");
 
-search_closebtn.addEventListener('click', function(){
-	search_wrap.classList.remove('panelactive')
+search_closebtn.addEventListener('click', function () {
+search_wrap.classList.remove('panelactive')
 })
 })
-
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-呼び出し
+SPメニューのアコーディオン
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-$(function () {
-    inview_func();
-    backtotop_func();
-    spToggleBtn_func();
-    globalMenu_func();
-    spMenu_func();
-    telLink_func();
-    smooth_scroll_func();
+/* slideUp, slideDown, slideToggle関数を定義 */
+// 要素をスライドしながら非表示にする関数(jQueryのslideUpと同じ)
+const slideUp = (el, duration = 300) => {
+el.style.height = el.offsetHeight + "px";
+el.offsetHeight;
+el.style.transitionProperty = "height, margin, padding";
+el.style.transitionDuration = duration + "ms";
+el.style.transitionTimingFunction = "ease";
+el.style.overflow = "hidden";
+el.style.height = 0;
+el.style.paddingTop = 0;
+el.style.paddingBottom = 0;
+el.style.marginTop = 0;
+el.style.marginBottom = 0;
+setTimeout(() => {
+el.style.display = "none";
+el.style.removeProperty("height");
+el.style.removeProperty("padding-top");
+el.style.removeProperty("padding-bottom");
+el.style.removeProperty("margin-top");
+el.style.removeProperty("margin-bottom");
+el.style.removeProperty("overflow");
+el.style.removeProperty("transition-duration");
+el.style.removeProperty("transition-property");
+el.style.removeProperty("transition-timing-function");
+el.classList.remove("is-open");
+}, duration);
+};
 
-})
+// 要素をスライドしながら表示する関数(jQueryのslideDownと同じ)
+const slideDown = (el, duration = 300) => {
+el.classList.add("is-open");
+el.style.removeProperty("display");
+let display = window.getComputedStyle(el).display;
+if (display === "none") {
+display = "block";
+}
+el.style.display = display;
+let height = el.offsetHeight;
+el.style.overflow = "hidden";
+el.style.height = 0;
+el.style.paddingTop = 0;
+el.style.paddingBottom = 0;
+el.style.marginTop = 0;
+el.style.marginBottom = 0;
+el.offsetHeight;
+el.style.transitionProperty = "height, margin, padding";
+el.style.transitionDuration = duration + "ms";
+el.style.transitionTimingFunction = "ease";
+el.style.height = height + "px";
+el.style.removeProperty("padding-top");
+el.style.removeProperty("padding-bottom");
+el.style.removeProperty("margin-top");
+el.style.removeProperty("margin-bottom");
+setTimeout(() => {
+el.style.removeProperty("height");
+el.style.removeProperty("overflow");
+el.style.removeProperty("transition-duration");
+el.style.removeProperty("transition-property");
+el.style.removeProperty("transition-timing-function");
+}, duration);
+};
+
+// 要素をスライドしながら交互に表示/非表示にする関数(jQueryのslideToggleと同じ)
+const slideToggle = (el, duration = 300) => {
+if (window.getComputedStyle(el).display === "none") {
+return slideDown(el, duration);
+} else {
+return slideUp(el, duration);
+}
+};
+
+/*  DOM操作  *********************/
+
+// アコーディオンを全て取得
+const accordions = document.querySelectorAll(".spNavi-links");
+// 取得したアコーディオンをArrayに変換(IE対策)
+const accordionsArr = Array.prototype.slice.call(accordions);
+
+accordions.forEach(function(element) {
+let ulElements = element.getElementsByTagName("ul");
+Array.prototype.forEach.call(ulElements, function (element) {
+element.parentNode.classList.add("menu-item-has-children");
+
+
+element.previousElementSibling.insertAdjacentHTML('afterend','<span class="accordionBtn"><i class="fa-solid fa-plus"></i></span>');
+
+});
+});
+
+
+
+accordionsArr.forEach((accordion) => {
+// Triggerを全て取得
+const accordionTriggers = accordion.querySelectorAll(".menu-item-has-children");
+// TriggerをArrayに変換(IE対策)
+const accordionTriggersArr = Array.prototype.slice.call(accordionTriggers);
+
+accordionTriggersArr.forEach((trigger) => {
+// <i>アイコンでは反応しないように
+trigger.querySelector("i").style.pointerEvents =   "none";
+//accordionBtnクリックイベントを付与
+trigger.querySelector(".accordionBtn").addEventListener("click", (e) => {
+accordionTriggersArr.forEach((trigger) => {
+// クリックしたアコーディオン以外を全て閉じる
+if (trigger !== e.target.parentElement) {
+trigger.classList.remove("open");
+const openedContent = trigger.querySelector("ul");
+slideUp(openedContent);
+}
+});
+
+// '.open'クラスを付与or削除
+trigger.classList.toggle("open");
+// 開閉させる要素を取得
+const content = trigger.querySelector("ul");
+// 要素を展開or閉じる
+slideToggle(content);
+},false);
+});
+});

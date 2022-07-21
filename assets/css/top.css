@@ -2,6 +2,18 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/scss/top.scss ***!
   \******************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
+.sectionTitle {
+  transition: -webkit-clip-path 1s cubic-bezier(0.18, 0.06, 0.23, 1) 0.6s;
+  transition: clip-path 1s cubic-bezier(0.18, 0.06, 0.23, 1) 0.6s;
+  transition: clip-path 1s cubic-bezier(0.18, 0.06, 0.23, 1) 0.6s, -webkit-clip-path 1s cubic-bezier(0.18, 0.06, 0.23, 1) 0.6s;
+  -webkit-clip-path: inset(0 100% 0 0);
+          clip-path: inset(0 100% 0 0);
+}
+.sectionTitle.slid__open {
+  -webkit-clip-path: inset(0);
+          clip-path: inset(0);
+}
+
 /*============================
 .sectionTitle（共通）
 ============================*/
@@ -84,8 +96,8 @@ topHero
   width: clamp(20vw, 23vw, 500px);
   -webkit-transform-origin: center bottom;
           transform-origin: center bottom;
-  -webkit-animation: yurayura 5s linear infinite;
-          animation: yurayura 5s linear infinite;
+  -webkit-animation: poyooon 3s linear infinite;
+          animation: poyooon 3s linear infinite;
 }
 .topHero-chara-women {
   position: absolute;
@@ -94,28 +106,8 @@ topHero
   width: clamp(20vw, 23vw, 500px);
   -webkit-transform-origin: center bottom;
           transform-origin: center bottom;
-  -webkit-animation: poyooon 5s linear infinite;
-          animation: poyooon 5s linear infinite;
-}
-@-webkit-keyframes yurayura {
-  0%, 100% {
-    -webkit-transform: rotate(3deg);
-            transform: rotate(3deg);
-  }
-  50% {
-    -webkit-transform: rotate(-3deg);
-            transform: rotate(-3deg);
-  }
-}
-@keyframes yurayura {
-  0%, 100% {
-    -webkit-transform: rotate(3deg);
-            transform: rotate(3deg);
-  }
-  50% {
-    -webkit-transform: rotate(-3deg);
-            transform: rotate(-3deg);
-  }
+  -webkit-animation: poyooon 3s linear infinite;
+          animation: poyooon 3s linear infinite;
 }
 @-webkit-keyframes poyooon {
   0% {
@@ -123,18 +115,22 @@ topHero
             transform: translate(0%, 30px);
   }
   10% {
-    -webkit-transform: translate(0%, -30px);
-            transform: translate(0%, -30px);
+    -webkit-transform: translate(0%, -20px);
+            transform: translate(0%, -20px);
   }
   15% {
-    -webkit-transform: translate(0%, -10px);
-            transform: translate(0%, -10px);
+    -webkit-transform: translate(0%, 0px);
+            transform: translate(0%, 0px);
   }
-  20% {
-    -webkit-transform: translate(0%, -30px);
-            transform: translate(0%, -30px);
+  25% {
+    -webkit-transform: translate(0%, -20px);
+            transform: translate(0%, -20px);
   }
-  50% {
+  30% {
+    -webkit-transform: translate(0%, 0px);
+            transform: translate(0%, 0px);
+  }
+  40% {
     -webkit-transform: translate(0%, -30px);
             transform: translate(0%, -30px);
   }
@@ -153,18 +149,22 @@ topHero
             transform: translate(0%, 30px);
   }
   10% {
-    -webkit-transform: translate(0%, -30px);
-            transform: translate(0%, -30px);
+    -webkit-transform: translate(0%, -20px);
+            transform: translate(0%, -20px);
   }
   15% {
-    -webkit-transform: translate(0%, -10px);
-            transform: translate(0%, -10px);
+    -webkit-transform: translate(0%, 0px);
+            transform: translate(0%, 0px);
   }
-  20% {
-    -webkit-transform: translate(0%, -30px);
-            transform: translate(0%, -30px);
+  25% {
+    -webkit-transform: translate(0%, -20px);
+            transform: translate(0%, -20px);
   }
-  50% {
+  30% {
+    -webkit-transform: translate(0%, 0px);
+            transform: translate(0%, 0px);
+  }
+  40% {
     -webkit-transform: translate(0%, -30px);
             transform: translate(0%, -30px);
   }
@@ -203,11 +203,15 @@ topHero
   top: 0;
   height: 100%;
   border-radius: 0 30px 30px 0;
-  width: calc(100% - 10px);
+  width: 0;
   background: linear-gradient(90deg, #38D642 0%, #00a2b7 100%);
+  transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.topAbout.event-on .topAbout-inner::before {
+  width: calc(100% - 10px);
 }
 @media screen and (min-width: 768px ) {
-  .topAbout-inner::before {
+  .topAbout.event-on .topAbout-inner::before {
     width: 80vw;
   }
 }
@@ -277,11 +281,15 @@ topHero
   top: 0;
   height: 100%;
   border-radius: 30px 0 0 30px;
-  width: calc(100% - 10px);
+  width: 0;
   background: #eff3f9;
+  transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.topBeforeAfter.event-on .topBeforeAfter-inner::before {
+  width: calc(100% - 10px);
 }
 @media screen and (min-width: 768px ) {
-  .topBeforeAfter-inner::before {
+  .topBeforeAfter.event-on .topBeforeAfter-inner::before {
     width: 80vw;
   }
 }
@@ -321,6 +329,9 @@ topHero
   padding-bottom: 30px;
   overflow: hidden;
   position: relative;
+  /*!
+   * 企業紹介カード
+   */
 }
 @media screen and (min-width: 768px ) {
   .topCompanies {
@@ -368,6 +379,17 @@ topHero
   padding: 20px;
   margin-bottom: 30px;
 }
+.topCompanies-btnArea {
+  text-align: center;
+}
+.topCompanies canvas {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 .topCompanies .companiesList {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -376,7 +398,7 @@ topHero
 }
 @media screen and (min-width: 768px ) {
   .topCompanies .companiesList {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 30px;
   }
 }
@@ -421,6 +443,7 @@ topHero
   line-height: 1.4;
   font-weight: bold;
   margin-bottom: 0.3em;
+  text-decoration: none;
 }
 .topCompanies .companiesCard .title a {
   transition: all 0.3s ease;
@@ -463,17 +486,6 @@ topHero
   line-height: 1.4;
   color: #000;
 }
-.topCompanies-btnArea {
-  text-align: center;
-}
-.topCompanies canvas {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
 
 /* =========================================================
 .topEXL
@@ -482,6 +494,9 @@ topHero
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #eff3f9;
+  /*!
+   * 企業紹介カード
+   */
 }
 @media screen and (min-width: 768px ) {
   .topEXL {
@@ -520,6 +535,9 @@ topHero
 .topEXL-title {
   -webkit-align-items: flex-start;
           align-items: flex-start;
+}
+.topEXL-btnArea {
+  text-align: center;
 }
 .topEXL .exlList {
   display: grid;
@@ -581,9 +599,6 @@ topHero
 }
 .topEXL .exlCard .txtArea .title a:hover {
   color: #007EFF;
-}
-.topEXL-btnArea {
-  text-align: center;
 }
 
 /* =========================================================
@@ -712,6 +727,7 @@ topHero
           align-self: stretch;
 }
 .topSCMT .scmtCard {
+  transition: all 0.3s ease;
   border: 4px solid #00a2b7;
   background-color: #fff;
   display: -webkit-flex;
@@ -727,6 +743,12 @@ topHero
             flex-direction: column;
     min-height: 100px;
   }
+}
+.topSCMT .scmtCard:hover {
+  border: 4px solid #38D642;
+}
+.topSCMT .scmtCard:hover .txtArea {
+  opacity: 0.7;
 }
 .topSCMT .scmtCard .imgArea {
   display: block;
@@ -749,6 +771,7 @@ topHero
   top: 0;
 }
 .topSCMT .scmtCard .txtArea {
+  transition: all 0.3s ease;
   padding: 10px 15px;
   width: calc(100% - 100px);
   display: -webkit-flex;
@@ -1010,11 +1033,14 @@ topHero
 @media screen and (min-width: 768px ) {
   .topBnr .bnrList {
     gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 .topBnr .bnrList a {
   display: block;
+}
+.topBnr .bnrList a:hover {
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=top.css.map*/

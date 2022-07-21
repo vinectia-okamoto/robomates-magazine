@@ -19,8 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function create_custom_post_type() {
 	/*投稿タイプ-メニュー**/
 	$labels = array(
-		'name'               => 'ロボット関連企業',
-		'singular_name'      => 'ロボット関連企業',
+		'name'               => 'ロボット関連企業紹介',
+		'singular_name'      => 'ロボット関連企業紹介',
 		'add_new'            => '新しいロボット関連企業を追加',
 		'add_new_item'       => '新規ロボット関連企業',
 		'edit_item'          => 'ロボット関連企業を編集',

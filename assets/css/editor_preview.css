@@ -3,27 +3,6 @@
   \*****************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*----------------------------------------------------------------
-/* 投稿タイトルの見た目
----------------------------------------------------------------- */
-.wp-block.editor-post-title__block {
-  max-width: 1300px;
-}
-
-.editor-post-title__block .editor-post-title__input {
-  font-family: "YakuHanJP", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  text-align: left;
-  font-weight: bold;
-  font-size: 2rem;
-  line-height: 1.4;
-  display: block;
-}
-@media screen and (min-width: 768px ) {
-  .editor-post-title__block .editor-post-title__input {
-    font-size: 3rem;
-  }
-}
-
-/*----------------------------------------------------------------
 aタグ
 ---------------------------------------------------------------- */
 a {
@@ -71,7 +50,6 @@ h2:not(.noteditor) {
   padding: 0.3em 0.8em;
   font-size: clamp(2rem, 2vw, 2.2rem);
   color: #fff;
-  margin-bottom: 0.5em;
   line-height: 1.4;
   position: relative;
   display: block;
@@ -95,7 +73,6 @@ h3:not(.noteditor) {
   padding: 0.4em 0.5em;
   display: block;
   position: relative;
-  margin-bottom: 0.5em;
   border-left: 5px solid #00a2b7;
 }
 @media screen and (min-width: 768px ) {
@@ -124,7 +101,6 @@ h4:not(.noteditor) {
   font-weight: bold;
   line-height: 1.4;
   font-size: 1.6rem;
-  margin-bottom: 0.5em;
   border-bottom: 2px solid #00a2b7;
   color: #00a2b7;
 }
@@ -151,7 +127,6 @@ h5:not(.noteditor) {
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.4;
-  margin-bottom: 0.5em;
   padding-left: 1.2em;
 }
 @media screen and (min-width: 768px ) {
@@ -189,7 +164,6 @@ h6:not(.noteditor) {
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.4;
-  margin-bottom: 0.5em;
 }
 @media screen and (min-width: 768px ) {
   h6[data-type="core/heading"],
@@ -207,27 +181,22 @@ h6.is-style-kazarinashi {
   color: inherit;
 }
 
-* + h2[data-type="core/heading"],
 * + h2:not(.noteditor) {
   margin-top: 2em;
 }
 
-* + h3[data-type="core/heading"],
 * + h3:not(.noteditor) {
   margin-top: 1.5em;
 }
 
-* + h4[data-type="core/heading"],
 * + h4:not(.noteditor) {
   margin-top: 1.5em;
 }
 
-* + h5[data-type="core/heading"],
 * + h5:not(.noteditor) {
   margin-top: 1.5em;
 }
 
-* + h6[data-type="core/heading"],
 * + h6:not(.noteditor) {
   margin-top: 1.5em;
 }
@@ -856,7 +825,7 @@ table td {
   line-height: 1.4;
   margin: 0;
   overflow: visible;
-  padding: 0.5em;
+  padding: clamp(0.5em, 1vw, 1em);
   vertical-align: top;
 }
 table thead th,
@@ -1106,83 +1075,6 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
   line-height: 1.2;
 }
 
-/* Block: Group ------------------------------
-
-.wp-block-group {
-    margin-bottom: 1em;
-}
-
-.wp-block-group.has-background {
-    padding: 15px;
-    margin-bottom: 28px;
-
-    @include config.mq-up(md) {
-        padding: 30px;
-    }
-}
-
-.wp-block-group.is-style-groupBorder {
-    border: 1px solid config.$color-gray;
-    padding: 20px 20px;
-
-    @include config.mq-down(md) {
-        padding: 15px 15px;
-    }
-}
-
-
-
-.wp-block-group__inner-container>*:first-child {
-    margin-top: 0 !important;
-}
-
-.wp-block-group__inner-container>*:last-child {
-    margin-bottom: 0 !important;
-}
-
-.wp-block-heading>.rich-text {
-    margin-top: 0 !important;
-}
-
-
-.wp-block-group [data-type="core/heading"]:first-child * {
-    margin-top: 0;
-}
-
-[data-type="core/group"]>.editor-block-list__block-edit>div>.wp-block-group.has-background>.wp-block-group__inner-container>.editor-inner-blocks>.editor-block-list__layout>.wp-block[data-align="full"],
-[data-type="core/group"][data-align="full"]>.editor-block-list__block-edit>div>.wp-block-group.has-background>.wp-block-group__inner-container>.editor-inner-blocks>.editor-block-list__layout>.wp-block[data-align="full"] {
-    margin-left: 0;
-    width: 100%;
-}
-
-
-
-
-.wp-block {
-    &:not([data-align="wide"]):not([data-align="full"]) div:not([class*="__inner-container"]) .wp-block-group.has-background {
-        @include config.mq-up(md) {
-            padding: 30px;
-        }
-    }
-
-    div[class*="__inner-container"] .wp-block {
-
-        &[data-align="wide"] .wp-block-group.has-background,
-        &[data-align="full"] .wp-block-group.has-background {
-            @include config.mq-up(md) {
-                padding: 30px;
-            }
-        }
-    }
-
-    &[data-align="wide"] .wp-block-group.has-background,
-    &[data-align="full"] .wp-block-group.has-background {
-        @include config.mq-up(md) {
-            padding: 30px;
-        }
-    }
-}
- */
 /* BLOCK: COLUMNS */
 .wp-block-columns {
   margin-bottom: 1em;
@@ -1211,6 +1103,9 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
   }
 }
 
+/*============================
+.roboCom-hero
+============================*/
 .roboCom-hero {
   margin-bottom: 30px;
   color: #fff;
@@ -1345,12 +1240,25 @@ ul.wp-block-archives li li, ul.wp-block-categories li li, ul.wp-block-categories
           align-items: flex-end;
 }
 
---wp--custom--spacing--outer .wp-site-blocks,
-> .is-root-container > .wp-block,
-.edit-post-visual-editor__post-title-wrapper {
-  padding-left: clamp(1.25rem, 5vw, 50px);
-  padding-right: clamp(1.25rem, 5vw, 50px);
-  padding-bottom: 30px;
+/*----------------------------------------------------------------
+/* 投稿タイトルの見た目
+---------------------------------------------------------------- */
+.wp-block.editor-post-title__block {
+  max-width: 1300px;
+}
+
+.editor-post-title__block .editor-post-title__input {
+  font-family: "YakuHanJP", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  text-align: left;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.4;
+  display: block;
+}
+@media screen and (min-width: 768px ) {
+  .editor-post-title__block .editor-post-title__input {
+    font-size: 3rem;
+  }
 }
 
 .edit-post-visual-editor__post-title-wrapper {

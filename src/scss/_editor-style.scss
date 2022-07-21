@@ -8,27 +8,6 @@
 
 
 
-/*----------------------------------------------------------------
-/* 投稿タイトルの見た目
----------------------------------------------------------------- */
-
-.wp-block.editor-post-title__block {
-	max-width: config.$container-max-width-xl;
-}
-
-.editor-post-title__block .editor-post-title__input {
-	font-family: config.$gothic;
-	text-align: left;
-	font-weight: bold;
-	font-size: 2rem;
-	line-height: 1.4;
-	display: block;
-
-	@include config.mq-up(md) {
-		font-size: 3rem;
-	}
-}
-
 
 
 
@@ -77,9 +56,9 @@ wordpressのブロックエディターのロードスタイルが実行され�
 
 
 
-// ---------------------------
-// .roboCom-hero
-// ---------------------------
+/*============================
+.roboCom-hero
+============================*/
 .roboCom-hero {
 	margin-bottom: 30px;
 

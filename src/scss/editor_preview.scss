@@ -1,17 +1,28 @@
 @charset "UTF-8";
-
+@use "config";
 
 
 @import "editor-style";
 
+/*----------------------------------------------------------------
+/* 投稿タイトルの見た目
+---------------------------------------------------------------- */
 
+.wp-block.editor-post-title__block {
+	max-width: config.$container-max-width-xl;
+}
 
---wp--custom--spacing--outer .wp-site-blocks,
->.is-root-container>.wp-block,
-.edit-post-visual-editor__post-title-wrapper {
-	padding-left: clamp(1.25rem, 5vw, 50px);
-	padding-right: clamp(1.25rem, 5vw, 50px);
-	padding-bottom: 30px;
+.editor-post-title__block .editor-post-title__input {
+	font-family: config.$gothic;
+	text-align: left;
+	font-weight: bold;
+	font-size: 2rem;
+	line-height: 1.4;
+	display: block;
+
+	@include config.mq-up(md) {
+		font-size: 3rem;
+	}
 }
 
 

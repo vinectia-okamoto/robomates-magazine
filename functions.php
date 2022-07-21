@@ -26,7 +26,7 @@ $vinectia_includes = array(
 	'/acf.php', // ACFプラグインの設定.
 	'/classes/class-wpwidget-recent-posts-override.php', // ウィジェットで記事タイトル→投稿日付となっているところを投稿日→記事タイトル.
 	/** '/ogp.php', // OGP設定. */
-	/** '/add-category-color-field.php', // カテゴリーに色のカスタムフィールドを追加. */
+	'/add-category-color-field.php', // カテゴリーに色のカスタムフィールドを追加.
 	'/custom-post-type.php', // カスタム投稿タイプ追加.
 	/**  '/mwwpform-custom.php', // MWWFFORMプラグイン設定. */
 	/** '/schimaorg-function.php', // 構造化マークアップ. */
