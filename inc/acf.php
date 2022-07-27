@@ -1,5 +1,4 @@
 <?php
-
 /**
  * ACF Function
  *
@@ -8,21 +7,20 @@
  * @since      2022
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
 <?php
-add_action('acf/init', 'my_acf_init');
-if (!function_exists('my_acf_post_id')) {
+add_action( 'acf/init', 'my_acf_init' );
+if ( ! function_exists( 'my_acf_post_id' ) ) {
 	/******************************************************************
 	 * ブロックテンプレート内で動作するヘルパー。IDを取得したいからです。
 	 ******************************************************************/
-	function my_acf_post_id()
-	{
-		if (is_admin() && function_exists('acf_maybe_get_POST')) {
-			if (intval(acf_maybe_get_POST('post_id') !== null)) {
-				return intval(acf_maybe_get_POST('post_id'));
+	function my_acf_post_id() {
+		if ( is_admin() && function_exists( 'acf_maybe_get_POST' ) ) {
+			if ( intval( acf_maybe_get_POST( 'post_id' ) !== null ) ) {
+				return intval( acf_maybe_get_POST( 'post_id' ) );
 			} else {
 				global $post;
 				return $post->ID;
@@ -42,15 +40,14 @@ if (!function_exists('my_acf_post_id')) {
  * @param string $block_name ブロック名.
  * @param string $field_name フィールド名 .
  ***********************************************/
-function get_acfblock_data($post, $block_name, $field_name)
-{
+function get_acfblock_data( $post, $block_name, $field_name ) {
 	$content = '';
-	if (has_blocks($post->post_content) && !empty($field_name)) {
-		$blocks = parse_blocks($post->post_content);
-		foreach ($blocks as $block) {
-			if ($block['blockName'] === $block_name) {
-				if (isset($block['attrs']['data'][$field_name])) {
-					$content = $block['attrs']['data'][$field_name];
+	if ( has_blocks( $post->post_content ) && ! empty( $field_name ) ) {
+		$blocks = parse_blocks( $post->post_content );
+		foreach ( $blocks as $block ) {
+			if ( $block['blockName'] === $block_name ) {
+				if ( isset( $block['attrs']['data'][ $field_name ] ) ) {
+					$content = $block['attrs']['data'][ $field_name ];
 				}
 			}
 		}
@@ -64,27 +61,24 @@ function get_acfblock_data($post, $block_name, $field_name)
  *
  * @param string $categories .
  ******************************************************************/
-function add_block_categories($categories)
-{
+function add_block_categories( $categories ) {
 	$add_categories = array(
 		array(
 			'slug'  => 'vinectia-original',
 			'title' => 'オリジナル',
 		),
 	);
-	$categories     = array_merge($add_categories, $categories);
+	$categories     = array_merge( $add_categories, $categories );
 	return $categories;
 }
-add_filter('block_categories_all', 'add_block_categories');
+add_filter( 'block_categories_all', 'add_block_categories' );
 
 
 /******************************************************************
  * ブロックエディターのACFプラグイン設定
  ******************************************************************/
-function my_acf_init()
-{
-
-	if (function_exists('acf_register_block')) {
+function my_acf_init() {
+	if ( function_exists( 'acf_register_block' ) ) {
 		global $post_type;
 		acf_register_block(
 			array(
@@ -95,11 +89,14 @@ function my_acf_init()
 				'category'        => 'vinectia-original',
 				'icon'            => 'admin-links',
 				'mode'            => 'auto',
-				'keywords'        => array('企業', '企業紹介', '企業情報', 'ロボット関連企業紹介'),
+				'keywords'        => array( '企業', '企業紹介', '企業情報', 'ロボット関連企業紹介' ),
 				'supports'        => array(
-					'anchor' => true,
-					'align' => true,
-					'spacing' 		=>	['margin' => ['top', 'bottom'], 'padding' => true],
+					'anchor'  => true,
+					'align'   => true,
+					'spacing' => array(
+						'margin'  => array( 'top', 'bottom' ),
+						'padding' => true,
+					),
 				),
 			)
 		);
@@ -112,11 +109,14 @@ function my_acf_init()
 				'category'        => 'vinectia-original',
 				'icon'            => 'admin-links',
 				'mode'            => 'auto',
-				'keywords'        => array('セクション', 'タイトル', '見出し', 'ロボット関連企業紹介'),
+				'keywords'        => array( 'セクション', 'タイトル', '見出し', 'ロボット関連企業紹介' ),
 				'supports'        => array(
-					'anchor' => true,
-					'align' => true,
-					'spacing' 		=>	['margin' => ['top', 'bottom'], 'padding' => true],
+					'anchor'  => true,
+					'align'   => true,
+					'spacing' => array(
+						'margin'  => array( 'top', 'bottom' ),
+						'padding' => true,
+					),
 				),
 			)
 		);
@@ -129,11 +129,14 @@ function my_acf_init()
 				'category'        => 'vinectia-original',
 				'icon'            => 'admin-links',
 				'mode'            => 'auto',
-				'keywords'        => array('ヒーロー', '企業紹介', 'ロボット関連企業紹介'),
+				'keywords'        => array( 'ヒーロー', '企業紹介', 'ロボット関連企業紹介' ),
 				'supports'        => array(
-					'anchor' => true,
-					'align' => true,
-					'spacing' 		=>	['margin' => ['top', 'bottom'], 'padding' => true],
+					'anchor'  => true,
+					'align'   => true,
+					'spacing' => array(
+						'margin'  => array( 'top', 'bottom' ),
+						'padding' => true,
+					),
 				),
 			)
 		);
@@ -146,11 +149,10 @@ function my_acf_init()
  *
  *  @param string $block 上で設定したブロック.
  ******************************************************************/
-function acf_block_load($block)
-{
-	$slug = str_replace('acf/', '', $block['name']);
-	if (file_exists(get_theme_file_path("/template-parts/block/content-{$slug}.php"))) {
-		include get_theme_file_path("/template-parts/block/content-{$slug}.php");
+function acf_block_load( $block ) {
+	$slug = str_replace( 'acf/', '', $block['name'] );
+	if ( file_exists( get_theme_file_path( "/template-parts/block/content-{$slug}.php" ) ) ) {
+		include get_theme_file_path( "/template-parts/block/content-{$slug}.php" );
 	}
 }
 
@@ -159,7 +161,7 @@ function acf_block_load($block)
 /**
  * ACFオプションページ.
  */
-if (function_exists('acf_add_options_page')) {
+if ( function_exists( 'acf_add_options_page' ) ) {
 	acf_add_options_page(
 		array(
 			'page_title' => 'トップページ設定',
@@ -176,114 +178,102 @@ if (function_exists('acf_add_options_page')) {
  * ACF画像にsrcset属性（レスポンシブイメージ）をつける
  * $acf_img_id = get_field('acf_img')
  * <img <?php awesome_acf_responsive_image($acf_img_id,'medium','728px'); ?> class="xxx" >
-************************************************************/
+ ************************************************************/
 /************************************************
-* ACF画像にsrcset属性（レスポンシブイメージ）をつける
-* $acf_img_id = get_field('acf_img')
-* <img <?php awesome_acf_responsive_image($acf_img_id,'medium','728px'); ?> class="xxx">
-*
-* @param string $image_id id.
-* @param string $image_size 引数は（画像ID, サイズ{full,large,medium,thumbnail}, 表示最大幅）.
-* @param string $max_width ピクセルでサイズ指定.
-***********************************************/
-function awesome_acf_responsive_image($image_id, $image_size, $max_width)
-{
-if ('' !== $image_id) {
-/* set the default src image size */
-$image_src = wp_get_attachment_image_url($image_id, $image_size);
-/* set the srcset with various image sizes */
-$image_srcset = wp_get_attachment_image_srcset($image_id, $image_size);
+ * ACF画像にsrcset属性（レスポンシブイメージ）をつける
+ * $acf_img_id = get_field('acf_img')
+ * <img <?php awesome_acf_responsive_image($acf_img_id,'medium','728px'); ?> class="xxx">
+ *
+ * @param string $image_id id.
+ * @param string $image_size 引数は（画像ID, サイズ{full,large,medium,thumbnail}, 表示最大幅）.
+ * @param string $max_width ピクセルでサイズ指定.
+ ***********************************************/
+function awesome_acf_responsive_image( $image_id, $image_size, $max_width ) {
+	if ( '' !== $image_id ) {
+		/* set the default src image size */
+		$image_src = wp_get_attachment_image_url( $image_id, $image_size );
+		/* set the srcset with various image sizes */
+		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
 
-/* generate the markup for the responsive image */
-echo 'src="' . esc_url($image_src) . '" srcset="' . esc_url($image_srcset) . '" sizes="(max-width: ' . esc_attr($max_width) . ') 100vw, ' . esc_attr($max_width) . '"';
-}
+		/* generate the markup for the responsive image */
+		echo 'src="' . esc_url( $image_src ) . '" srcset="' . esc_url( $image_srcset ) . '" sizes="(max-width: ' . esc_attr( $max_width ) . ') 100vw, ' . esc_attr( $max_width ) . '"';
+	}
 }
 /******************************
-* Set the max image width.
-******************************/
-function awesome_acf_max_srcset_image_width()
-{
-return 1800;
+ * Set the max image width.
+ ******************************/
+function awesome_acf_max_srcset_image_width() {
+	return 1800;
 }
-add_filter('max_srcset_image_width', 'awesome_acf_max_srcset_image_width', 10, 2);
+add_filter( 'max_srcset_image_width', 'awesome_acf_max_srcset_image_width', 10, 2 );
 
 
 
-if (!function_exists('acf_img')) {
-/************************************************
-* ACF画像の呼び出し v1.1
-* acf_img('項目名','サイズ','種類');
-* 種類：photo、url、alt、title、caption
-* 種類とサイズは省略可能。
-* サイズ→full
-* 種類→imgタグが呼び出されます。
-* CF画像の返り値は必ず「画像オブジェクト」にする。
-* <?php acf_img('メイン画像'); ?>
-* <?php acf_img('メイン画像','w254'); ?>
-* <?php acf_img('画像','row'); ?>
-*
-* @param string $str str.
-* @param string $size_name WPのサイズ.
-* @param string $type WPのサイズ.
-* @param string $row ROW.
-* **********************************************/
-function acf_img($str, $size_name = 'full', $type = 'photo', $row = '')
-{
-/* 空入力を有効に */
-if ('' === $type) {
-$type = 'photo';
-}
-/* rowを第2因数以降でも有効に */
-if ('row' === $size_name || 'row' === $type) {
-$row = 'row';
-$type = 'photo';
-if ('row' === $size_name) {
-$size_name = 'full';
-}
-}
+if ( ! function_exists( 'acf_img' ) ) {
+	/************************************************
+	 * Acf_img.
+	 *
+	 * @param tring  $str 値.
+	 * @param string $size_name WPのサイズ.
+	 * @param string $type WPのサイズ.
+	 * @param string $row ROW.
+	 **********************************************/
+	function acf_img( $str, $size_name = 'full', $type = 'photo', $row = '' ) {
+		/* 空入力を有効に */
+		if ( '' === $type ) {
+			$type = 'photo';
+		}
+		/* rowを第2因数以降でも有効に */
+		if ( 'row' === $size_name || 'row' === $type ) {
+			$row  = 'row';
+			$type = 'photo';
+			if ( 'row' === $size_name ) {
+				$size_name = 'full';
+			}
+		}
 
-/* rowの処理 */
-if ('row' !== $row) {
-$image = get_field($str);
-} else {
-/* 繰り返し（repeater）の画像呼び出し */
-$image = get_sub_field($str);
-}
+		/* rowの処理 */
+		if ( 'row' !== $row ) {
+			$image = get_field( $str );
+		} else {
+			/* 繰り返し（repeater）の画像呼び出し */
+			$image = get_sub_field( $str );
+		}
 
-/* 画像情報の読み込み */
-if (!empty($image)) {
-// vars.
-$url = $image['url'];
-$alt = $image['alt'];
-$title = $image['title'];
-$caption = $image['caption'];
+		/* 画像情報の読み込み */
+		if ( ! empty( $image ) ) {
+			// vars.
+			$url     = $image['url'];
+			$alt     = $image['alt'];
+			$title   = $image['title'];
+			$caption = $image['caption'];
 
-// Resize.
-if (('' !== $size_name) && ('full' !== $size_name)) {
-$thumb = $image['sizes'][$size_name];
-} else {
-$thumb = $url;
-}
+			// Resize.
+			if ( ( '' !== $size_name ) && ( 'full' !== $size_name ) ) {
+				$thumb = $image['sizes'][ $size_name ];
+			} else {
+				$thumb = $url;
+			}
 
-switch ($type) {
-case 'photo':
-$photo = '<img src="' . $thumb . '" alt="' . $alt . '" />';
-break;
-case 'url':
-$photo = $thumb;
-break;
-case 'alt':
-$photo = $image['alt'];
-break;
-case 'title':
-$photo = $image['title'];
-break;
-case 'caption':
-$photo = $image['caption'];
-break;
-}
+			switch ( $type ) {
+				case 'photo':
+					$photo = '<img src="' . $thumb . '" alt="' . $alt . '" />';
+					break;
+				case 'url':
+					$photo = $thumb;
+					break;
+				case 'alt':
+					$photo = $image['alt'];
+					break;
+				case 'title':
+					$photo = $image['title'];
+					break;
+				case 'caption':
+					$photo = $image['caption'];
+					break;
+			}
 
-echo wp_kses_post($photo);
-}
-}
+			echo wp_kses_post( $photo );
+		}
+	}
 }

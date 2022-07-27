@@ -74,8 +74,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 										'container'      => false,
 										'depth'          => 2,
 										'items_wrap'     => '%3$s',
-										'add_li_class'   => 'sss',
-									/** 'walker'         => new PC_Custom_Walker() */
 									)
 								);
 								?>

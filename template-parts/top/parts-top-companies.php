@@ -22,24 +22,9 @@ $args = array(
 			<p class="topCompanies-txt">ロボットを導入して業務に活用している「ロボット導入企業」、 ロボットを使用した機械システムの導入提案や設計、組立などを行う「ロボットシステムインテグレータ」、ロボットの「開発企業」など、ロボットに関連した事業を行っている会社をご紹介します。</p>
 			<div class="topCompanies-chara-women"><img class="" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/top/topCompanies-chara-women.png' ); ?>" alt="" /></div>
 		</div>
-		<div class="topCompanies-searchArea">
-		<div class="search-form">
 
-<form method="get" action="<?php bloginfo( 'url' ); ?>">
-<div>カテゴリ</div>
-<?php
-$setterms = get_terms( 'companies_category' );
-foreach ( $setterms as $setterm ) :
-	?>
-<label><input type="checkbox" name="selectcats[]" value="<?php echo $setterm->term_id; ?>"><?php echo $setterm->name; ?></label><br>
-<?php endforeach; ?>
+		<?php get_template_part( 'template-parts/parts-search-form' ); ?>
 
-		<input type="hidden" name="post_type" value="companies">
-		<input type="text" name="s" id="s" value="<?php echo get_search_query(); ?>" placeholder="キーワードを入力">
-		<input type="submit" value="検索">
-</form>
-
-		</div>
 		<?php
 		$the_query = new WP_Query( $args );
 		if ( $the_query->have_posts() ) :

@@ -12,28 +12,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
-global $wp_query;
 
 $search_query = get_search_query();
+global $post;
+$thispaged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$companiesquery = '';
+$selectcats_id  = '';
+$selectareas_id = '';
 if ( isset( $_GET['selectcats'] ) ) {
-	$selectcats_id = filter_input( INPUT_GET, 'selectcats', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-
-}
-
-$companiesquery = array(
-	array(
+	$selectcats_id    = filter_input( INPUT_GET, 'selectcats', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+	$array_selectcats = array(
 		'taxonomy'         => 'companies_category',
 		'terms'            => $selectcats_id,
 		'include_children' => false,
 		'field'            => 'term_id',
 		'operator'         => 'IN',
-	),
-);
-$args           = array(
+	);
+	wp_parse_args( $companiesquery, $array_selectcats );
+}
+
+if ( isset( $_GET['selectareas'] ) ) {
+	$selectareas_id    = filter_input( INPUT_GET, 'selectareas', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+	$array_selectareas = array(
+		'taxonomy'         => 'companies_area',
+		'terms'            => $selectareas_id,
+		'include_children' => false,
+		'field'            => 'term_id',
+		'operator'         => 'IN',
+	);
+	wp_parse_args( $companiesquery, (array) $array_selectareas );
+}
+
+
+$args      = array(
+	'paged'          => $thispaged,
+	'post_status'    => 'publish',
+	'orderby'        => 'date',
+	'order'          => 'DESC',
+	'post_type'      => 'companies',
 	'tax_query'      => $companiesquery,
-	'posts_per_page' => -1,
+	'posts_per_page' => 15,
+	's'              => get_search_query(),
 );
-$the_query      = new WP_Query( $args );
+$the_query = new WP_Query( $args );
 
 $total_results = $the_query->found_posts;
 ?>
@@ -67,48 +89,74 @@ get_header();
 <div class="editor-styles-wrapper">
 <div class="reslut-txt">
 
-<?php
-if ( $search_query || $selectcats_id ) :
-	?>
-<p class="mb20">
-	<?php
-	if ( $selectcats_id ) {
-		echo 'カテゴリ：';
-		$loopcount = 1;
-		$countall  = count( $selectcats_id );
-		foreach ( $selectcats_id as $selectcat_id ) {
-			if ( ( 1 === $loopcount ) ) {
-				echo '「';
-			}
-			$setterm      = get_term( $selectcat_id );
-			$setterm_name = $setterm->name;
-			echo esc_html( $setterm_name );
 
-			if ( ! ( $countall === $loopcount ) ) {
-				echo '、';
-			} else {
-				echo '」';
-			}
-			$loopcount ++;
-		}
-		if ( $search_query ) {
-			echo '＋';}
-	}
-	if ( $search_query ) {
-		echo 'キーワード「' . esc_html( $search_query ) . '」';
-	};
-	?>
-	の検索結果：<?php echo esc_html( $total_results ); ?>件見つかりました。</p>
-
-<?php else : ?>
-<p class="mb20">申し訳有りません。見つかりませんでした。</p>
-<?php endif; ?>
 </div>
 </div>
 <?php
 if ( $the_query->have_posts() ) :
 	?>
-		<div class="container">
+
+
+	<div class="container">
+	<?php
+	if ( $search_query || $selectcats_id || $selectareas_id ) :
+		?>
+<p class="mb20">
+		<?php
+		if ( $selectcats_id ) {
+			echo 'カテゴリ：';
+			$loopcount = 1;
+			$countall  = count( $selectcats_id );
+			foreach ( $selectcats_id as $selectcat_id ) {
+				if ( ( 1 === $loopcount ) ) {
+					echo '「';
+				}
+				$setterm      = get_term( $selectcat_id );
+				$setterm_name = $setterm->name;
+				echo esc_html( $setterm_name );
+
+				if ( ! ( $countall === $loopcount ) ) {
+					echo '、';
+				} else {
+					echo '」';
+				}
+				$loopcount ++;
+			}
+			if ( $search_query || $selectareas_id ) {
+				echo '＋';}
+		}
+		if ( $selectareas_id ) {
+			echo 'エリア：';
+			$loopcount = 1;
+			$countall  = count( $selectareas_id );
+			foreach ( $selectareas_id as $selectarea_id ) {
+				if ( ( 1 === $loopcount ) ) {
+					echo '「';
+				}
+				$setterm      = get_term( $selectarea_id );
+				$setterm_name = $setterm->name;
+				echo esc_html( $setterm_name );
+
+				if ( ! ( $countall === $loopcount ) ) {
+					echo '、';
+				} else {
+					echo '」';
+				}
+				$loopcount ++;
+			}
+			if ( $search_query ) {
+				echo '＋';}
+		}
+
+		if ( $search_query ) {
+			echo 'キーワード「' . esc_html( $search_query ) . '」';
+		};
+		?>
+	の検索結果：<?php echo esc_html( $total_results ); ?>件見つかりました。</p>
+	<?php else : ?>
+		<p class="mb20">検索結果：<?php echo esc_html( $total_results ); ?>件見つかりました。</p>
+	<?php endif; ?>
+
 	<ul class="companiesList noteditor">
 	<?php
 	while ( $the_query->have_posts() ) :
@@ -158,7 +206,9 @@ if ( $the_query->have_posts() ) :
 	</div>
 
 <?php else : // 該当なしの場合. ?>
+	<div class="container">
 <h2><?php echo esc_html( $search_query ); ?> に一致する情報は見つかりませんでした。</h2>
+</div>
 <?php endif; ?>
 </div>
 <!-- ▲.contentMain▲ -->

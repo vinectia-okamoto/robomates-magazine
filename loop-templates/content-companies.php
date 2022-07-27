@@ -30,8 +30,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	if ( is_singular( 'companies' ) ) {
 		global $post;
-		$thisterm = array_shift( get_the_terms( $post->ID, 'companies_category' ) );
-		$args     = array(
+		$array_shift_terms = get_the_terms( $post->ID, 'companies_category' );
+		$thisterm          = array_shift( $array_shift_terms );
+		$args              = array(
 			'orderby'      => 'rand',
 			'order'        => 'DESC',
 			'post_type'    => 'companies',
@@ -57,4 +58,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php get_template_part( 'template-parts/parts-companies-card' ); ?>
 	</div>
 	<?php endif; ?>
+	<hr>
+	<div class="container">
+	<?php get_template_part( 'template-parts/parts-search-form' ); ?>
+	</div>
+
 </article><!-- #post-## -->

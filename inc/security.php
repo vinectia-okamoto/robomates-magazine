@@ -1,10 +1,9 @@
 <?php
 /**
- * セキュリティ Function
+ * セキュリティ設定.
  *
  * @package    WordPress
- * @subpackage Robomates_Magezine
- * @since      2022
+ * @since vinectia
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,10 +20,8 @@ function no_generator() {
 add_filter( 'the_generator', 'no_generator' );
 
 /******************************************************************************************
- * wp_headの不必要なもの削除
-*/
-/*
-Clean up wp_head() from unused or unsecure stuff
+ * Wp_headの不必要なもの削除
+ * Clean up wp_head() from unused or unsecure stuff
 */
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'rsd_link' );
@@ -36,48 +33,40 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles', 10 );
-/*
-rel="canonical"が不要
-*/
+
+// rel="canonical"が不要.
 remove_action( 'wp_head', 'rel_canonical' );
 
 
-/*
- * oembedを無効
-*/
+// oembedを無効.
 remove_action( 'wp_head', 'rest_output_link_wp_head' );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 
 
-/**************************************************
-* api.w.orgリンクの削除
-*/
+
+// api* .w.orgリンクの削除.
 remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 
 
 
-/******************************************************************************************
- * プラグインのバージョン情報を非表示にする方法
- ******************************************************************************************/
-function remove_cssjs_ver2( $src ) {
-	if ( strpos( $src, 'ver=' ) ) {
-		$src = remove_query_arg( 'ver', $src );
-	}
-	return $src;
-}
-add_filter( 'style_loader_src', 'remove_cssjs_ver2', 9999 );
-add_filter( 'script_loader_src', 'remove_cssjs_ver2', 9999 );
 
 /******************************************************************************************
- * wp_enqueue_styleとかから id, type, mediaをとる
+ * Wp_enqueue_styleとかから 余計な情報をとる
+ *
+ * @param string $tag タグ.
  ******************************************************************************************/
 function remove_script_type( $tag ) {
 	$tag = preg_replace( array( "| type='.+?'s*|", "| id='.+?'s*|", "| media='.+?'s*|", '| />|' ), array( ' ', ' ', '>' ), $tag );
 	return $tag;
 }
-
 add_filter( 'script_loader_tag', 'remove_script_type' );
+
+/******************************************************************************************
+ * Wp_enqueue_scriptとかから 余計な情報をとる
+ *
+ * @param string $tag タグ.
+ ******************************************************************************************/
 function remove_style_type( $tag ) {
 	$tag = preg_replace( array( "| type='.+?'s*|", "| id='.+?'s*|", '| />|' ), array( ' ', ' ', '>' ), $tag );
 	return $tag;
@@ -96,7 +85,7 @@ function show_less_login_info() {
 add_filter( 'login_errors', 'show_less_login_info' );
 
 /******************************************************************************************
- * .recentcommentsを消す
+ * Recentcommentsを消す
  ******************************************************************************************/
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
@@ -105,9 +94,15 @@ function remove_recent_comments_style() {
 add_action( 'widgets_init', 'remove_recent_comments_style' );
 
 /******************************************************************************************
- * XML-RPCを無効
-*/
+ * XML-RPCを無効.
+ */
 add_filter( 'xmlrpc_enabled', '__return_false' );
+
+/******************************************************************************************
+ * X-Pingbackをとる
+ *
+ * @param string $headers ヘッダー情報.
+ ******************************************************************************************/
 function remove_x_pingback( $headers ) {
 	unset( $headers['X-Pingback'] );
 	return $headers;
@@ -119,7 +114,7 @@ add_filter( 'wp_headers', 'remove_x_pingback' );
  **************************************************/
 function author_archive_redirect() {
 	if ( is_author() ) {
-		wp_redirect( home_url() );
+		wp_safe_redirect( home_url() );
 		exit;
 	}
 }

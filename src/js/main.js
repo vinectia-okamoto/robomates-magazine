@@ -3,6 +3,8 @@ import Ukiyo from "ukiyojs";
 import gsap from "gsap";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+import smoothScroll from 'smooth-scroll';
+import Choices from 'choices.js';
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 gsap
@@ -119,6 +121,59 @@ ttl__clips.forEach((ttl__clip, index) => {
 
 
 
+/**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+検索の部分
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
+document.addEventListener('DOMContentLoaded', function() {
+		//カテゴリ選択選択
+	const search_area = document.querySelectorAll(".searchArea");
+	if( search_area !== null){
+		const cat_select_elem = document.getElementById('cat-select');
+    cat_select_elem.choices = new Choices(
+		cat_select_elem,
+      {allowHTML: true,
+		editItems: false,
+		placeholder: true,
+		placeholderValue: 'カテゴリを選択してください',
+		searchPlaceholderValue: null,
+        removeItemButton: true,
+		noChoicesText: '選択されていません',
+    itemSelectText: '選択してください',
+	shouldSort: false,
+      },
+    );
+
+	//エリア選択
+    var area_select_elem = document.getElementById('area-select');
+    area_select_elem.choices = new Choices(
+		area_select_elem,
+      {allowHTML: true,
+		editItems: false,
+		placeholder: true,
+		placeholderValue: 'エリアを選択してください',
+		searchPlaceholderValue: null,
+        removeItemButton: true,
+		noChoicesText: '選択されていません',
+    itemSelectText: '選択してください',
+	shouldSort: false,
+      },
+    );
+
+
+
+
+
+
+const choices = document.querySelectorAll('.choices__input');
+
+choices.forEach(elem => {
+	elem.readOnly = true ;
+});
+
+}
+});
+
+
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 imageUkyo
@@ -172,12 +227,19 @@ let ulElements = element.getElementsByTagName("ul");
 Array.prototype.forEach.call(ulElements, function (element) {
 let thisParent = element.parentNode;
 if(thisParent){
-element.parentNode.classList.add("menu-item-has-children");
+thisParent.classList.add("menu-item-has-children");
 let　linksurl = thisParent.querySelector("a").href;
 let linkstxt = thisParent.querySelector("a").textContent;
 
+let elementWidth = thisParent.clientWidth;
+let elementPositionLeft = thisParent.getBoundingClientRect().left;
+let windowWidth = document.documentElement.clientWidth;
 
-
+console.log(elementPositionLeft);
+console.log(windowWidth);
+if(elementPositionLeft + 400 >windowWidth ){
+	thisParent.classList.add("rightmode");
+}
 if (linksurl) {
 element.outerHTML = '<div class="globalNavi-child"><p class="globalNavi-child-index"><a href="' + linksurl + '">' + linkstxt + '一覧</p>' + element.outerHTML + '</div>';
 }else{
@@ -213,24 +275,16 @@ behavior: 'smooth'
 
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-* smooth scroll
+* smooth-scroll function
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー**/
-const smoothScroll = document.querySelectorAll('a[href^="#"]');
-for (let i = 0; i < smoothScroll.length; i++) {
-smoothScroll[i].addEventListener('click', (e) => {
-e.preventDefault();
-let href = smoothScroll[i].getAttribute('href');
-let targetElement = document.getElementById(href.replace('#', ''));
-const rect = targetElement.getBoundingClientRect().top;
-const offset = window.pageYOffset;
-const gap = 60;
-const target = rect + offset - gap;
-window.scrollTo({
-top: target,
-behavior: 'smooth',
-});
-});
-}
+let smoothScrollOptions = {
+	speed: 300,//1000px進むスピード
+	easing: 'easeInOutCubic',//イージング
+	offset: 0,//停止位置
+	updateURL: false
+  };
+
+  let scroll = new smoothScroll('a[href*="#"]', smoothScrollOptions);
 
 
 /**ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー

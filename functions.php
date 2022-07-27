@@ -22,7 +22,6 @@ $vinectia_includes = array(
 	'/postnavi-pagenation.php', // ポストナビゲーションとページネーション設定.
 	'/shortcode.php', // ショートコード.
 	'/block-patterns.php', // ブロックパターン.
-
 	'/acf.php', // ACFプラグインの設定.
 	'/classes/class-wpwidget-recent-posts-override.php', // ウィジェットで記事タイトル→投稿日付となっているところを投稿日→記事タイトル.
 	/** '/ogp.php', // OGP設定. */
@@ -31,8 +30,6 @@ $vinectia_includes = array(
 	/**  '/mwwpform-custom.php', // MWWFFORMプラグイン設定. */
 	/** '/schimaorg-function.php', // 構造化マークアップ. */
 	/** '/search-function.php',  //検索カスタム（カスタム投稿ある場合）. */
-	/** '/pdf-manual.php',  //PDFマニュアル. */
-
 );
 foreach ( $vinectia_includes as $file ) {
 	$filepath = locate_template( 'inc' . $file );

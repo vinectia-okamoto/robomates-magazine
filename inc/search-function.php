@@ -12,13 +12,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
- /*****************************
-  * WordPress内の検索対象にカスタムフィールドも適用する
-  *****************************/
+/**
+ * WordPress内の検索対象にカスタムフィールドも適用する
+ *
+ * @param string $search  検索.
+ * @param string $wp_query  クエリ.
+ */
 function custom_search( $search, $wp_query ) {
 
 	$target_posttype = array( 'post', 'page' );
-	// template-tag.phpにあるカスタム投稿取得する関数
+	// template-tag.phpにあるカスタム投稿取得する関数.
 	$use_customposttypes = nxw_get_custom_post_types();
 	array_push( $target_posttype, $use_customposttypes );
 
@@ -37,31 +40,32 @@ function custom_search( $search, $wp_query ) {
 			if ( ! empty( $word ) ) {
 				$search_word = '%' . esc_sql( $word ) . '%';
 				$search     .= " AND (
-                 {$wpdb->posts}.post_title LIKE '{$search_word}'
+{$wpdb->posts}.post_title LIKE '{$search_word}'
                 OR {$wpdb->posts}.post_content LIKE '{$search_word}'
                 OR {$wpdb->posts}.ID IN (
                 SELECT distinct post_id
                 FROM {$wpdb->postmeta}
                 WHERE meta_value LIKE '{$search_word}'
                 )
-              ) ";
-
+) ";
 			}
 		}
 	}
 	return $search;
 }
-// add_filter('posts_search','custom_search', 10, 2);
+// @ add_filter('posts_search','custom_search', 10, 2);
 
 
- /*****************************
-  * 検索結果のカスタマイズ
-  * 特定のカスタム投稿タイプを指定したり除外したりします。
-  *****************************/
+/*****************************
+ * 検索結果のカスタマイズ
+ * 特定のカスタム投稿タイプを指定したり除外したりします。
+ *
+ * @param string $query  クエリ.
+ *****************************/
 function include_custom_post_search( $query ) {
 
 	$target_posttype = array( 'post', 'page' );
-	// template-tag.phpにあるカスタム投稿取得する関数
+	// template-tag.phpにあるカスタム投稿取得する関数.
 	$use_customposttypes = nxw_get_custom_post_types();
 	array_push( $target_posttype, $use_customposttypes );
 
@@ -74,22 +78,23 @@ add_filter( 'pre_get_posts', 'include_custom_post_search', 10, 1 );
 
 
 
-
- /*****************************
-検索対象を『タイトルのみ』にする
-  *****************************/
-
-function __search_by_title_only( $search, &$wp_query ) {
+/**
+ * 検索対象を『タイトルのみ』にする
+ *
+ * @param string $search  検索.
+ * @param string $wp_query  クエリ.
+ */
+function search_by_title_only( $search, &$wp_query ) {
 	global $wpdb;
 	if ( empty( $search ) ) {
-		return $search; // skip processing - no search term in query
+		return $search; // skip processing - no search term in query.
 	}
 	$q         = $wp_query->query_vars;
 	$n         = ! empty( $q['exact'] ) ? '' : '%';
-	$search    =
+	$search    = '';
 	$searchand = '';
 	foreach ( (array) $q['search_terms'] as $term ) {
-		$term      = esc_sql( like_escape( $term ) );
+		$term      = esc_sql( $wpdb->esc_like( $term ) );
 		$search   .= "{$searchand}($wpdb->posts.post_title LIKE '{$n}{$term}{$n}')";
 		$searchand = ' AND ';
 	}
@@ -101,4 +106,4 @@ function __search_by_title_only( $search, &$wp_query ) {
 	}
 	return $search;
 }
-// add_filter( 'posts_search', '__search_by_title_only', 500, 2 );// （※２）
+// @ add_filter( 'posts_search', 'search_by_title_only', 500, 2 );// （※２）

@@ -2,13 +2,30 @@
 @use "config";
 
 
+/*----------------------------------------------------------------
+wordpressのブロックエディターのロードスタイルが実行されています。上書きしたいスタイルを各所変更してください。
+---------------------------------------------------------------- */
 
-
-
-
-
-
-
+@use "customize_block/heading.scss";
+@use "customize_block/paragraph.scss";
+@use "customize_block/list.scss";
+@use "customize_block/dl.scss";
+@use "customize_block/separator.scss";
+@use "customize_block/quote.scss";
+@use "customize_block/code-verse-preformatted.scss";
+@use "customize_block/button.scss";
+@use "customize_block/input.scss";
+@use "customize_block/table.scss";
+@use "customize_block/shared_widget_styles.scss";
+@use "customize_block/shared_media_styles.scss";
+@use "customize_block/shortcode.scss";
+@use "customize_block/embed.scss";
+@use "customize_block/file.scss";
+@use "customize_block/image.scss";
+@use "customize_block/gallery.scss";
+@use "customize_block/group.scss";
+@use "customize_block/columns.scss";
+@use "customize_block/mediaText.scss";
 
 
 
@@ -28,31 +45,6 @@ a:hover {
 
 
 
-
-
-/*----------------------------------------------------------------
-wordpressのブロックエディターのロードスタイルが実行されています。上書きしたいスタイルを各所変更してください。
----------------------------------------------------------------- */
-@import "customize_block/heading.scss";
-@import "customize_block/paragraph.scss";
-@import "customize_block/list.scss";
-@import "customize_block/dl.scss";
-@import "customize_block/separator.scss";
-@import "customize_block/quote.scss";
-@import "customize_block/code-verse-preformatted.scss";
-@import "customize_block/button.scss";
-@import "customize_block/input.scss";
-@import "customize_block/table.scss";
-@import "customize_block/shared_widget_styles.scss";
-@import "customize_block/shared_media_styles.scss";
-@import "customize_block/shortcode.scss";
-@import "customize_block/embed.scss";
-@import "customize_block/file.scss";
-@import "customize_block/image.scss";
-@import "customize_block/gallery.scss";
-@import "customize_block/group.scss";
-@import "customize_block/columns.scss";
-@import "customize_block/mediaText.scss";
 
 
 

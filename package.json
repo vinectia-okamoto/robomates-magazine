@@ -34,12 +34,11 @@
 	},
 	"private": true,
 	"dependencies": {
+		"choices.js": "^10.1.0",
 		"gsap": "^3.10.4",
-		"is_js": "^0.9.0",
 		"jquery": "^3.6.0",
+		"smooth-scroll": "^16.1.3",
 		"swiper": "^8.2.4",
-		"three": "^0.142.0",
-		"three.js": "^0.77.0",
 		"ukiyojs": "^3.0.2"
 	}
 }

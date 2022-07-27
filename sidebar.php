@@ -25,6 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 		echo '</ul>';
 		echo '</aside>';
+
+		get_template_part( 'template-parts/parts-search-form' );
 	} else {
 		if ( is_active_sidebar( 'side-widgets' ) ) {
 			dynamic_sidebar( 'side-widgets' );}

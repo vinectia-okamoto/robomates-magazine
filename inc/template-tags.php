@@ -390,7 +390,7 @@ function get_most_parent_page( $current_id = '' ) {
  */
 if ( ! function_exists( 'nxw_get_custom_post_types' ) ) {
 	function nxw_get_custom_post_types( $ignore_post_types = '' ) {
-		 $always_ignore_post_types = array( '{post_type}' );
+		$always_ignore_post_types = array( '{post_type}' );
 
 		if ( ! is_array( $ignore_post_types ) ) {
 			$ignore_post_types = $ignore_post_types ? array( $ignore_post_types ) : array();
