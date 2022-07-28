@@ -16641,23 +16641,13 @@ gnavilinks.forEach(function (element) {
     var thisParent = element.parentNode;
 
     if (thisParent) {
-      thisParent.classList.add("menu-item-has-children");
-      var linksurl = thisParent.querySelector("a").href;
-      var linkstxt = thisParent.querySelector("a").textContent;
+      console.log(thisParent);
       var elementWidth = thisParent.clientWidth;
       var elementPositionLeft = thisParent.getBoundingClientRect().left;
       var windowWidth = document.documentElement.clientWidth;
-      console.log(elementPositionLeft);
-      console.log(windowWidth);
 
       if (elementPositionLeft + 400 > windowWidth) {
         thisParent.classList.add("rightmode");
-      }
-
-      if (linksurl) {
-        element.outerHTML = '<div class="globalNavi-child"><p class="globalNavi-child-index"><a href="' + linksurl + '">' + linkstxt + '一覧</p>' + element.outerHTML + '</div>';
-      } else {
-        element.outerHTML = '<div class="globalNavi-child">' + element.outerHTML + '</div>';
       }
     }
   });

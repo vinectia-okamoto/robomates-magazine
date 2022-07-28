@@ -227,28 +227,22 @@ let ulElements = element.getElementsByTagName("ul");
 Array.prototype.forEach.call(ulElements, function (element) {
 let thisParent = element.parentNode;
 if(thisParent){
-thisParent.classList.add("menu-item-has-children");
-let　linksurl = thisParent.querySelector("a").href;
-let linkstxt = thisParent.querySelector("a").textContent;
-
+	console.log(thisParent);
 let elementWidth = thisParent.clientWidth;
 let elementPositionLeft = thisParent.getBoundingClientRect().left;
 let windowWidth = document.documentElement.clientWidth;
 
-console.log(elementPositionLeft);
-console.log(windowWidth);
+
+
 if(elementPositionLeft + 400 >windowWidth ){
-	thisParent.classList.add("rightmode");
+    thisParent.classList.add("rightmode");
 }
-if (linksurl) {
-element.outerHTML = '<div class="globalNavi-child"><p class="globalNavi-child-index"><a href="' + linksurl + '">' + linkstxt + '一覧</p>' + element.outerHTML + '</div>';
-}else{
-element.outerHTML = '<div class="globalNavi-child">' + element.outerHTML + '</div>';
-}
+
 }
 
 });
 });
+
 
 
 

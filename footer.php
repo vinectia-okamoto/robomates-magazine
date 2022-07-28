@@ -19,12 +19,11 @@ if ( is_front_page() && is_home() ) {
 					<div class="footer-leftArea">
 						<h4 class="footer-logo"><a href=""><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/site-logo-w.svg' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a></h4>
 						<div class="footer-address">
-							<p clas="companyname"><span>運営企業：</span><span>株式会社エアグラウンド</span></p>
+							<p class="companyname"><span>運営企業：</span><span>株式会社エアグラウンド</span><br><span class="txtsmall">（FA・ロボットシステムインテグレータ協会会員企業）</span></p>
 							<p class="address"><span>〒661-0033</span> <span>兵庫県尼崎市南武庫之荘2丁目 2-7</span> <span>新井ビル2F</span></p>
-						</div>
-
-						<p class="footer-tel"><span class="tel">TEL:06-6435-9992</span><span>FAX:06-6435-9982</span></p>
+							<p class="footer-tel"><span class="tel">TEL:06-6435-9992</span><span>FAX:06-6435-9982</span></p>
 						<p class="footer-tel-hosoku">電話受付：8:30〜17:30／土日・祝日・年末年始除く</p>
+						</div>
 					</div>
 					<div class="footer-rightArea">
 						<div class="footer-btnArea">

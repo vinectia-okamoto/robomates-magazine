@@ -6450,7 +6450,7 @@ wrapper
   }
 }
 .header-logoArea {
-  max-width: 200px;
+  max-width: 180px;
   transition: all 0.3s ease;
 }
 @media screen and (min-width: 1100px ) {
@@ -6534,6 +6534,7 @@ wrapper
   border-radius: 20px;
   display: block;
   transition: all 0.3s ease;
+  font-size: 1.4rem;
 }
 .header-loginBtn a:hover {
   background-color: #007EFF;
@@ -6583,12 +6584,9 @@ wrapper
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
 }
-.globalNavi-links .sub-menu {
-  display: none;
-}
-.globalNavi-links > li.rightmode .globalNavi-child {
-  right: 0;
-  left: initial;
+.globalNavi-links .rightmode {
+  right: 0 !important;
+  left: initial !important;
 }
 .globalNavi-links .globalNavi-child {
   transition: all 0.4s;
@@ -6610,14 +6608,16 @@ wrapper
     width: 300px;
   }
 }
+.globalNavi-links .globalNavi-child-index {
+  margin-bottom: 15px;
+}
 .globalNavi-links .globalNavi-child-index a {
-  padding: 0 0 20px;
+  padding: 0 2em 20px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: block;
   position: relative;
   color: #000;
   line-height: 1.4;
-  padding-right: 2em;
 }
 .globalNavi-links .globalNavi-child-index a::before {
   position: absolute;
@@ -6941,7 +6941,7 @@ sp_btn
 }
 @media screen and (min-width: 768px ) {
   .footer-row {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr minmax(360px, 1fr);
   }
 }
 .footer-leftArea {
@@ -6969,28 +6969,43 @@ sp_btn
   opacity: 0.8;
 }
 .footer-address {
-  line-height: 1.6;
+  line-height: 1.4;
   font-size: 1.4rem;
   color: #fff;
 }
 .footer-address .companyname {
   font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 .footer-address .companyname span {
   display: inline-block;
+}
+.footer-address .address {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 .footer-address .address span {
   display: inline-block;
 }
 .footer-tel {
   font-weight: bold;
-  line-height: 1.6;
+  line-height: 1.2;
   color: #fff;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
-  gap: 1em;
+  margin-bottom: 5px;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+@media screen and (min-width: 768px ) {
+  .footer-tel {
+    -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+  }
 }
 .footer-tel span {
   display: inline-block;
@@ -7091,6 +7106,7 @@ sp_btn
 #pagetop backtotop
 ========================================================= */
 .pagetop {
+  border: 1px solid #fff;
   width: 40px;
   height: 40px;
   background-color: #00a2b7;

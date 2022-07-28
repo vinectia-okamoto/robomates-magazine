@@ -16,7 +16,7 @@ $vinectia_includes = array(
 	'/theme-function.php', // その他テーマの設定.
 	'/dashboad-function.php', // ダッシュボードの設定.
 	'/widgets-function.php', // ウィジェット設定.
-	// '/class-custom-walker.php', // カスタムウォーカーメニュー追加.
+	'/class-custom-walker.php', // カスタムウォーカーメニュー追加.
 	'/security.php', // セキュリティ設定.
 	'/template-tags.php',  // テンプレートタグ設定.
 	'/postnavi-pagenation.php', // ポストナビゲーションとページネーション設定.

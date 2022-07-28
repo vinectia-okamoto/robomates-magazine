@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function vinectia_menus() {
 	$locations = array(
+		'headerBtn'  => 'ヘッダーボタン',
 		'globalNavi' => 'グローバルメニュー',
 		'spNavi'     => 'スマホメニュー',
 		'footerNavi' => 'フッターメニュー',

@@ -11,191 +11,157 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-<?php
-	/**
-	 * ファイル名の警告対策
-	 */
-class Custom_Walker extends Walker_Nav_Menu {
-
-}
-?>
-
 
 <?php
-if ( ! class_exists( 'PC_Custom_Walker' ) ) {
+
+if ( ! class_exists( 'Custom_Walker' ) ) {
 	/**
-	 * PC_Custom_Walker
+	 * Custom_Walker
+	 *
+	 * @since 1
+	 * @var string
+	 *
+	 * @see Walker::$tree_type
 	 */
-	class PC_Custom_Walker extends Walker_Nav_Menu {
-
+	class Custom_Walker extends Walker_Nav_Menu {
 		/**
-		 * Unique id for dropdowns
-		 *
-		 * @var ?
-		 */
-		public $submenu_unique_id = '';
+		 * 階層の開始.
 
-		/**
-		 * Starts the list before the elements are added.
-		 *
 		 * @see Walker::start_lvl()
+		 *
+		 * @param string   $output Used to append additional content (passed by reference).
+		 * @param int      $depth  Depth of menu item. Used for padding.
+		 * @param stdClass $args   An object of wp_nav_menu() arguments.
 		 */
 		public function start_lvl( &$output, $depth = 0, $args = array() ) {
-			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-				$t = '';
-				$n = '';
+// phpcs:ignore -- curItemは変えてはいけないのでエラーを拒否
+			$cur_item       = $this->curItem;
+			$cur_item_title = $cur_item->title;
+			$cur_item_url   = $cur_item->url;
+			$parent_check   = $cur_item->menu_item_parent;
+			$indent         = str_repeat( "\t", $depth );
+
+			if ( ! $parent_check ) {
+				$output .= '<div class="globalNavi-child">' . "\n";
+				$output .= '<p class="globalNavi-child-index">' . "\n";
+				$output .= '<a href="' . $cur_item_url . '">' . $cur_item_title . '</a>' . "\n";
+				$output .= '</p>' . "\n";
+				$output .= '<ul class="sub-menu">' . "\n";
+
 			} else {
-				$t = "\t";
-				$n = "\n";
-			}
-			$indent = str_repeat( $t, $depth );
-
-			$curItem      = $this->curItem;
-			$curItemTitle = $curItem->title;
-			$curItemUrl   = $curItem->url;
-			$parentCheck  = $curItem->menu_item_parent;
-
-			$before_start_lvl  = '<div class="megaMenu">' . "\n";
-			$before_start_lvl .= $indent . '<div class="container-large">' . "\n";
-			$before_start_lvl .= $indent . '<div class="row">' . "\n";
-			$before_start_lvl .= $indent . '<div class="col-3 align-self-center">' . "\n";
-			$before_start_lvl .= $indent . '<h3 class="megaMenu-title">' . $curItemTitle . '</h3>' . "\n";
-			$before_start_lvl .= $indent . '<p><a class="megaMenu-mainLinkBtn" href="' . $curItemUrl . '">View More</a></p>' . "\n";
-			$before_start_lvl .= $indent . '</div><!--/.col-->' . "\n";
-			$before_start_lvl .= $indent . '<div class="col-9">' . "\n";
-
-			if ( $depth == 0 ) {
-				$output .= "{$n}{$indent}{$before_start_lvl}<ul id=\"$this->submenu_unique_id\" class=\" menu-child\">{$n}";
-			} else {
-				$output .= "{$n}{$indent}<ul id=\"$this->submenu_unique_id\" class=\"menu-grandChild\">{$n}";
+				$output .= '<ul class="sub-menu">' . "\n";
 			}
 
 		}
 
 		/**
-		 * Ends the list of after the elements are added.
+		 * 階層の終わり.
 		 *
 		 * @see Walker::end_lvl()
+		 *
+		 * @param string   $output Used to append additional content (passed by reference).
+		 * @param int      $depth  Depth of menu item. Used for padding.
+		 * @param stdClass $args   An object of wp_nav_menu() arguments.
 		 */
 		public function end_lvl( &$output, $depth = 0, $args = array() ) {
-			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-				$t = '';
-				$n = '';
-			} else {
-				$t = "\t";
-				$n = "\n";
-			}
-			$indent         = str_repeat( $t, $depth );
-			$after_end_lvl  = '</div><!--/.col-9-->' . "\n";
-			$after_end_lvl .= '</div><!--/.row-->' . "\n";
-			$after_end_lvl .= '</div><!--/.container-->' . "\n";
-			$after_end_lvl .= '</div>' . "\n";
 
-			if ( $depth == 0 ) {
-				$output .= "$indent</ul>{$after_end_lvl}{$n}";
-			} else {
-				$output .= "$indent</ul>{$n}";
-			}
+			$parent_check = $args->walker->curItem->current;
 
+			if ( ! $parent_check ) {
+				$output .= '</ul>' . "\n";
+				$output .= '</div>' . "\n";
+			} else {
+				$output .= "</ul>\n";
+
+			}
 		}
 
 		/**
+		 *
+		 * アイテムの開始.
+		 *
+		 * @since 3.0.0
+		 *
 		 * @see Walker::start_el()
+		 * @param string   $output            Used to append additional content (passed by reference).
+		 * @param string   $item      アイテム.
+		 * @param int      $depth             Depth of menu item. Used for padding.
+		 * @param stdClass $args              An object of wp_nav_menu() arguments.
+		 * @param string   $id      ID.
 		 */
-		public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-				$t = '';
-				$n = '';
-			} else {
-				$t = "\t";
-				$n = "\n";
-			}
-			$indent = ( $depth ) ? str_repeat( $t, $depth ) : '';
+		public function start_el( &$output, $item, $depth = array(), $args = array(), $id = 0 ) {
 
 			$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
-			$classes[] = 'menu-item-' . $item->ID;
+			$classes[] = '' . $item->ID;
 
-			// set active class for current nav menu item
-			if ( $item->current == 1 ) {
-				$classes[] = 'active';
-			}
+			$args = apply_filters( 'custom_nav_menu_item_args', $args, $item, $depth );
 
-			// set active class for current nav menu item parent
-			if ( in_array( 'current-menu-parent', $classes ) ) {
-				$classes[] = 'active';
-			}
+			$class_names = join( ' ', apply_filters( 'custom_nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			/**
-			 * 単一のナビゲーションメニュー項目の引数をフィルタリングします。
-			 */
-			$args            = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
-			$class_names     = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+			$id = apply_filters( 'custom_nav_menu_item_id', '' . $item->ID, $item, $args, $depth );
+
+			$thisid          = $item->object_id;
+			$thisname        = $item->post_title;
+			$thisdata        = get_post( $thisid );
 			$mostparentcheck = $item->menu_item_parent;
-			$dropdownClass   = 'dropdown';
-			if ( in_array( 'menu-item-has-children', $item->classes ) && $depth == 0 && $mostparentcheck == 0 ) {
-				$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . ' ' . $dropdownClass . '"' : ' class="' . $dropdownClass . '"';
+
+			// var_dump( $mostparentcheck );
+			if ( in_array( 'menu-item-has-children', $item->classes, true ) && 0 === $depth && '0' === $mostparentcheck ) {
+				$drop_class = ' class="menu-item-has-children"';
 			} else {
-				$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+				$drop_class = '';
 			}
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
-			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-
-			$output .= $indent . '<li' . $id . $class_names . '>';
+			$output .= '<li' . $drop_class . '>';
 
 			$atts           = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
-			$atts['class']  = '';
+			$atts['href']   = ! empty( $item->url ) ? $item->url : '';
 
-				$atts['href']  = ! empty( $item->url ) ? $item->url : '';
-				$atts['class'] = '';
-
-			$atts['class'] .= 'menu-link ';
-
-			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+			$atts = apply_filters( 'custom_nav_menu_link_attributes', $atts, $item, $args, $depth );
 
 			$attributes = '';
+
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
-
 					$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
 					$attributes .= ' ' . $attr . '="' . $value . '"';
 				}
 			}
-
-			$title = apply_filters( 'the_title', $item->title, $item->ID );
-
-			$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+			$urlget = apply_filters( 'custom_the_title', $item->url, $item->ID );
+			$title  = apply_filters( 'custom_the_title', $item->title, $item->ID );
+			$title  = apply_filters( 'custom_nav_menu_item_title', $title, $item, $args, $depth );
 
 			$item_output  = $args->before;
 			$item_output .= '<a' . $attributes . '>';
-
 			$item_output .= $args->link_before . $title . $args->link_after;
-
 			$item_output .= '</a>';
 			$item_output .= $args->after;
+			// phpcs:ignore -- 情報をいれて上のレベルに渡す. phpcs
+			$this->curItem = $item;
 
-			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+			$output .= apply_filters( 'custom_walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 
-			$this->curItem = $item;// 情報をいれて上のレベルに渡す
+			apply_filters( 'walker_nav_menu_end_lvl', $item_output, $item, $depth, $args );
+
 		}
 
 		/**
-		 * Ends the element output, if needed.
+		 * アイテムの終わり
+		 *
+		 * @see Walker::end_el()
+		 *
+		 * @param string   $output      Used to append additional content (passed by reference).
+		 * @param string   $item      アイテム.
+		 * @param int      $depth       Depth of page. Not Used.
+		 * @param stdClass $args        An object of wp_nav_menu() arguments.
 		 */
-		public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-				$t = '';
-				$n = '';
-			} else {
-				$t = "\t";
-				$n = "\n";
-			}
-			$output .= "</li>{$n}";
+		public function end_el( &$output, $item, $depth = array(), $args = array() ) {
+			$output .= "</li>\n";
 		}
-
 
 	}
 }

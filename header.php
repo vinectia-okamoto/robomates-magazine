@@ -73,7 +73,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										'items_wrap'     => '%3$s',
 										'container'      => false,
 										'depth'          => 2,
-										'items_wrap'     => '%3$s',
+										'walker'         => new Custom_Walker(),
 									)
 								);
 								?>

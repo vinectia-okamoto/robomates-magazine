@@ -245,7 +245,7 @@ wrapper
 	}
 
 	&-logoArea {
-		max-width: 200px;
+		max-width: 180px;
 
 		transition: all 0.3s ease;
 
@@ -338,6 +338,7 @@ wrapper
 			border-radius: 20px;
 			display: block;
 			transition: all 0.3s ease;
+			font-size: 1.4rem;
 
 			&:hover {
 				background-color: config.$color-hover;
@@ -393,13 +394,10 @@ wrapper
 		}
 
 
-		.sub-menu {
-			display: none;
-		}
 
-		>li.rightmode .globalNavi-child {
-			right: 0;
-			left: initial;
+		.rightmode {
+			right: 0 !important;
+			left: initial !important;
 		}
 
 		.globalNavi-child {
@@ -422,17 +420,15 @@ wrapper
 			}
 
 			&-index {
-
-
+				margin-bottom: 15px;
 
 				a {
-					padding: 0 0 20px;
+					padding: 0 2em 20px 0;
 					border-bottom: 1px solid rgba(#000, 0.1);
 					display: block;
 					position: relative;
 					color: config.$color-txt;
 					line-height: 1.4;
-					padding-right: 2em;
 
 					&::before {
 						position: absolute;
@@ -852,7 +848,7 @@ sp_btn
 		grid-template-columns: 1fr;
 
 		@include config.mq-up(md) {
-			grid-template-columns: 1fr auto;
+			grid-template-columns: 1fr minmax(360px, 1fr);
 		}
 	}
 
@@ -889,12 +885,15 @@ sp_btn
 	}
 
 	&-address {
-		line-height: 1.6;
+		line-height: 1.4;
 		font-size: 1.4rem;
 		color: #fff;
 
+
 		.companyname {
 			font-weight: bold;
+			line-height: 1.2;
+			margin-bottom: 5px;
 
 			span {
 				display: inline-block;
@@ -902,6 +901,10 @@ sp_btn
 		}
 
 		.address {
+			font-size: 1.2rem;
+			line-height: 1.2;
+			margin-bottom: 5px;
+
 			span {
 				display: inline-block;
 			}
@@ -910,12 +913,18 @@ sp_btn
 
 	&-tel {
 		font-weight: bold;
-		line-height: 1.6;
+		line-height: 1.2;
 		color: #fff;
 		display: flex;
 		flex-wrap: wrap;
+		margin-bottom: 5px;
 
-		gap: 1em;
+		justify-content: center;
+
+		@include config.mq-up(md) {
+			justify-content: flex-start;
+
+		}
 
 		span {
 			display: inline-block;
@@ -1047,7 +1056,7 @@ sp_btn
 #pagetop backtotop
 ========================================================= */
 .pagetop {
-
+	border: 1px solid #fff;
 	width: 40px;
 	height: 40px;
 	background-color: config.$color-primary;
